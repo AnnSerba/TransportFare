@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{F61DEE8A-752A-4155-8495-DD551D6A3C87}</ProjectGuid>
+    <ProjectGuid>{C59D2D36-A916-4664-BF9F-772D7BF3B4DC}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TransportFare</RootNamespace>

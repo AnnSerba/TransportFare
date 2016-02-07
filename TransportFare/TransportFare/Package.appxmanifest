@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="799979da-a96a-45dd-8686-5f6995e5ddf2"
-    Publisher="CN=Ann"
+    Name="a781be6b-fe31-4940-b677-9c86d4bd2e12"
+    Publisher="CN=annse"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="799979da-a96a-45dd-8686-5f6995e5ddf2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="a781be6b-fe31-4940-b677-9c86d4bd2e12" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>TransportFare</DisplayName>
-    <PublisherDisplayName>Ann</PublisherDisplayName>
+    <PublisherDisplayName>annse</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
