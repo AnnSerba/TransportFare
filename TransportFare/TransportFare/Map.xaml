@@ -7,12 +7,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Grid_Loaded">
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <StackPanel >
-            <TextBlock Text="Транспорт поблизости" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Maps:MapControl x:Name="map" Height="500" MapServiceToken="mapToken"></Maps:MapControl>
-            <Button x:Name="Back" Content="Назад" Click="ButtonBack_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+            <TextBlock x:Name="title" Text="Транспорт поблизости"  Margin="10" HorizontalAlignment="Center"/>
+            <Button x:Name="toMyPosition" Content="Перейти к моей текущей позиции" IsEnabled="False" Margin="10" Click="ToMyPosition_Click"/>
+            <TextBlock x:Name="messageGeolocationAccessStatus" Text="" Visibility="Collapsed"  Margin="10" HorizontalAlignment="Right"/>
+            <HyperlinkButton  x:Name="settings" Content="Настройки" NavigateUri="ms-settings:privacy-location" Margin="10" Visibility="Collapsed" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="messagePositionStatus" Text=""   Margin="10" HorizontalAlignment="Right"/>
+            <Maps:MapControl x:Name="map" Height="400" Visibility="Collapsed" Margin="0,10"></Maps:MapControl>
+            <Button x:Name="back" Content="Назад" Click="ButtonBack_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
         </StackPanel>
     </Grid>
 </Page>

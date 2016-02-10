@@ -45,9 +45,5 @@ namespace TransportFare
         {
 
         }
-        private void ButtonBack_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
