@@ -1,34 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.Globalization;
-using System.Threading;
-
-// Шаблон элемента пустой страницы задокументирован по адресу http://go.microsoft.com/fwlink/?LinkId=234238
+using Windows.System.Threading;
 
 namespace TransportFare
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
     public sealed partial class Map : Page
     {
         Geolocator geolocator;
         Geoposition position;
+        ThreadPoolTimer timer;
         public Map()
         {
             this.InitializeComponent();
@@ -36,6 +21,11 @@ namespace TransportFare
             geolocator = new Geolocator { ReportInterval = 2000 };
             geolocator.PositionChanged += OnPositionChanged;
             geolocator.StatusChanged += OnStatusChanged;
+            timer = ThreadPoolTimer.CreateTimer(new TimerElapsedHandler(Update),new TimeSpan(2000));
+        }
+        private void Update(ThreadPoolTimer e)
+        {
+            
         }
         private async void UpdateTracking()
         {
@@ -79,38 +69,38 @@ namespace TransportFare
                 switch (e.Status)
                 {
                     case PositionStatus.Ready:
-                        messagePositionStatus.Text = "Координаты местоположения готовы";
+                        messagePositionStatus.Text =DateTime.Now+ " Координаты местоположения готовы";
                         toMyPosition.IsEnabled = true;
                         break;
 
                     case PositionStatus.Initializing:
-                        messagePositionStatus.Text = "Инициализация координат местаположения";
+                        messagePositionStatus.Text = DateTime.Now + " Инициализация координат местаположения";
                         toMyPosition.IsEnabled = false;
                         break;
 
                     case PositionStatus.NoData:
-                        messagePositionStatus.Text = "Не в состоянии определить координаты местоположения";
+                        messagePositionStatus.Text = DateTime.Now + " Не в состоянии определить координаты местоположения";
                         toMyPosition.IsEnabled = false;
                         break;
 
                     case PositionStatus.Disabled:
-                        messagePositionStatus.Text = "Доступ к координатам местоположения отказано";
+                        messagePositionStatus.Text = DateTime.Now + " Доступ к координатам местоположения отказано";
                         toMyPosition.IsEnabled = false;
 
                         break;
 
                     case PositionStatus.NotInitialized:
-                        messagePositionStatus.Text = "Ни одна заявка для размещения не производится пока";
+                        messagePositionStatus.Text = DateTime.Now + " Ни одна заявка для размещения не производится пока";
                         toMyPosition.IsEnabled = false;
                         break;
 
                     case PositionStatus.NotAvailable:
-                        messagePositionStatus.Text = "Расположение не доступен на этой версии ОС";
+                        messagePositionStatus.Text = DateTime.Now + " Расположение не доступен на этой версии ОС";
                         toMyPosition.IsEnabled = false;
                         break;
 
                     default:
-                        messagePositionStatus.Text = "Неизвестная ошибка";
+                        messagePositionStatus.Text = DateTime.Now + " Неизвестная ошибка";
                         toMyPosition.IsEnabled = false;
                         break;
                 }
@@ -120,13 +110,9 @@ namespace TransportFare
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             MainMenu mainMenu = Window.Current.Content as MainMenu;
-            // если не создан
             if (mainMenu == null)
             {
-                // создание 
                 mainMenu = new MainMenu();
-
-                // установка для текущего окна
                 Window.Current.Content = mainMenu;
             }
         }
@@ -142,6 +128,15 @@ namespace TransportFare
         private void ToMyPosition_Click(object sender, RoutedEventArgs e)
         {
             UpdateLocationData(position);
+        }
+        public void AddPoint(double latitude,double longitude,string name)
+        {
+            MapIcon mapIcon = new MapIcon();
+            mapIcon.Location = new Geopoint(new BasicGeoposition() { Latitude = latitude, Longitude = longitude });
+            mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            mapIcon.Title = name;
+            mapIcon.ZIndex = 0;
+            map.MapElements.Add(mapIcon);
         }
     }
 }
