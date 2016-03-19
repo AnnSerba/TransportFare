@@ -6,8 +6,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Accept" Name="appBarButtonAccept" Label="Оплатить" Click="appBarButtonAccept_Click"/>
+            <AppBarButton Icon="Cancel" Name="appBarButtonCancel" Label="Отмена" Click="appBarButtonCancel_Click"/>
+        </CommandBar> 
+    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        
+        <StackPanel >
+            <TextBlock Name="textTitle" Text="Оплата" Style="{StaticResource styleHeaderTextBlock}"/>
+            <Slider Name="sliderSummPay" Header="Сумма оплаты" Style="{StaticResource styleSliderSummPay}"/>
+            <ToggleSwitch x:Name="toggleSwitchTag" Header="Метка" IsOn="False" OnContent="Подключена" OffContent="Не подключена"  Style="{StaticResource styleToggleSwitch}" Toggled="toggleSwitchTag_Toggled"/>
+        </StackPanel>
+        <Frame Name="frameMessage" Style="{StaticResource styleFrameMessage}">
+            <TextBlock  Name="textBlockMessage" Text="Сообщения" Style="{StaticResource styleTextBlockMessage}"/>
+        </Frame>
     </Grid>
 </Page>

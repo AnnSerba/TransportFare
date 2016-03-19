@@ -43,7 +43,16 @@ namespace TransportFare
 
         private void ButtonToPay_Click(object sender, RoutedEventArgs e)
         {
+            Pay map = Window.Current.Content as Pay;
+            // если не создан
+            if (map == null)
+            {
+                // создание 
+                map = new Pay();
 
+                // установка для текущего окна
+                Window.Current.Content = map;
+            }
         }
     }
 }

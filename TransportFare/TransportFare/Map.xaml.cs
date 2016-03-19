@@ -6,6 +6,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
 using Windows.System.Threading;
+using Windows.Networking.Sockets;
+using Windows.Storage.Streams;
+using System.Threading.Tasks;
 
 namespace TransportFare
 {
@@ -22,10 +25,59 @@ namespace TransportFare
             geolocator.PositionChanged += OnPositionChanged;
             geolocator.StatusChanged += OnStatusChanged;
             timer = ThreadPoolTimer.CreateTimer(new TimerElapsedHandler(Update),new TimeSpan(2000));
+            GetRoutes();
+        }
+        private async void GetRoutes()
+        {
+            MessageWebSocket webSock = new MessageWebSocket();
+
+            //In this case we will be sending/receiving a string so we need to set the MessageType to Utf8.
+            webSock.Control.MessageType = SocketMessageType.Utf8;
+
+            //Add the MessageReceived event handler.
+            webSock.MessageReceived += WebSock_MessageReceived;
+
+            //Add the Closed event handler.
+            webSock.Closed += WebSock_Closed;
+
+            Uri serverUri = new Uri("wss://echo.websocket.org");
+            try
+            {
+                //Connect to the server.
+                await webSock.ConnectAsync(serverUri);
+
+                //Send a message to the server.
+                await WebSock_SendMessage(webSock, "Hello, world!");
+            }
+            catch (Exception ex)
+            {
+                //Add code here to handle any exceptions
+            }
+        }
+        //The MessageReceived event handler.
+        private void WebSock_MessageReceived(MessageWebSocket sender, MessageWebSocketMessageReceivedEventArgs args)
+        {
+            
+            DataReader messageReader = args.GetDataReader();
+            messageReader.UnicodeEncoding = UnicodeEncoding.Utf8;
+            string messageString = messageReader.ReadString(messageReader.UnconsumedBufferLength);
+
+            //Add code here to do something with the string that is received.
+        }
+        //The Closed event handler
+        private void WebSock_Closed(IWebSocket sender, WebSocketClosedEventArgs args)
+        {
+            //Add code here to do something when the connection is closed locally or by the server
+        }
+        //Send a message to the server.
+        private async Task WebSock_SendMessage(MessageWebSocket webSock, string message)
+        {
+            DataWriter messageWriter = new DataWriter(webSock.OutputStream);
+            messageWriter.WriteString(message);
+            await messageWriter.StoreAsync();
         }
         private void Update(ThreadPoolTimer e)
         {
-            
         }
         private async void UpdateTracking()
         {
