@@ -12,7 +12,6 @@
                 <Grid/>
             </CommandBar.Content>
             <AppBarButton Icon="Accept" Name="appBarButtonAccept" Label="Оплатить" Click="appBarButtonAccept_Click"/>
-            <AppBarButton Icon="Cancel" Name="appBarButtonCancel" Label="Отмена" Click="appBarButtonCancel_Click"/>
         </CommandBar> 
     </Page.BottomAppBar>
 

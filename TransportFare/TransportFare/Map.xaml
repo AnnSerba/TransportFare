@@ -7,21 +7,53 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <FlipView Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <StackPanel >
-            <TextBlock x:Name="title" Text="Транспорт поблизости"  Style="{StaticResource HeaderText}"/>
-
-
-        </StackPanel>
-        <StackPanel>
-            <Button x:Name="toMyPosition" Content="Перейти к моей текущей позиции" IsEnabled="False" Margin="10" Click="ToMyPosition_Click"/>
-            <TextBlock x:Name="messageGeolocationAccessStatus" Text="" Visibility="Collapsed"  Margin="10" HorizontalAlignment="Right"/>
-            <HyperlinkButton  x:Name="settings" Content="Настройки" NavigateUri="ms-settings:privacy-location" Margin="10" Visibility="Collapsed" HorizontalAlignment="Right"/>
-            <TextBlock x:Name="messagePositionStatus" Text=""   Margin="10" HorizontalAlignment="Right"/>
-            <Maps:MapControl x:Name="map" Height="400" Visibility="Collapsed" Margin="0,10"></Maps:MapControl>
-            <Button x:Name="back" Content="Назад" Click="ButtonBack_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" />
-
-        </StackPanel>
-    </FlipView>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.SecondaryCommands>
+            </CommandBar.SecondaryCommands>
+            <AppBarButton  Name="appBarButtonState" Label="Нет данных" Click="appBarButtonState_Click">
+                <SymbolIcon Name="symbolIconState" Symbol="Important"></SymbolIcon>
+            </AppBarButton>
+            <AppBarButton Icon="Map" Name="appBarButtonMap" Label="Текущие координаты"
+                          Click="appBarButtonMap_Click"/>
+            <AppBarButton Icon="Setting" Name="appBarButtonSetting" Label="Настройки" 
+                          Click="appBarButtonSetting_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <SplitView Name="splitView" DisplayMode="Overlay" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView.Pane>
+            <StackPanel>
+                <Button Name="buttonCancel" HorizontalAlignment="Right" Click="appBarButtonSetting_Click">
+                    <SymbolIcon Symbol="Cancel"></SymbolIcon>
+                </Button>
+                <TextBlock Text="Какой транспорт интересует?" Style="{StaticResource styleHeaderTextBlock}"/>
+                <ProgressRing Name="progressRingSity" IsActive="True"/>
+                <ComboBox Header="Выберите город" Name="comboBoxSity"  Visibility="Collapsed" 
+                          SelectionChanged="comboBoxSity_SelectionChanged"  Style="{StaticResource styleComboBox}" />
+                <ProgressRing Name="progressRingRoute" IsActive="False"/>
+                <ComboBox Header="Выберите маршрут" Name="comboBoxRoute" Visibility="Collapsed" 
+                          SelectionChanged="comboBoxRoute_SelectionChanged"  Style="{StaticResource styleComboBox}" />
+                <ComboBox Header="Режим экономии энергии" Name="comboBoxDesiredAccuracy"
+                          SelectionChanged="comboBoxDesiredAccuracy_SelectionChanged"  
+                          Style="{StaticResource styleComboBox}"/>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content >
+            <Grid>
+                <StackPanel Name="stackPanelShowSelectionSityRoute" VerticalAlignment="Top">
+                    <TextBlock Text="Транспорт поблизости"  Style="{StaticResource styleHeaderTextBlock}"/>
+                    <ProgressRing Name="progressRingMap" IsActive="True" VerticalAlignment="Center"/>
+                    <TextBlock Name="textBlockLocation" Text="" Visibility="Collapsed" 
+                           Style="{StaticResource styleTextBlock}"/>
+                    <Maps:MapControl Name="mapControl" Height="400" Visibility="Collapsed" Margin="0,10" />
+                </StackPanel>
+                <StackPanel Name="stackPanelStatus" VerticalAlignment="Bottom" Visibility="Collapsed" Background="Yellow">
+                    <Button Name="buttonStatus" HorizontalAlignment="Right" Click="buttonStatus_Click">
+                        <SymbolIcon Symbol="Cancel"></SymbolIcon>
+                    </Button>
+                    <TextBlock Name="textBlockStatus" Text="Нет данных" Style="{StaticResource styleTextBlock}"/>
+                </StackPanel>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
 </Page>

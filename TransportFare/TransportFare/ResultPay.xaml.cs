@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,6 +26,18 @@ namespace TransportFare
         public ResultPay()
         {
             this.InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += ResultPay_BackRequested;
+        }
+
+        private void ResultPay_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            MainMenu mainMenu = Window.Current.Content as MainMenu;
+            if (mainMenu == null)
+            {
+                mainMenu = new MainMenu();
+                Window.Current.Content = mainMenu;
+            }
         }
     }
 }

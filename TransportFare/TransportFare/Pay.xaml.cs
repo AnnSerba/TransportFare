@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Store;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -17,10 +19,24 @@ namespace TransportFare
         String Metka { get; set; }
         public Pay()
         {
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += Pay_BackRequested;
             this.InitializeComponent();
             sliderSummPay.Minimum = 1;
             sliderSummPay.Maximum = 1000;
+           
         }
+
+        private void Pay_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            MainMenu mainMenu = Window.Current.Content as MainMenu;
+            if (mainMenu == null)
+            {
+                mainMenu = new MainMenu();
+                Window.Current.Content = mainMenu;
+            }
+        }
+
         private async void appBarButtonAccept_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             NotifyUser("Buying Product 1...", NotifyType.StatusMessage);
@@ -118,10 +134,6 @@ namespace TransportFare
         {
 
         }
-
-        private void appBarButtonCancel_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
