@@ -9,28 +9,38 @@ using System.Threading.Tasks;
 using Windows.Services.Maps;
 using Windows.UI.Xaml.Media;
 using Windows.UI;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.Storage.Streams;
+using System.Collections.Generic;
 
 namespace TransportFare
 {
     public sealed partial class Map : Page
     {
-        Geolocator geolocator;
-        Geoposition geoposition;
-        MapLocation mapLocation;
+        Geolocator Geolocator { get; set; }
+        Geoposition Geoposition { get; set; }
+        MapLocation MapLocation { get; set; }
+        MapIcon MapIcon { get; set; }
+        List<MapIcon> ListMapIcon { get; set; }
+        string Sity { get; set; }
         public Map()
         {
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += Map_BackRequested;
             mapControl.MapServiceToken = "nD18JaojG92g4lqLyhzI~wo1ajtwOwbPAoUAUUxu6Sg~ArEdm5wChACupRSXm50wPw8v7drL6dNMRMWztobTJOj1rrcNoh0uIch5I_XHnOvp";
-            geolocator = new Geolocator { ReportInterval = 2000 };
-            geolocator.PositionChanged += OnPositionChanged;
-            geolocator.StatusChanged += OnStatusChanged;
-            geolocator.DesiredAccuracy = PositionAccuracy.High;
+            ListMapIcon = new List<MapIcon>();
+            Geolocator = new Geolocator { ReportInterval = 3000 };
+            sliderFrequency.Value = 2000;
+            Geolocator.PositionChanged += OnPositionChanged;
+            Geolocator.StatusChanged += OnStatusChanged;
+            Geolocator.DesiredAccuracy = PositionAccuracy.High;
             comboBoxDesiredAccuracy.Items.Add("Особо точный");
             comboBoxDesiredAccuracy.SelectedIndex = 0;
             comboBoxDesiredAccuracy.Items.Add("Экономный");
-            LoadCoordinates();
+            
+            
+            
         }
 
         private void Map_BackRequested(object sender, BackRequestedEventArgs e)
@@ -42,85 +52,171 @@ namespace TransportFare
                 Window.Current.Content = mainMenu;
             }
         }
-
-        async void LoadCoordinates()
+        private void LoadSities()
         {
-            symbolIconState.Symbol = Symbol.Target;
-            appBarButtonState.Label = "Получение";
-            textBlockStatus.Text = DateTime.Now + "Получение координат местоположения";
-            stackPanelStatus.Background = new SolidColorBrush(Colors.Blue);
-            geoposition = await geolocator.GetGeopositionAsync();
+            try
+            {
+                SetState("Скачивание данных", null, "Скачивание данных", null, null, Symbol.Download, Colors.Gold);
+                Load.Sities().ForEach(i => { comboBoxSity.Items.Add(i); });
 
-            MapLocationFinderResult mapLocationFinderResult =
-                await MapLocationFinder.FindLocationsAtAsync(geoposition.Coordinate.Point);
-            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                UpdateLocationData();
-                splitView.IsPaneOpen = true;
-                progressRingMap.IsActive = false;
-                mapControl.Visibility = Visibility.Visible;
-                textBlockLocation.Visibility = Visibility.Visible;
-                if (mapLocationFinderResult.Status == MapLocationFinderStatus.Success)
+                progressRingSity.IsActive = false;
+                progressRingRoute.IsActive = true;
+
+                comboBoxSity.Visibility = Visibility.Visible;
+                if (Sity != null && comboBoxSity.Items.Contains(Sity))
                 {
-                    mapLocation = mapLocationFinderResult.Locations[0];
-                }
-                textBlockLocation.Visibility = Visibility.Visible;
-                SetState("Скачивание данных", "Скачивание данных", Symbol.Download, Colors.Gold);
-                LoadRoutes(LoadSities());
-                SetState("Успех", "Данные успешно получены", Symbol.Like, Colors.Green);
-            });
-        }
-        private string LoadSities()
-        {
-            Load.Sities().ForEach(i => { comboBoxSity.Items.Add(i); });
-            if (comboBoxSity.Items.Count != 0)
-            {
-                if (mapLocation != null && comboBoxSity.Items.Contains(mapLocation.Address.Town))
-                {
-                    comboBoxSity.SelectedIndex = comboBoxSity.Items.IndexOf(mapLocation.Address.Town);
+                    comboBoxSity.SelectedIndex = comboBoxSity.Items.IndexOf(Sity);
                 }
                 else if (comboBoxSity.Items.Count != 0)
                 {
                     comboBoxSity.SelectedIndex = 0;
                 }
-                progressRingSity.IsActive = false;
-                comboBoxSity.Visibility = Visibility.Visible;
-                progressRingRoute.IsActive = true;
-                return comboBoxSity.SelectedValue.ToString();
+                else
+                {
+                    throw new Exception("Ошибка списка данных городов");
+                }
+                UpdateLocationData();
+                SetState("Успех", null, "Данные успешно получены", null, null, Symbol.Like, Colors.Green);
             }
-            return "";
+            catch (Exception e)
+            {
+                SetState("Ошибка", null, e.Message, null, null, Symbol.Like, Colors.Green);
+            }
         }
-        private void LoadRoutes(string sity)
+        private void comboBoxSity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Load.Routes(sity).ForEach(i => { comboBoxRoute.Items.Add(i); });
-            comboBoxRoute.SelectedIndex = 0;
-            comboBoxRoute.Visibility = Visibility.Visible;
-            progressRingRoute.IsActive = false;
+            try
+            {
+                SetState("Скачивание данных", null, null, "Скачивание данных о маршрутах", null, Symbol.Download, Colors.Gold);
+                if (comboBoxSity.SelectedValue.ToString() != "")
+                {
+                    listBoxRoutes.Items.Clear();
+                    Load.Routes(comboBoxSity.SelectedValue.ToString()).ForEach(i => {
+                        listBoxRoutes.Items.Add(i);
+                    });
+                    textBlockRoutes.Visibility = Visibility.Visible;
+                    listBoxRoutes.Visibility = Visibility.Visible;
+                    progressRingRoute.IsActive = false;
+                }
+                else
+                {
+                    throw new Exception("Город не может быть пустым");
+                }
+                SetState("Успех", null, null, "Данные о маршрутах успешно получены", null, Symbol.Like, Colors.Green);
+            }
+            catch (Exception ex)
+            {
+                SetState("Ошибка", null, null, ex.Message, null, Symbol.Like, Colors.Green);
+            }
         }
+        private void listBoxRoutes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                SetState("Обновление данных", null, null, null, "Скачивание данных о транспорте", Symbol.Download, Colors.Gold);
+                ListMapIcon.ForEach(j =>
+                {
+                    RemoveMapIcon(j);
+                });
+                ListMapIcon.Clear();
+                foreach (var i in listBoxRoutes.SelectedItems)
+                {
+                    Load.Transport(i.ToString()).ForEach(j =>
+                    {
+                        ListMapIcon.Add(AddGeopoint(j, i.ToString()));
+                    });
+                }
+
+                SetState("Успех", null, null, null, "Данные о транспорте успешно получены", Symbol.Like, Colors.Green);
+            }
+            catch (Exception ex)
+            {
+                SetState("Ошибка", null, null, ex.Message, null, Symbol.Like, Colors.Green);
+            }
+        }
+        
         async private void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                SetState("Получение", "Получение координат местоположения", Symbol.Target, Colors.Blue);
-                geoposition = e.Position;
+                SetState("Получение", "Получение координат местоположения", null, null, null, Symbol.Target, Colors.Blue);
+                 if (Geoposition==null|| e.Position.Coordinate.Accuracy<=Geoposition.Coordinate.Accuracy )
+                {
+                    if (MapIcon != null)
+                    {
+                        RemoveMapIcon(MapIcon);
+                    }
+                    MapIcon = AddGeopoint(e.Position.Coordinate.Point, "Вы");
+                }
             });
             MapLocationFinderResult mapLocationFinderResult =
-                await MapLocationFinder.FindLocationsAtAsync(geoposition.Coordinate.Point);
+                await MapLocationFinder.FindLocationsAtAsync(e.Position.Coordinate.Point);
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                if (mapLocationFinderResult.Status == MapLocationFinderStatus.Success)
+                try
                 {
-                    mapLocation = mapLocationFinderResult.Locations[0];
-                    textBlockLocation.Text = "Текущее местоположение: " +
-                        mapLocation.Address.Country + " " +
-                          mapLocation.Address.Town + " " +
-                          mapLocation.Address.Street + " " +
-                           mapLocation.Address.StreetNumber;
-                    SetState("Успех", "Координаты местоположения успешно получены", Symbol.Like, Colors.Green);
+                    if (Geoposition == null || e.Position.Coordinate.Accuracy <= Geoposition.Coordinate.Accuracy)
+                    {
+                        MapLocation = mapLocationFinderResult.Locations[0];
+                        if (MapLocation == null)
+                        {
+                            throw new Exception("Адресс не определён");
+                        }
+                        Sity = MapLocation.Address.Town;
+                        if (Geoposition == null)
+                        {
+                            LoadSities();
+                            progressRingLocation.IsActive = false;
+                            textBlockLocation.Visibility = Visibility.Visible;
+                            Geoposition = e.Position;
+                            UpdateLocationData();
+                        }
+                        else
+                        {
+                            Geoposition = e.Position;
+                        }
+                        SetAddress();
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    SetState("Ошибка", ex.Message, null, null, null, Symbol.Target, Colors.Blue);
+                    return;
                 }
             });
         }
-
+        void SetAddress()
+        {
+            if (MapLocation != null)
+            {
+                var stringAddress = "Текущее местоположение: " +
+                            MapLocation.Address.Country + " " +
+                              MapLocation.Address.Town;
+                if (Geoposition.Coordinate.Accuracy < 500)
+                {
+                    stringAddress += " " + MapLocation.Address.District + " ";
+                }
+                if (Geoposition.Coordinate.Accuracy < 300)
+                {
+                    stringAddress += " " + MapLocation.Address.Street + " ";
+                }
+                if (Geoposition.Coordinate.Accuracy < 10)
+                {
+                    stringAddress += " " + MapLocation.Address.StreetNumber;
+                }
+                textBlockLocation.Text = stringAddress;
+                SetState("Успех", "Координаты местоположения успешно получены. Текущее местоположение: " +
+                    stringAddress +
+                      ". Координаты: Широта " + Geoposition.Coordinate.Latitude + " Долгота " +
+                      Geoposition.Coordinate.Longitude + " Точность:" + Geoposition.Coordinate.Accuracy + "м",
+                       null, null, null, Symbol.Like, Colors.Green);
+            }
+            else
+            {
+                throw new Exception("Нет данных о координатах");
+            }
+        }
         async private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -128,66 +224,74 @@ namespace TransportFare
                 switch (e.Status)
                 {
                     case PositionStatus.Ready:
-                        SetState("Готов. Ожидание", "Готов к получению координат. Ожидание запроса на получение координат", Symbol.Clock, Colors.Green);
+                        SetState("Готов. Ожидание", "Готов к получению координат. Ожидание запроса на получение координат", null, null, null, Symbol.Clock, Colors.Green);
                         break;
 
                     case PositionStatus.Initializing:
-                        SetState("Инициализация", "Инициализация координат местаположения", Symbol.Upload, Colors.Blue);
+                        SetState("Инициализация", "Инициализация координат местаположения", null, null, null, Symbol.Upload, Colors.Blue);
                         break;
 
                     case PositionStatus.NoData:
-                        SetState("Не определено", "Не в состоянии определить координаты местоположения", Symbol.DisableUpdates, Colors.Red);
+                        SetState("Не определено", "Не в состоянии определить координаты местоположения", null, null, null, Symbol.DisableUpdates, Colors.Red);
                         break;
 
                     case PositionStatus.Disabled:
-                        SetState("Отказано", " Доступ к координатам местоположения отказано", Symbol.DisconnectDrive, Colors.Red);
+                        SetState("Отказано", " Доступ к координатам местоположения отказано", null, null, null, Symbol.DisconnectDrive, Colors.Red);
                         break;
 
                     case PositionStatus.NotInitialized:
-                        SetState("Нет заявок", "Ни одна заявка для размещения не производится пока", Symbol.Preview, Colors.Gold);
+                        SetState("Нет заявок", "Ни одна заявка для размещения не производится пока", null, null, null, Symbol.Preview, Colors.Gold);
                         break;
 
                     case PositionStatus.NotAvailable:
-                        SetState("Не доступен", "Расположение не доступен на этой версии ОС", Symbol.ProtectedDocument, Colors.Red);
+                        SetState("Не доступен", "Расположение не доступен на этой версии ОС", null, null, null, Symbol.ProtectedDocument, Colors.Red);
                         break;
 
                     default:
-                        SetState("Ошибка", " Неизвестная ошибка", Symbol.Important, Colors.Red);
+                        SetState("Ошибка", " Неизвестная ошибка", null, null, null, Symbol.Important, Colors.Red);
                         break;
                 }
             });
         }
-        private void SetState(string shortState,string longState,Symbol symbol,Color color)
+        private void SetState(string shortGeoState, string longGeoState,
+            string longSityState, string longRouteState, string longTransportState,
+            Symbol symbol, Color color)
         {
-            appBarButtonState.Label = shortState;
+            appBarButtonState.Label = shortGeoState;
             symbolIconState.Symbol = symbol;
-            textBlockStatus.Text = DateTime.Now + " " + longState;
+            if (longGeoState != null)
+                textBlockGeoStatus.Text = DateTime.Now + " " + longGeoState;
+            if (longSityState != null)
+                textBlockSity.Text = DateTime.Now + " " + longSityState;
+            if (longRouteState != null)
+                textBlockRoute.Text = DateTime.Now + " " + longRouteState;
+            if (longTransportState != null)
+                textBlockTransport.Text = DateTime.Now + " " + longTransportState;
             stackPanelStatus.Background = new SolidColorBrush(color);
         }
         private void UpdateLocationData()
         {
-            if (geoposition != null)
+            if (Geoposition != null)
             {
-                mapControl.Center = geoposition.Coordinate.Point;
-                mapControl.ZoomLevel = (double)geolocator.DesiredAccuracyInMeters;
+                mapControl.Center = Geoposition.Coordinate.Point;
+                mapControl.ZoomLevel = (double)Geolocator.DesiredAccuracyInMeters;
                 mapControl.LandmarksVisible = true;
             }
         }
-        public void AddPoint(double latitude, double longitude, string name)
+        public MapIcon AddGeopoint(Geopoint geopoint, string name)
         {
             MapIcon mapIcon = new MapIcon();
-            mapIcon.Location = new Geopoint(new BasicGeoposition() { Latitude = latitude, Longitude = longitude });
+            mapIcon.Location = geopoint;
             mapIcon.NormalizedAnchorPoint = new Point(0.5, 1.0);
             mapIcon.Title = name;
             mapIcon.ZIndex = 0;
             mapControl.MapElements.Add(mapIcon);
+            mapIcon.Visible = true;
+            return mapIcon;
         }
-
-        private void comboBoxSity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void RemoveMapIcon(MapIcon mapIcon)
         {
-        }
-        private void comboBoxRoute_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            mapControl.MapElements.Remove(mapIcon);
         }
 
         private void appBarButtonMap_Click(object sender, RoutedEventArgs e)
@@ -211,11 +315,11 @@ namespace TransportFare
             {
                 if (e.OriginalSource.Equals("Особо точный"))
                 {
-                    geolocator.DesiredAccuracy = PositionAccuracy.High;
+                    Geolocator.DesiredAccuracy = PositionAccuracy.High;
                 }
                 else if (e.OriginalSource.Equals("Экономный"))
                 {
-                    geolocator.DesiredAccuracy = PositionAccuracy.Default;
+                    Geolocator.DesiredAccuracy = PositionAccuracy.Default;
                 }
             }
         }
@@ -224,5 +328,18 @@ namespace TransportFare
         {
             stackPanelStatus.Visibility = Visibility.Collapsed;
         }
+        private void sliderFrequency_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (Geolocator != null)
+            {
+                Geolocator.ReportInterval = (uint)sliderFrequency.Value;
+            }
+        }
+        
+        private void mapControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            progressRingMap.IsActive = false;
+        }
+        
     }
 }

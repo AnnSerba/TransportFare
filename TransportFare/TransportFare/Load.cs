@@ -1,35 +1,35 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 using Windows.UI.Notifications;
 
 namespace TransportFare
 {
     public class Load
     {
+        Uri url = new Uri("http://www.eway.in.ua/");
         public static List<string> Sities()
         {
-            Task<List<string>> task = new Task<List<string>>(() =>
-            {
-                List<string> list = new List<string>();
-                list.Add("Симферополь");
-                list.Add("Севастополь");
-                list.Add("Керч");
-                return list;
-            });
-            task.Start();
-            return task.Result;
+            List<string> list = new List<string>();
+            list.Add("Симферополь");
+            list.Add("Севастополь");
+            list.Add("Керч");
+            return list;
         }
         public static List<string> Routes(string sity)
         {
-            Task<List<string>> task = new Task<List<string>>(() =>
-            {
-                List<string> list = new List<string>();
-                list.Add("9");
-                return list;
-            });
-            task.Start();
-            return task.Result;
+            List<string> list = new List<string>();
+            list.Add("9");
+            list.Add("94");
+            return list;
+        }
+        public static List<Geopoint> Transport(string route)
+        {
+            var list = new List<Geopoint>();
+            list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.51, Longitude = 33.59 }));
+            return list;
         }
 
         public static void DoToast(int numEventsOfInterest, string eventName)
