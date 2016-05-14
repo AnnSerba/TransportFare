@@ -1,11 +1,10 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TransportFare.Styles">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="styleHeaderTextBlock" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontSize" Value="30"/>
         <Setter Property="Margin" Value="20,0"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
@@ -22,22 +21,13 @@
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Margin" Value="20,0"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
     <Style x:Key="styleListBox" TargetType="ListBox">
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Margin" Value="20,0"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
-    </Style>
-    <Style x:Key="styleTextBlockResults" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
     <Style x:Key="styleToggleSwitch" TargetType="ToggleSwitch">
         <Setter Property="FontFamily" Value="Segoe UI"/>

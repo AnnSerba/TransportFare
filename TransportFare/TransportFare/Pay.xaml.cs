@@ -4,6 +4,7 @@ using Windows.ApplicationModel.Store;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -17,16 +18,31 @@ namespace TransportFare
     {
         private HashSet<Guid> consumedTransactionIds = new HashSet<Guid>();
         String Metka { get; set; }
+        string Login { get; set; }
+        string Password { get; set; }
         public Pay()
         {
+            this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += Pay_BackRequested;
-            this.InitializeComponent();
-            sliderSummPay.Minimum = 1;
-            sliderSummPay.Maximum = 1000;
-           
+            
+            LoadProducts();
         }
+        public async void LoadProducts()
+        {
+            ListingInformation listing = await CurrentAppSimulator.LoadListingInformationAsync();
+            var AllProducts = listing.ProductListings;
 
+            foreach (var i in AllProducts)
+            {
+                gridViewAllProducts.Items.Add(i.Value);
+            }
+            var unfulfilledProducts = await CurrentAppSimulator.GetUnfulfilledConsumablesAsync();
+            for (int i = 0; i < unfulfilledProducts.Count; i++)
+            {
+                gridViewNoUsedProducts.Items.Add(AllProducts[unfulfilledProducts[i].ProductId]);
+            }
+        }
         private void Pay_BackRequested(object sender, BackRequestedEventArgs e)
         {
             MainMenu mainMenu = Window.Current.Content as MainMenu;
@@ -39,19 +55,19 @@ namespace TransportFare
 
         private async void appBarButtonAccept_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            NotifyUser("Buying Product 1...", NotifyType.StatusMessage);
+            NotifyUser("Покупка продукта...", NotifyType.StatusMessage);
             try
             {
                 PurchaseResults purchaseResults = await CurrentAppSimulator.RequestProductPurchaseAsync("product1");
+                
                 switch (purchaseResults.Status)
                 {
                     case ProductPurchaseStatus.Succeeded:
                         GrantFeatureLocally(purchaseResults.TransactionId);
                         FulfillPay(purchaseResults.TransactionId);
+                        
                         break;
                     case ProductPurchaseStatus.NotFulfilled:
-                        // The purchase failed because we haven't confirmed fulfillment of a previous purchase.
-                        // Fulfill it now.
                         if (!IsLocallyFulfilled(purchaseResults.TransactionId))
                         {
                             GrantFeatureLocally(purchaseResults.TransactionId);
@@ -59,13 +75,13 @@ namespace TransportFare
                         FulfillPay(purchaseResults.TransactionId);
                         break;
                     case ProductPurchaseStatus.NotPurchased:
-                        NotifyUser("Product 1 was not purchased.", NotifyType.StatusMessage);
+                        NotifyUser("Покупка не была выполнена", NotifyType.StatusMessage);
                         break;
                 }
             }
             catch (Exception)
             {
-                NotifyUser("Unable to buy Product 1.", NotifyType.ErrorMessage);
+                NotifyUser("Покупка не была выполнена", NotifyType.ErrorMessage);
             }
         }
 
@@ -74,30 +90,32 @@ namespace TransportFare
             try
             {
                 FulfillmentResult result = await CurrentAppSimulator.ReportConsumableFulfillmentAsync("product1", transactionId);
+                
                 switch (result)
                 {
                     case FulfillmentResult.Succeeded:
-                        NotifyUser("You bought and fulfilled product 1.", NotifyType.StatusMessage);
+                        NotifyUser("Покупка совершена.", NotifyType.StatusMessage);
                         break;
                     case FulfillmentResult.NothingToFulfill:
-                        NotifyUser("There is no purchased product 1 to fulfill.", NotifyType.StatusMessage);
+                        NotifyUser("Покупка уже была выполнена.", NotifyType.StatusMessage);
                         break;
                     case FulfillmentResult.PurchasePending:
-                        NotifyUser("You bought product 1. The purchase is pending so we cannot fulfill the product.", NotifyType.StatusMessage);
+                        
+                        NotifyUser("Покупка ещё не очищена. Она может быть отменена из за збоев поставщика и проверок рисков", NotifyType.StatusMessage);
                         break;
                     case FulfillmentResult.PurchaseReverted:
-                        NotifyUser("You bought product 1, but your purchase has been reverted.", NotifyType.StatusMessage);
+                        NotifyUser("Запрос на покупку был отменён.", NotifyType.StatusMessage);
                         // Since the user's purchase was revoked, they got their money back.
                         // You may want to revoke the user's access to the consumable content that was granted.
                         break;
                     case FulfillmentResult.ServerError:
-                        NotifyUser("You bought product 1. There was an error when fulfilling.", NotifyType.StatusMessage);
+                        NotifyUser("Ошибка запроса", NotifyType.StatusMessage);
                         break;
                 }
             }
             catch (Exception)
             {
-                NotifyUser("You bought Product 1. There was an error when fulfilling.", NotifyType.ErrorMessage);
+                NotifyUser("Возникла ошибка выполнения", NotifyType.ErrorMessage);
             }
         }
 
@@ -130,10 +148,31 @@ namespace TransportFare
             textBlockMessage.Text = strMessage;
         }
 
-        private void toggleSwitchTag_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void toggleSwitchTag_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (toggleSwitchTag.IsOn == true)
+            {
+                appBarButtonAccept.IsEnabled = true;
+            }
+            else
+            {
+                appBarButtonAccept.IsEnabled = false;
+            }
+        }
+
+        private void buttonAccert_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        
+
+        private void buttonCansel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonFlyoutClose_Click(object sender, RoutedEventArgs e)
+        {
+            flyoutAutification.Hide();
+        }
     }
 }

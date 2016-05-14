@@ -7,11 +7,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel >
-            <TextBlock Text="Название" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"/>
-            <Button x:Name="ButtonToMap" Content="Просмотреть ближайший транспорт" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="ButtonToMap_Click" Margin="10" />
-            <Button x:Name="ButtonToPay" Content="Пополнить карточку" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="ButtonToPay_Click" Margin="10" />
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets\Road.jpg" Stretch="UniformToFill"></ImageBrush>
+        </Grid.Background>
+        <Ellipse  Width="320" Height="320" Margin="10" 
+                  VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="White" Opacity="0.8"></SolidColorBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock Text="Transport fare"  Style="{StaticResource HeaderTextBlockStyle}" 
+                       TextAlignment="Center"/>
+            <Button x:Name="ButtonToMap" Content="Просмотреть ближайший транспорт" 
+                    HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                    Click="ButtonToMap_Click" Margin="10" MaxWidth="300"/>
+            <Button x:Name="ButtonToPay" Content="Пополнить карточку" 
+                    HorizontalAlignment="Stretch" VerticalAlignment="Top" 
+                    Click="ButtonToPay_Click" Margin="10" MaxWidth="300"/>
         </StackPanel>
     </Grid>
 </Page>

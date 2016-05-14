@@ -30,6 +30,7 @@ namespace TransportFare
                 // установка для текущего окна
                 Window.Current.Content = map;
             }
+            
         }
 
         private void ButtonToPay_Click(object sender, RoutedEventArgs e)

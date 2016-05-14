@@ -21,7 +21,8 @@ namespace TransportFare
         Geoposition Geoposition { get; set; }
         MapLocation MapLocation { get; set; }
         MapIcon MapIcon { get; set; }
-        List<MapIcon> ListMapIcon { get; set; }
+        SortedList<string,List<Geopoint>> Stops { get; set; }
+    List<MapIcon> ListMapIcon { get; set; }
         string Sity { get; set; }
         public Map()
         {
@@ -30,6 +31,7 @@ namespace TransportFare
             SystemNavigationManager.GetForCurrentView().BackRequested += Map_BackRequested;
             mapControl.MapServiceToken = "nD18JaojG92g4lqLyhzI~wo1ajtwOwbPAoUAUUxu6Sg~ArEdm5wChACupRSXm50wPw8v7drL6dNMRMWztobTJOj1rrcNoh0uIch5I_XHnOvp";
             ListMapIcon = new List<MapIcon>();
+            Stops = new SortedList<string, List<Geopoint>>();
             Geolocator = new Geolocator { ReportInterval = 3000 };
             sliderFrequency.Value = 2000;
             Geolocator.PositionChanged += OnPositionChanged;
@@ -38,9 +40,9 @@ namespace TransportFare
             comboBoxDesiredAccuracy.Items.Add("Особо точный");
             comboBoxDesiredAccuracy.SelectedIndex = 0;
             comboBoxDesiredAccuracy.Items.Add("Экономный");
-            
-            
-            
+            sliderZoom.Minimum = mapControl.MinZoomLevel;
+            sliderZoom.Maximum = mapControl.MaxZoomLevel;
+            mapControl.PedestrianFeaturesVisible = true;
         }
 
         private void Map_BackRequested(object sender, BackRequestedEventArgs e)
@@ -90,12 +92,11 @@ namespace TransportFare
                 SetState("Скачивание данных", null, null, "Скачивание данных о маршрутах", null, Symbol.Download, Colors.Gold);
                 if (comboBoxSity.SelectedValue.ToString() != "")
                 {
-                    listBoxRoutes.Items.Clear();
+                    listViewRoutes.Items.Clear();
                     Load.Routes(comboBoxSity.SelectedValue.ToString()).ForEach(i => {
-                        listBoxRoutes.Items.Add(i);
+                        listViewRoutes.Items.Add(i);
                     });
-                    textBlockRoutes.Visibility = Visibility.Visible;
-                    listBoxRoutes.Visibility = Visibility.Visible;
+                    listViewRoutes.Visibility = Visibility.Visible;
                     progressRingRoute.IsActive = false;
                 }
                 else
@@ -117,16 +118,22 @@ namespace TransportFare
                 ListMapIcon.ForEach(j =>
                 {
                     RemoveMapIcon(j);
+                    mapControl.Routes.Clear();
                 });
                 ListMapIcon.Clear();
-                foreach (var i in listBoxRoutes.SelectedItems)
+                foreach (var i in listViewRoutes.SelectedItems)
                 {
                     Load.Transport(i.ToString()).ForEach(j =>
                     {
                         ListMapIcon.Add(AddGeopoint(j, i.ToString()));
                     });
+                    if (Stops.Keys.Contains(i.ToString()) == false)
+                    {
+                        Stops.Add(i.ToString(), new List<Geopoint>());
+                        Stops[i.ToString()] = Load.Way(i.ToString());
+                    }
+                    ShowRouteOnMap(Stops[i.ToString()],Colors.LightSkyBlue);
                 }
-
                 SetState("Успех", null, null, null, "Данные о транспорте успешно получены", Symbol.Like, Colors.Green);
             }
             catch (Exception ex)
@@ -186,12 +193,12 @@ namespace TransportFare
                 }
             });
         }
+
         void SetAddress()
         {
             if (MapLocation != null)
             {
-                var stringAddress = "Текущее местоположение: " +
-                            MapLocation.Address.Country + " " +
+                var stringAddress = DateTime.Now+" "+  MapLocation.Address.Country + " " +
                               MapLocation.Address.Town;
                 if (Geoposition.Coordinate.Accuracy < 500)
                 {
@@ -205,18 +212,17 @@ namespace TransportFare
                 {
                     stringAddress += " " + MapLocation.Address.StreetNumber;
                 }
-                textBlockLocation.Text = stringAddress;
-                SetState("Успех", "Координаты местоположения успешно получены. Текущее местоположение: " +
-                    stringAddress +
-                      ". Координаты: Широта " + Geoposition.Coordinate.Latitude + " Долгота " +
-                      Geoposition.Coordinate.Longitude + " Точность:" + Geoposition.Coordinate.Accuracy + "м",
-                       null, null, null, Symbol.Like, Colors.Green);
+                textBlockLocation.Text = stringAddress +". Координаты: L: " + 
+                    Geoposition.Coordinate.Latitude + " B: " +
+                      Geoposition.Coordinate.Longitude + " Точность: " + 
+                      Geoposition.Coordinate.Accuracy + "м";
             }
             else
             {
                 throw new Exception("Нет данных о координатах");
             }
         }
+
         async private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs e)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -253,6 +259,7 @@ namespace TransportFare
                 }
             });
         }
+
         private void SetState(string shortGeoState, string longGeoState,
             string longSityState, string longRouteState, string longTransportState,
             Symbol symbol, Color color)
@@ -269,15 +276,18 @@ namespace TransportFare
                 textBlockTransport.Text = DateTime.Now + " " + longTransportState;
             stackPanelStatus.Background = new SolidColorBrush(color);
         }
+
         private void UpdateLocationData()
         {
             if (Geoposition != null)
             {
                 mapControl.Center = Geoposition.Coordinate.Point;
                 mapControl.ZoomLevel = (double)Geolocator.DesiredAccuracyInMeters;
+                sliderZoom.Value = mapControl.ZoomLevel;
                 mapControl.LandmarksVisible = true;
             }
         }
+
         public MapIcon AddGeopoint(Geopoint geopoint, string name)
         {
             MapIcon mapIcon = new MapIcon();
@@ -289,11 +299,39 @@ namespace TransportFare
             mapIcon.Visible = true;
             return mapIcon;
         }
+
         public void RemoveMapIcon(MapIcon mapIcon)
         {
             mapControl.MapElements.Remove(mapIcon);
         }
 
+        private async void ShowRouteOnMap(List<Geopoint> listGeopoint,Color color)
+        {
+            if (listGeopoint.Count > 1)
+            {
+                MapRouteFinderResult routeResult = 
+                    await MapRouteFinder.GetDrivingRouteFromWaypointsAsync(listGeopoint);
+                if (routeResult.Status == MapRouteFinderStatus.Success)
+                {
+                    // Use the route to initialize a MapRouteView.
+                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                    viewOfRoute.RouteColor = color;
+                    viewOfRoute.OutlineColor =Colors.Black;
+                    
+                    
+                    // Add the new MapRouteView to the Routes collection
+                    // of the MapControl.
+                    mapControl.Routes.Add(viewOfRoute);
+
+                    // Fit the MapControl to the route.
+                    await mapControl.TrySetViewBoundsAsync(
+                          routeResult.Route.BoundingBox,
+                          null,
+                          MapAnimationKind.None);
+                    
+                }
+            }
+        }
         private void appBarButtonMap_Click(object sender, RoutedEventArgs e)
         {
             UpdateLocationData();
@@ -340,6 +378,31 @@ namespace TransportFare
         {
             progressRingMap.IsActive = false;
         }
+
+        private void buttonZoopPlus_Click(object sender, RoutedEventArgs e)
+        {
+            mapControl.ZoomLevel++;
+            sliderZoom.Value++;
+        }
+
+        private void buttonZoomMinus_Click(object sender, RoutedEventArgs e)
+        {
+            mapControl.ZoomLevel--;
+            sliderZoom.Value--;
+        }
+
+        private void sliderZoom_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            mapControl.ZoomLevel = sliderZoom.Value;
+        }
+
+        private void mapControl_ZoomLevelChanged(MapControl sender, object args)
+        {
+            sliderZoom.Value = mapControl.ZoomLevel;
+        }
         
+        private void buttonFind_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
