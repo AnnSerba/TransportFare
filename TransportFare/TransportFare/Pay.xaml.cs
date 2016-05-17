@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Store;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using TransportFare.Models;
 
 
 namespace TransportFare
@@ -18,30 +22,38 @@ namespace TransportFare
     {
         private HashSet<Guid> consumedTransactionIds = new HashSet<Guid>();
         String Metka { get; set; }
+        double Account { get; set; }
         string Login { get; set; }
         string Password { get; set; }
+        public List<Product> AllProducts { get; set; }
         public Pay()
         {
             this.InitializeComponent();
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += Pay_BackRequested;
-            
+            splitViewAutification.IsPaneOpen = true;
+            AllProducts = new List<Product>();
+            appBarButtonShop.IsEnabled = false;
+            appBarButtonAccept.IsEnabled = false;
+            sliderCurrency.Maximum = Account;
+            sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
             LoadProducts();
         }
+        
         public async void LoadProducts()
         {
-            ListingInformation listing = await CurrentAppSimulator.LoadListingInformationAsync();
-            var AllProducts = listing.ProductListings;
+            StorageFile proxyFile = await Package.Current.InstalledLocation.GetFileAsync("data\\products.xml");
+            await CurrentAppSimulator.ReloadSimulatorAsync(proxyFile);
+            var Listing = await CurrentAppSimulator.LoadListingInformationAsync();
 
-            foreach (var i in AllProducts)
+            foreach (var i in Listing.ProductListings.Values)
             {
-                gridViewAllProducts.Items.Add(i.Value);
+                AllProducts.Add(new Product(i.ProductId, i.Name,
+                    double.Parse(i.FormattedPrice.Substring(4).Split('.')[0]+","
+                    + i.FormattedPrice.Substring(4).Split('.')[1]),
+                    i.FormattedPrice.Substring(0, 4)));
             }
-            var unfulfilledProducts = await CurrentAppSimulator.GetUnfulfilledConsumablesAsync();
-            for (int i = 0; i < unfulfilledProducts.Count; i++)
-            {
-                gridViewNoUsedProducts.Items.Add(AllProducts[unfulfilledProducts[i].ProductId]);
-            }
+            AllProducts.ForEach(i => { gridViewAllProducts.Items.Add(i); });
         }
         private void Pay_BackRequested(object sender, BackRequestedEventArgs e)
         {
@@ -53,43 +65,58 @@ namespace TransportFare
             }
         }
 
-        private async void appBarButtonAccept_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void appBarButtonShop_Click(object sender, RoutedEventArgs e)
         {
-            NotifyUser("Покупка продукта...", NotifyType.StatusMessage);
+            NotifyUser("Покупка продукта... "+ ((Product)gridViewAllProducts.SelectedValue).Name, 
+                NotifyType.StatusMessage);
             try
             {
-                PurchaseResults purchaseResults = await CurrentAppSimulator.RequestProductPurchaseAsync("product1");
+                Product productSelected= (Product)gridViewAllProducts.SelectedValue;
+                PurchaseResults purchaseResults = 
+                    await CurrentAppSimulator.RequestProductPurchaseAsync(
+                        (productSelected.Id));
                 
                 switch (purchaseResults.Status)
                 {
                     case ProductPurchaseStatus.Succeeded:
                         GrantFeatureLocally(purchaseResults.TransactionId);
-                        FulfillPay(purchaseResults.TransactionId);
-                        
+                        FulfillPay(productSelected.Id,
+                            purchaseResults.TransactionId);
+                        Account += productSelected.Price;
+                        textBlockAccount.Text ="На счету: "+ Account+" "+productSelected.Currency;
+                        sliderCurrency.Maximum = Account;
+
+                        sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
                         break;
                     case ProductPurchaseStatus.NotFulfilled:
                         if (!IsLocallyFulfilled(purchaseResults.TransactionId))
                         {
                             GrantFeatureLocally(purchaseResults.TransactionId);
                         }
-                        FulfillPay(purchaseResults.TransactionId);
+                        FulfillPay(productSelected.Id,   purchaseResults.TransactionId);
                         break;
                     case ProductPurchaseStatus.NotPurchased:
-                        NotifyUser("Покупка не была выполнена", NotifyType.StatusMessage);
+                        NotifyUser("Покупка"+ productSelected.Name + 
+                            " не была выполнена", NotifyType.StatusMessage);
+                        break;
+                    case ProductPurchaseStatus.AlreadyPurchased:
+                        NotifyUser("Покупка" + productSelected.Name + 
+                            " не была выполнена так как эта покупка уже была выполнена", NotifyType.StatusMessage);
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                NotifyUser("Покупка не была выполнена", NotifyType.ErrorMessage);
+                NotifyUser("Покупка не была выполнена. Ошибка:"+ exception.Message, NotifyType.ErrorMessage);
             }
         }
 
-        private async void FulfillPay(Guid transactionId)
+        private async void FulfillPay(string productId,Guid transactionId)
         {
             try
             {
-                FulfillmentResult result = await CurrentAppSimulator.ReportConsumableFulfillmentAsync("product1", transactionId);
+                FulfillmentResult result = await CurrentAppSimulator.ReportConsumableFulfillmentAsync(
+                    productId, transactionId);
                 
                 switch (result)
                 {
@@ -136,6 +163,10 @@ namespace TransportFare
         };
         public void NotifyUser(string strMessage, NotifyType type)
         {
+            if (frameMessage.Visibility == Visibility.Collapsed)
+            {
+                frameMessage.Visibility = Visibility.Visible;
+            }
             switch (type)
             {
                 case NotifyType.StatusMessage:
@@ -147,18 +178,7 @@ namespace TransportFare
             }
             textBlockMessage.Text = strMessage;
         }
-
-        private void toggleSwitchTag_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (toggleSwitchTag.IsOn == true)
-            {
-                appBarButtonAccept.IsEnabled = true;
-            }
-            else
-            {
-                appBarButtonAccept.IsEnabled = false;
-            }
-        }
+        
 
         private void buttonAccert_Click(object sender, RoutedEventArgs e)
         {
@@ -170,9 +190,39 @@ namespace TransportFare
 
         }
 
-        private void buttonFlyoutClose_Click(object sender, RoutedEventArgs e)
+        private void buttonFlyoutAutificationClose_Click(object sender, RoutedEventArgs e)
         {
-            flyoutAutification.Hide();
+            MainMenu mainMenu = Window.Current.Content as MainMenu;
+            if (mainMenu == null)
+            {
+                mainMenu = new MainMenu();
+                Window.Current.Content = mainMenu;
+            }
+        }
+
+        private void sliderCurrency_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            textBlockSliderValueCurrency.Text = sliderCurrency.Value.ToString();
+        }
+
+        private void buttonFlyoutAutificationOk_Click(object sender, RoutedEventArgs e)
+        {
+            splitViewAutification.IsPaneOpen = false;
+            appBarButtonAccept.IsEnabled = true;
+            gridContent.Visibility = Visibility.Visible;
+            
+        }
+
+        private void gridViewAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (gridViewAllProducts.SelectedItems.Count == 0)
+            {
+                appBarButtonShop.IsEnabled = false;
+            }
+            else
+            {
+                appBarButtonShop.IsEnabled = true;
+            }
         }
     }
 }
