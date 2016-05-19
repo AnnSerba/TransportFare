@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Store;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using TransportFare.Models;
-
+using Windows.UI.Xaml.Controls.Primitives;
+using NdefLibrary;
+using NdefLibraryUwp;
+using Windows.Networking.Proximity;
 
 namespace TransportFare
 {
@@ -25,6 +25,7 @@ namespace TransportFare
         double Account { get; set; }
         string Login { get; set; }
         string Password { get; set; }
+        private ProximityDevice Device { get; set; }
         public List<Product> AllProducts { get; set; }
         public Pay()
         {
@@ -37,7 +38,9 @@ namespace TransportFare
             appBarButtonAccept.IsEnabled = false;
             sliderCurrency.Maximum = Account;
             sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
+            listBoxMethodBuy.Items.Add("Microsoft");
             LoadProducts();
+            Device = ProximityDevice.GetDefault();
         }
         
         public async void LoadProducts()
@@ -55,7 +58,7 @@ namespace TransportFare
             }
             AllProducts.ForEach(i => { gridViewAllProducts.Items.Add(i); });
         }
-        private void Pay_BackRequested(object sender, BackRequestedEventArgs e)
+        public void Back()
         {
             MainMenu mainMenu = Window.Current.Content as MainMenu;
             if (mainMenu == null)
@@ -64,98 +67,11 @@ namespace TransportFare
                 Window.Current.Content = mainMenu;
             }
         }
-
-        private async void appBarButtonShop_Click(object sender, RoutedEventArgs e)
+        private void Pay_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            NotifyUser("Покупка продукта... "+ ((Product)gridViewAllProducts.SelectedValue).Name, 
-                NotifyType.StatusMessage);
-            try
-            {
-                Product productSelected= (Product)gridViewAllProducts.SelectedValue;
-                PurchaseResults purchaseResults = 
-                    await CurrentAppSimulator.RequestProductPurchaseAsync(
-                        (productSelected.Id));
-                
-                switch (purchaseResults.Status)
-                {
-                    case ProductPurchaseStatus.Succeeded:
-                        GrantFeatureLocally(purchaseResults.TransactionId);
-                        FulfillPay(productSelected.Id,
-                            purchaseResults.TransactionId);
-                        Account += productSelected.Price;
-                        textBlockAccount.Text ="На счету: "+ Account+" "+productSelected.Currency;
-                        sliderCurrency.Maximum = Account;
+            Back();   
+        }     
 
-                        sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
-                        break;
-                    case ProductPurchaseStatus.NotFulfilled:
-                        if (!IsLocallyFulfilled(purchaseResults.TransactionId))
-                        {
-                            GrantFeatureLocally(purchaseResults.TransactionId);
-                        }
-                        FulfillPay(productSelected.Id,   purchaseResults.TransactionId);
-                        break;
-                    case ProductPurchaseStatus.NotPurchased:
-                        NotifyUser("Покупка"+ productSelected.Name + 
-                            " не была выполнена", NotifyType.StatusMessage);
-                        break;
-                    case ProductPurchaseStatus.AlreadyPurchased:
-                        NotifyUser("Покупка" + productSelected.Name + 
-                            " не была выполнена так как эта покупка уже была выполнена", NotifyType.StatusMessage);
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                NotifyUser("Покупка не была выполнена. Ошибка:"+ exception.Message, NotifyType.ErrorMessage);
-            }
-        }
-
-        private async void FulfillPay(string productId,Guid transactionId)
-        {
-            try
-            {
-                FulfillmentResult result = await CurrentAppSimulator.ReportConsumableFulfillmentAsync(
-                    productId, transactionId);
-                
-                switch (result)
-                {
-                    case FulfillmentResult.Succeeded:
-                        NotifyUser("Покупка совершена.", NotifyType.StatusMessage);
-                        break;
-                    case FulfillmentResult.NothingToFulfill:
-                        NotifyUser("Покупка уже была выполнена.", NotifyType.StatusMessage);
-                        break;
-                    case FulfillmentResult.PurchasePending:
-                        
-                        NotifyUser("Покупка ещё не очищена. Она может быть отменена из за збоев поставщика и проверок рисков", NotifyType.StatusMessage);
-                        break;
-                    case FulfillmentResult.PurchaseReverted:
-                        NotifyUser("Запрос на покупку был отменён.", NotifyType.StatusMessage);
-                        // Since the user's purchase was revoked, they got their money back.
-                        // You may want to revoke the user's access to the consumable content that was granted.
-                        break;
-                    case FulfillmentResult.ServerError:
-                        NotifyUser("Ошибка запроса", NotifyType.StatusMessage);
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                NotifyUser("Возникла ошибка выполнения", NotifyType.ErrorMessage);
-            }
-        }
-
-        private void GrantFeatureLocally(Guid transactionId)
-        {
-            consumedTransactionIds.Add(transactionId);
-            
-        }
-
-        private bool IsLocallyFulfilled(Guid transactionId)
-        {
-            return consumedTransactionIds.Contains(transactionId);
-        }
         public enum NotifyType
         {
             StatusMessage,
@@ -179,38 +95,59 @@ namespace TransportFare
             textBlockMessage.Text = strMessage;
         }
         
-
-        private void buttonAccert_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonCansel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonFlyoutAutificationClose_Click(object sender, RoutedEventArgs e)
-        {
-            MainMenu mainMenu = Window.Current.Content as MainMenu;
-            if (mainMenu == null)
-            {
-                mainMenu = new MainMenu();
-                Window.Current.Content = mainMenu;
-            }
-        }
-
-        private void sliderCurrency_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        
+        private void sliderCurrency_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             textBlockSliderValueCurrency.Text = sliderCurrency.Value.ToString();
         }
 
-        private void buttonFlyoutAutificationOk_Click(object sender, RoutedEventArgs e)
+        private void buttonFlyoutOkAutification_Click(object sender, RoutedEventArgs e)
         {
-            splitViewAutification.IsPaneOpen = false;
-            appBarButtonAccept.IsEnabled = true;
-            gridContent.Visibility = Visibility.Visible;
-            
+            if (Load.Login(textBoxLoginAutification.Text, passwordBoxPasswordAutification.Password))
+            {
+                splitViewAutification.IsPaneOpen = false;
+                if (Account != 0)
+                {
+                    appBarButtonAccept.IsEnabled = true;
+                }
+                gridContent.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NotifyUser("Ошибка авторизации", NotifyType.ErrorMessage);
+            }
+        }
+        private void buttonFlyoutCloseAutification_Click(object sender, RoutedEventArgs e)
+        {
+            Back();
+        }
+        private void buttonFlyoutOkRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            if (passwordBoxPasswordRegistration1.Password!= passwordBoxPasswordRegistration2.Password)
+            {
+                NotifyUser("Пароли не совпадают", NotifyType.ErrorMessage);
+            }
+            else
+            if (Load.Registration(textBoxLoginRegistration.Text, textBoxEmail.Text, 
+                textBoxPhoneNumber.Text, passwordBoxPasswordRegistration1.Password))
+            {
+                splitViewAutification.IsPaneOpen = false;
+                if (Account != 0)
+                {
+                    appBarButtonAccept.IsEnabled = true;
+                }
+                gridContent.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NotifyUser("Ошибка авторизации", NotifyType.ErrorMessage);
+            }
+
+        }
+
+        private void buttonFlyoutCloseRegistration_Click(object sender, RoutedEventArgs e)
+        {
+            Back();
         }
 
         private void gridViewAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -224,5 +161,107 @@ namespace TransportFare
                 appBarButtonShop.IsEnabled = true;
             }
         }
+        public async void MicrosoftBuy()
+        {
+            NotifyUser("Покупка продукта... " + ((Product)gridViewAllProducts.SelectedValue).Name,
+                NotifyType.StatusMessage);
+            try
+            {
+                Product productSelected = (Product)gridViewAllProducts.SelectedValue;
+                PurchaseResults purchaseResults =
+                    await CurrentAppSimulator.RequestProductPurchaseAsync(
+                        (productSelected.Id));
+
+                switch (purchaseResults.Status)
+                {
+                    case ProductPurchaseStatus.Succeeded:
+                        GrantFeatureLocally(purchaseResults.TransactionId);
+                        FulfillPay(productSelected.Id,
+                            purchaseResults.TransactionId);
+                        Account += productSelected.Price;
+                        if (Account != 0)
+                        {
+                            appBarButtonAccept.IsEnabled = true;
+                        }
+                        textBlockAccount.Text = "На счету: " + Account + " " + productSelected.Currency;
+                        sliderCurrency.Maximum = Account;
+                        sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
+                        break;
+                    case ProductPurchaseStatus.NotFulfilled:
+                        if (!IsLocallyFulfilled(purchaseResults.TransactionId))
+                        {
+                            GrantFeatureLocally(purchaseResults.TransactionId);
+                        }
+                        FulfillPay(productSelected.Id, purchaseResults.TransactionId);
+                        break;
+                    case ProductPurchaseStatus.NotPurchased:
+                        NotifyUser("Покупка" + productSelected.Name +
+                            " не была выполнена", NotifyType.StatusMessage);
+                        break;
+                    case ProductPurchaseStatus.AlreadyPurchased:
+                        NotifyUser("Покупка" + productSelected.Name +
+                            " не была выполнена так как эта покупка уже была выполнена", NotifyType.StatusMessage);
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                NotifyUser("Покупка не была выполнена. Ошибка:" + exception.Message, NotifyType.ErrorMessage);
+            }
+        }
+        private async void FulfillPay(string productId, Guid transactionId)
+        {
+            try
+            {
+                FulfillmentResult result = await CurrentAppSimulator.ReportConsumableFulfillmentAsync(
+                    productId, transactionId);
+
+                switch (result)
+                {
+                    case FulfillmentResult.Succeeded:
+                        NotifyUser("Покупка совершена.", NotifyType.StatusMessage);
+                        break;
+                    case FulfillmentResult.NothingToFulfill:
+                        NotifyUser("Покупка уже была выполнена.", NotifyType.StatusMessage);
+                        break;
+                    case FulfillmentResult.PurchasePending:
+
+                        NotifyUser("Покупка ещё не очищена. Она может быть отменена из за збоев поставщика и проверок рисков", NotifyType.StatusMessage);
+                        break;
+                    case FulfillmentResult.PurchaseReverted:
+                        NotifyUser("Запрос на покупку был отменён.", NotifyType.StatusMessage);
+                        // Since the user's purchase was revoked, they got their money back.
+                        // You may want to revoke the user's access to the consumable content that was granted.
+                        break;
+                    case FulfillmentResult.ServerError:
+                        NotifyUser("Ошибка запроса", NotifyType.StatusMessage);
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                NotifyUser("Возникла ошибка выполнения", NotifyType.ErrorMessage);
+            }
+        }
+        private void listBoxMethodBuy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (listBoxMethodBuy.SelectedValue!=null&& 
+                listBoxMethodBuy.SelectedValue.ToString() == "Microsoft")
+            {
+                MicrosoftBuy();
+            }
+            listBoxMethodBuy.SelectedIndex = -1;
+        }
+        private void GrantFeatureLocally(Guid transactionId)
+        {
+            consumedTransactionIds.Add(transactionId);
+
+        }
+        private bool IsLocallyFulfilled(Guid transactionId)
+        {
+            return consumedTransactionIds.Contains(transactionId);
+        }
+
     }
 }

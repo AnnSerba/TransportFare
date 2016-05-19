@@ -25,7 +25,9 @@
                     Click="ButtonToMap_Click" Margin="10" MaxWidth="300"/>
             <Button x:Name="ButtonToPay" Content="Пополнить карточку" 
                     HorizontalAlignment="Stretch" VerticalAlignment="Top" 
-                    Click="ButtonToPay_Click" Margin="10" MaxWidth="300"/>
+                     Margin="10" MaxWidth="300"  Click="ButtonToPay_Click" />
+
+
         </StackPanel>
     </Grid>
 </Page>

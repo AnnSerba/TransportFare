@@ -62,7 +62,9 @@
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
                         <ProgressRing Name="progressRingMap" IsActive="True" Margin="10"/>
-                            <Maps:MapControl   Name="mapControl" MinHeight="300"   Loaded="mapControl_Loaded" ZoomLevelChanged="mapControl_ZoomLevelChanged"/>
+                            <Maps:MapControl   Name="mapControl" MinHeight="300"   
+                                               Loaded="mapControl_Loaded" 
+                                               ZoomLevelChanged="mapControl_ZoomLevelChanged"/>
                             <StackPanel Margin="5" HorizontalAlignment="Left">
                                 <TextBox Name="textBoxFrom" PlaceholderText="Откуда"/>
                                 <TextBox Name="textBoxTo" PlaceholderText="Куда"/>

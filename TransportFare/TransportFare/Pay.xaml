@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <Flyout x:Key="flyoutUseProduct">
+        <Flyout x:Key="flyoutUseProduct" x:Name="flyoutUseProduct">
             <Flyout.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -23,19 +23,20 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" 
                                Text="На сколько пополнить карточку? " Style="{StaticResource TitleTextBlockStyle}"/>
-                    <Slider Grid.Column="0" Grid.Row="1"   Header="Сумма пополнения"  
+                    <TextBlock Grid.Column="0"  Grid.Row="1"  Width="300" TextWrapping="Wrap"
+                               Text="Для подтверждения на выбранную сумму коснитесь устройством меткой"/>
+                    <Slider Grid.Column="0" Grid.Row="2"   Header="Сумма пополнения"  
                             Name="sliderCurrency" Minimum="0" Width="300" 
                             ValueChanged="sliderCurrency_ValueChanged"/>
                     <TextBlock  Name="textBlockSliderValueCurrency" Text="0"
                                 HorizontalAlignment="Center"   VerticalAlignment="Center"
-                                Grid.Column="1" Grid.Row="1" />
-                    <TextBlock Grid.Column="0"  Grid.Row="2"  Width="300" TextWrapping="Wrap"
-                               Text="Для подтверждения на выбранную сумму коснитесь устройством меткой"/>
-                    <Button DataContext="Отмена" Grid.Column="1" Grid.Row="2"  Name="buttonCansel"  Click="buttonCansel_Click" >
-                        <SymbolIcon Symbol="Cancel"/>
-                    </Button>
+                                Grid.Column="1" Grid.Row="2" />
+                    
                 </Grid>
             </Flyout.Content>
+        </Flyout>
+        <Flyout x:Key="flyoutMethodBuy">
+            <ListBox Name="listBoxMethodBuy" SelectionChanged="listBoxMethodBuy_SelectionChanged"/>
         </Flyout>
         <DataTemplate x:Key="dataTemplateProduct" x:DataType="data:Product">
             <Grid Margin="10">
@@ -59,7 +60,7 @@
             <AppBarButton Icon="Accept" Name="appBarButtonAccept" Label="Пополнить карточку" 
                           Flyout="{StaticResource flyoutUseProduct}" />
             <AppBarButton Icon="Shop" Name="appBarButtonShop" Label="Купить продукт" 
-                          Click="appBarButtonShop_Click"/>
+                           Flyout="{StaticResource flyoutMethodBuy}"/>
 
         </CommandBar> 
     </Page.BottomAppBar>
@@ -69,16 +70,38 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <SplitView Name="splitViewAutification" Grid.Row="0" DisplayMode="Inline">
-            <SplitView.Pane>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Войдите для продолжения" Margin="10" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBox PlaceholderText="Логин" Margin="10,5"/>
-                    <PasswordBox PlaceholderText="Пароль" Margin="10,5"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Name="buttonFlyoutAutificationOk" Content="Авторизация" Click="buttonFlyoutAutificationOk_Click" Margin="10" />
-                        <Button Name="buttonFlyoutAutificationClose" Content="Отмена" Click="buttonFlyoutAutificationClose_Click"  Margin="10"/>
-                    </StackPanel>
-                </StackPanel>
+            <SplitView.Pane >
+                <Pivot Width="320" >
+                    <PivotItem Header="Авторизация" Margin="10" >
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Войдите для продолжения" Margin="0,10" Style="{StaticResource TitleTextBlockStyle}"/>
+                            <TextBox Name="textBoxLoginAutification" PlaceholderText="Логин" Margin="0,5"/>
+                            <PasswordBox Name="passwordBoxPasswordAutification" PlaceholderText="Пароль" Margin="0,5"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Name="buttonFlyoutOkAutification" Content="Авторизация" 
+                                Click="buttonFlyoutOkAutification_Click" Margin="5,10" />
+                                <Button Name="buttonFlyoutCloseAutification" Content="Отмена" 
+                                Click="buttonFlyoutCloseAutification_Click"  Margin="5,10"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </PivotItem>
+                    <PivotItem Header="Регистрация">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Зарегистрируйтесь в системе" Margin="0,10" Style="{StaticResource TitleTextBlockStyle}"/>
+                            <TextBox Name="textBoxLoginRegistration" PlaceholderText="Логин" Margin="0,5"/>
+                            <TextBox Name="textBoxEmail" PlaceholderText="E-mail" Margin="0,5"/>
+                            <TextBox Name="textBoxPhoneNumber" PlaceholderText="Номер телефона" Margin="0,5"/>
+                            <PasswordBox Name="passwordBoxPasswordRegistration1" PlaceholderText="Пароль" Margin="0,5"/>
+                            <PasswordBox Name="passwordBoxPasswordRegistration2" PlaceholderText="Повторите пароль" Margin="0,5"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Name="buttonFlyoutOkRegistration" Content="Регистрация" 
+                                        Click="buttonFlyoutOkRegistration_Click" Margin="5,10" />
+                                <Button Name="buttonFlyoutCloseRegistration" 
+                                        Click="buttonFlyoutCloseRegistration_Click" Content="Отмена"  Margin="5,10"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </PivotItem>
+                </Pivot>
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid Name="gridContent"  Padding="10,0" Visibility="Collapsed">
@@ -92,8 +115,10 @@
                                    TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"/>
                         <Pivot Name="pivotPay" Grid.Row="2">
                             <PivotItem Header="Все продукты" >
-                                <GridView Name="gridViewAllProducts" SelectionChanged="gridViewAllProducts_SelectionChanged"
-                                          ItemTemplate="{StaticResource dataTemplateProduct}"/>
+                                <GridView Name="gridViewAllProducts" 
+                                          
+                                          SelectionChanged="gridViewAllProducts_SelectionChanged"
+                                          ItemTemplate="{StaticResource dataTemplateProduct}" />
                             </PivotItem>
                             <PivotItem>
                                 <PivotItem.Header>История действий</PivotItem.Header>
