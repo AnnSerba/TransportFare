@@ -35,7 +35,7 @@
                 </Grid>
             </Flyout.Content>
         </Flyout>
-        <Flyout x:Key="flyoutMethodBuy">
+        <Flyout x:Key="flyoutMethodBuy" x:Name="flyoutMethodBuy">
             <ListBox Name="listBoxMethodBuy" SelectionChanged="listBoxMethodBuy_SelectionChanged"/>
         </Flyout>
         <DataTemplate x:Key="dataTemplateProduct" x:DataType="data:Product">

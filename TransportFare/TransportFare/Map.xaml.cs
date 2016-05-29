@@ -173,8 +173,6 @@ namespace TransportFare
                         if (Geoposition == null)
                         {
                             LoadSities();
-                            progressRingLocation.IsActive = false;
-                            textBlockLocation.Visibility = Visibility.Visible;
                             Geoposition = e.Position;
                             UpdateLocationData();
                         }
@@ -194,7 +192,7 @@ namespace TransportFare
             });
         }
 
-        void SetAddress()
+        string SetAddress()
         {
             if (MapLocation != null)
             {
@@ -212,7 +210,7 @@ namespace TransportFare
                 {
                     stringAddress += " " + MapLocation.Address.StreetNumber;
                 }
-                textBlockLocation.Text = stringAddress +". Координаты: L: " + 
+                return stringAddress +". Координаты: L: " + 
                     Geoposition.Coordinate.Latitude + " B: " +
                       Geoposition.Coordinate.Longitude + " Точность: " + 
                       Geoposition.Coordinate.Accuracy + "м";
@@ -282,8 +280,7 @@ namespace TransportFare
             if (Geoposition != null)
             {
                 mapControl.Center = Geoposition.Coordinate.Point;
-                mapControl.ZoomLevel = (double)Geolocator.DesiredAccuracyInMeters;
-                sliderZoom.Value = mapControl.ZoomLevel;
+                mapControl.ZoomLevel = sliderZoom.Value;
                 mapControl.LandmarksVisible = true;
             }
         }
@@ -403,6 +400,11 @@ namespace TransportFare
         
         private void buttonFind_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void buttonSettingSityRoute_Click(object sender, RoutedEventArgs e)
+        {
+            splitViewSettingSityRoute.IsPaneOpen = !splitViewSettingSityRoute.IsPaneOpen;
         }
     }
 }

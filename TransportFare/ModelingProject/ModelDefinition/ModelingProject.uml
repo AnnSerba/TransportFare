@@ -1,0 +1,1848 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="a5645109-2517-40db-81e6-5ca557e52a5d"
+  name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <subsystem
+        Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+        name="Transport Fire"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="34f2b13e-ef80-415e-8f7c-2931b63f5a70"
+        name="Пассажир"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="07d4a0d4-d5af-425e-be0e-413be9b4e0fa"
+            isDerived="false"
+            sourceEndRoleName="Пассажир"
+            targetEndRoleName="Просмотр карты с маршрутами , водителями на них"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="41b89212-b27f-4019-b229-94f81f52eaaf"
+                  name="Пассажир"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fe73cea0-4764-456a-bdd6-fbdee0527307"
+                  name="Просмотр карты с маршрутами , водителями на них"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="eacc456f-43b3-4d4a-925a-e628bc45c8cd"
+            isDerived="false"
+            sourceEndRoleName="Пассажир"
+            targetEndRoleName="Пополнение личного счёта "
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="04d3bf7c-b423-4a2e-bd49-49b410065d81"
+              LastKnownName="Изменение личного счёта "
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="228cc4de-41e9-4453-a174-2f2e70b1e86d"
+                  name="Пассажир"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e719ee52-d19b-4907-a44a-573789eab3b2"
+                  name="Пополнение личного счёта "
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bf74240e-7d82-457d-b778-af3cc5eb6f08"
+            isDerived="false"
+            sourceEndRoleName="Пассажир"
+            targetEndRoleName="Пополнение  nfc-метки"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4c8eabb7-03f4-49d2-bf5f-07e41eadaeae"
+              LastKnownName="Пополнение  nfc-метки"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="61017200-bf25-477c-8087-1a5029785e60"
+                  name="Пассажир"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="38f3a01d-4658-4943-a7ff-2ac6a1f16883"
+                  name="Пополнение  nfc-метки"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f39089b9-5931-4279-a0fa-3adce641f08b"
+            isDerived="false"
+            sourceEndRoleName="Пассажир"
+            targetEndRoleName="Авторизация "
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="9a880585-2f9f-46b7-92a2-036fa033b05e"
+              LastKnownName="Авторизация "
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="27c350c2-c71d-4ebf-a298-cc076dbc52f5"
+                  name="Пассажир"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d1297e2a-8ddd-468e-b167-d44c974ca0b4"
+                  name="Авторизация "
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f08b7823-2b3a-4efd-8e2a-9701361b63db"
+            isDerived="false"
+            sourceEndRoleName="Пассажир"
+            targetEndRoleName="Регистрация"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4c8d7243-5aa0-4d18-80be-7f3df9d56ed1"
+              LastKnownName="Регистрация"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fda55181-4f5f-4fa0-ba73-67d3453f79dd"
+                  name="Пассажир"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0e19f90d-b76e-4416-b53f-4ff78ad79a7a"
+                  name="Регистрация"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="5d29e690-0270-4916-adac-14906877eac7"
+        name="Activity"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="396595da-aa19-4d91-baeb-3d487d31d6c6"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="51657c2f-1190-4a0f-84e3-e010437168f8"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="67fe28e4-c6e7-4c62-bfce-8fdf18ae1160"
+                  LastKnownName="Decision4"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="f4d7913a-a59e-4e8c-a782-1b8d73b07582"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="0746ba80-43de-49d3-a9b3-5022627db94e"
+            name="Выбрать элемент меню"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="18eebdc9-d2ff-46e7-92ef-e99e98115bd2"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="c5236b93-826c-4e87-bbf6-1026bd827373"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="c5236b93-826c-4e87-bbf6-1026bd827373"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="715fe736-5cfe-4ec9-b453-84d5d97c2e7c"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="1394ebca-4cdb-4577-ba5d-0a47f96bf136"
+                  LastKnownName="Пополнить счёт и nfc-метку"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="9d4c33d9-2b18-42b6-96af-7c0e4e9e5a19"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="92c90f98-9c97-49c1-8c67-5a4f068485cf"
+                  LastKnownName="Посмотреть желаемые маршруты и водителей на них"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <mergeNode
+            Id="b66fc7c2-ac2a-47a8-abb2-3583fb9613bf"
+            name="Merge1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="95f67faa-4a90-472a-9f5f-e8dc80c40118"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="f4d7913a-a59e-4e8c-a782-1b8d73b07582"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+          <callBehaviorAction
+            Id="92c90f98-9c97-49c1-8c67-5a4f068485cf"
+            name="Посмотреть желаемые маршруты и водителей на них"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="bc5d6a5d-2f8d-4fd0-add9-b053f4415761"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="0746ba80-43de-49d3-a9b3-5022627db94e"
+                  LastKnownName="Выбрать элемент меню"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="4c87d265-ea2a-4d9d-a533-1c3f674a674a"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="b66fc7c2-ac2a-47a8-abb2-3583fb9613bf"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="530c73ae-79a0-40a8-ab3d-021a7c4ec59e"
+                LastKnownName="ActivityMap"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <callBehaviorAction
+            Id="1394ebca-4cdb-4577-ba5d-0a47f96bf136"
+            name="Пополнить счёт и nfc-метку"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ae27e4d3-b901-4e00-b907-ec30d28ad1a5"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="0746ba80-43de-49d3-a9b3-5022627db94e"
+                  LastKnownName="Выбрать элемент меню"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="79fdae6e-8cca-42dd-9db9-c87bea601397"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="b66fc7c2-ac2a-47a8-abb2-3583fb9613bf"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="7da759fd-c9fa-4ae8-a65f-482b3c33bf3a"
+                LastKnownName="ActivityPay"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <decisionNode
+            Id="67fe28e4-c6e7-4c62-bfce-8fdf18ae1160"
+            name="Decision4"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e1ce9fc1-433e-4c50-a8f7-de99b3707c68"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="b66fc7c2-ac2a-47a8-abb2-3583fb9613bf"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="6dc34da8-1119-45c2-a67f-a3ce0f6cf126"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="0746ba80-43de-49d3-a9b3-5022627db94e"
+                  LastKnownName="Выбрать элемент меню"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="530c73ae-79a0-40a8-ab3d-021a7c4ec59e"
+        name="ActivityMap"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="fbb3ec8f-3ca6-443f-a07d-dd1c5a353484"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9297a90f-fa31-43d3-b886-9c1f54e930fb"
+                isLeaf="false">
+                <forkNodeMoniker
+                  Id="b9e327e1-df0c-4d1c-86bf-57737160ff83"
+                  LastKnownName="Fork1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="74273b5a-5a64-4804-a0af-ee5b1c11b809"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <forkNode
+            Id="b9e327e1-df0c-4d1c-86bf-57737160ff83"
+            name="Fork1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ada9093e-81ef-469a-b4aa-87e953a67ebe"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="e6f4ce47-baab-48b9-b095-e328d926ddef"
+                  LastKnownName="Просмотр карты"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="a38e597f-b50a-4bfc-b175-031b52fd89b5"
+                isLeaf="false">
+                <acceptEventActionMoniker
+                  Id="6cace971-2555-48c0-8c4c-fd1a255a7588"
+                  LastKnownName="Принять геоданные от спутников"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="86ee5b9c-b359-4083-9c75-dc31af1f35e4"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="bc4fd72d-3191-4589-8ee3-616606b12576"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="a231becd-cb01-4af0-8e32-5edf175cbe9b"
+                  LastKnownName="Загрузка данных о городах с сервера"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <opaqueAction
+            Id="e6f4ce47-baab-48b9-b095-e328d926ddef"
+            name="Просмотр карты"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="55c64572-0dd6-4449-86a1-bd854b4cff57"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <acceptEventAction
+            Id="07863ca5-d7ce-4f79-981a-0c785a5efe8c"
+            name="Принять геоданные от wifi"
+            isLeaf="false"
+            isUnmarshall="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ec185dc0-8c7c-44c6-b691-afd91ee48f0c"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </acceptEventAction>
+          <acceptEventAction
+            Id="6cace971-2555-48c0-8c4c-fd1a255a7588"
+            name="Принять геоданные от спутников"
+            isLeaf="false"
+            isUnmarshall="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="c3d5ba49-3f2a-4dc2-85ae-03fa298c544d"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </acceptEventAction>
+          <forkNode
+            Id="148e12f5-d181-41bf-aeda-61f0b5b26e16"
+            name="Fork2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3f563fd8-420e-44f8-81da-26cf0f8cbfdc"
+                isLeaf="false">
+                <acceptEventActionMoniker
+                  Id="07863ca5-d7ce-4f79-981a-0c785a5efe8c"
+                  LastKnownName="Принять геоданные от wifi"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="308cd134-a0af-4038-8bf5-e7e7b895a8da"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="a1b1c22e-0756-4477-a4a6-967cc9851149"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="c08387cc-3e68-4cf4-8ee9-ecbf4f1af5da"
+                  LastKnownName="Загрузка данных о маршрутах с сервера"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <mergeNode
+            Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+            name="Merge1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="551b78c2-c7c2-462b-a764-c4ad850c3f4d"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="74273b5a-5a64-4804-a0af-ee5b1c11b809"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+          <opaqueAction
+            Id="9ae007c9-0d65-46f2-b75c-16089910e5a2"
+            name="Выбрать маршрут"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="bef46d16-fc7f-4f0e-a082-4ce75c729e89"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="e9b90a43-abcf-4f12-9212-9e0947187ecb"
+                  LastKnownName="Выбранные маршруты"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode
+            Id="e9b90a43-abcf-4f12-9212-9e0947187ecb"
+            name="Выбранные маршруты"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="71241515-e3a5-41e2-b33f-51e774b8bf87"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <forkNodeMoniker
+                  Id="22d00957-8fc6-4e60-8d05-77c6ebeb3702"
+                  LastKnownName="Fork3"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="3b6359c9-d1b4-40a7-abc5-d98974041e0e"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="c8115f3d-1fc6-47bf-aa03-b110dd6c9bc7"
+            name="Отображение маршрута"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9d5f06db-361a-44a5-a7f2-260f32a0c98e"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="9ae007c9-0d65-46f2-b75c-16089910e5a2"
+                  LastKnownName="Выбрать маршрут"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="7a9fbe85-b1b5-4659-a9d2-d6f8cefd995b"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <forkNode
+            Id="22d00957-8fc6-4e60-8d05-77c6ebeb3702"
+            name="Fork3"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="bb15b18f-667e-4ee3-9165-32f185a4d04e"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c8115f3d-1fc6-47bf-aa03-b110dd6c9bc7"
+                  LastKnownName="Отображение маршрута"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="2a7432ab-9da1-4e58-b1e8-11d226cdeeac"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="6eb5baf3-0e90-4527-b2ad-888cdab22a4f"
+                  LastKnownName="Загрузка данных о водителях на маршруте"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <callBehaviorAction
+            Id="a231becd-cb01-4af0-8e32-5edf175cbe9b"
+            name="Загрузка данных о городах с сервера"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="607efbaf-0263-4f66-978f-aaf5e9a999fd"
+                isLeaf="false">
+                <forkNodeMoniker
+                  Id="148e12f5-d181-41bf-aeda-61f0b5b26e16"
+                  LastKnownName="Fork2"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="2637145d-0b5c-44e2-94d3-8fa6cf8b27f1"
+                LastKnownName="ActivityLoadData"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <callBehaviorAction
+            Id="c08387cc-3e68-4cf4-8ee9-ecbf4f1af5da"
+            name="Загрузка данных о маршрутах с сервера"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b88ec794-7929-4a44-8078-443eeee54f1f"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="9ae007c9-0d65-46f2-b75c-16089910e5a2"
+                  LastKnownName="Выбрать маршрут"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="2637145d-0b5c-44e2-94d3-8fa6cf8b27f1"
+                LastKnownName="ActivityLoadData"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <callBehaviorAction
+            Id="6eb5baf3-0e90-4527-b2ad-888cdab22a4f"
+            name="Загрузка данных о водителях на маршруте"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="260a17fd-fed0-4f9c-8f76-888fc97076ec"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="17acebc9-3d8d-404b-b07d-7b8355bb7b8e"
+                  LastKnownName="Подождать таймер обновления"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="549a261b-83d2-439f-9b65-fdb6d51c1558"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="2637145d-0b5c-44e2-94d3-8fa6cf8b27f1"
+                LastKnownName="ActivityLoadData"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <opaqueAction
+            Id="17acebc9-3d8d-404b-b07d-7b8355bb7b8e"
+            name="Подождать таймер обновления"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="778361f1-f306-41a2-b132-b43de0532033"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="6eb5baf3-0e90-4527-b2ad-888cdab22a4f"
+                  LastKnownName="Загрузка данных о водителях на маршруте"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="2381a94e-eb26-4811-bbeb-c487b18a6955"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="ff629c76-ce31-44da-ae08-05f3ad691935"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="7da759fd-c9fa-4ae8-a65f-482b3c33bf3a"
+        name="ActivityPay"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="bd6e9494-6392-48d5-83f1-d71f1b4ab952"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b487cab9-b918-4f1e-b286-1099d52537ad"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="a612826f-e861-41e1-aa26-d79962be2296"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="b938907c-18c4-4c0b-a8f9-51d8d4428547"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <decisionNode
+            Id="a612826f-e861-41e1-aa26-d79962be2296"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="2e223072-5577-471f-872c-b80bd4038262"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="3ab49e53-e475-4bd0-b848-aee773967e2e"
+                  LastKnownName="Авторезироватся"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="91f742df-b60a-49d3-a6a4-8a399094d518"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="16372784-f924-47c8-ba44-1ef33ea886bd"
+                  LastKnownName="Зарегистрироватся"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="cc74fd32-0ba4-44b2-9c8e-268001fa80bf"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="084e8ee7-2168-46c4-81ce-371cca26bcef"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callBehaviorAction
+            Id="3ab49e53-e475-4bd0-b848-aee773967e2e"
+            name="Авторезироватся"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9d7db34a-8b9d-4547-aa51-b9773847d44e"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="16372784-f924-47c8-ba44-1ef33ea886bd"
+                  LastKnownName="Зарегистрироватся"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="28003fba-5549-4e1c-aad1-9d5ef95bffb7"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="0e5f43f5-7d76-4b88-af91-11f5f18dd4c5"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="baad2387-33af-4802-bcda-399173d9861c"
+                LastKnownName="ActivityAuthReg"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <callBehaviorAction
+            Id="16372784-f924-47c8-ba44-1ef33ea886bd"
+            name="Зарегистрироватся"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e6fc4df0-0b6c-4129-8e4f-1e36c4ef22dd"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="3ab49e53-e475-4bd0-b848-aee773967e2e"
+                  LastKnownName="Авторезироватся"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="baad2387-33af-4802-bcda-399173d9861c"
+                LastKnownName="ActivityAuthReg"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <decisionNode
+            Id="0e5f43f5-7d76-4b88-af91-11f5f18dd4c5"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8305b1e7-9c59-4fc7-83ef-0d4d5cc2b03f"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="5bda84fc-837b-4c31-b6b6-d7f0c39ce544"
+                  LastKnownName="Пополнить счёт"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="0244ab66-73c2-4cd8-b87e-ee7505ac8b38"
+                isLeaf="false">
+                <callBehaviorActionMoniker
+                  Id="67f63a27-ac3f-4e64-b993-9e6bcdb63692"
+                  LastKnownName="Пополнить nfc-метку"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="8222b099-ff30-4586-8fea-0009e7906e9f"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="084e8ee7-2168-46c4-81ce-371cca26bcef"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callBehaviorAction
+            Id="67f63a27-ac3f-4e64-b993-9e6bcdb63692"
+            name="Пополнить nfc-метку"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="d71af2e7-f1d1-499e-a315-a69681fdfb90"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="084e8ee7-2168-46c4-81ce-371cca26bcef"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="9ec78d4b-91aa-40c4-b08a-092df68fd446"
+                LastKnownName="ActivityAddNFCtag"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <callBehaviorAction
+            Id="5bda84fc-837b-4c31-b6b6-d7f0c39ce544"
+            name="Пополнить счёт"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="c1aa9806-a36d-4488-ba06-a11c5842a068"
+                isLeaf="false">
+                <mergeNodeMoniker
+                  Id="084e8ee7-2168-46c4-81ce-371cca26bcef"
+                  LastKnownName="Merge1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker
+                Id="4a1d5c5d-3d12-4ce3-9a36-a42f5ed7416f"
+                LastKnownName="ActivityAccount"
+                LastKnownLocation="ModelingProject.uml" />
+            </behavior>
+          </callBehaviorAction>
+          <mergeNode
+            Id="084e8ee7-2168-46c4-81ce-371cca26bcef"
+            name="Merge1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="606e0d11-d20f-4eea-ab32-7a2bfceed597"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="b938907c-18c4-4c0b-a8f9-51d8d4428547"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="baad2387-33af-4802-bcda-399173d9861c"
+        name="ActivityAuthReg"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="07cbc0f7-8f67-4a7d-ae37-23b9c6a45a57"
+            name="Initial1"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="b0c18d2c-d6fe-4d13-a4f0-98ff865dec98"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <inputPinMoniker
+                  Id="97da5ea2-5c3d-41eb-85ad-dfd278608b91"
+                  LastKnownName="Данные пользователя"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="3ad11b24-0fba-4d55-ae45-454ccdb04d05"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="18ad8a50-8519-44ca-9c90-bca4d3f24632"
+            name="Проверить введённые данные"
+            isLeaf="false">
+            <pins>
+              <opaqueActionHasInputValues>
+                <inputPin
+                  Id="97da5ea2-5c3d-41eb-85ad-dfd278608b91"
+                  name="Данные пользователя"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <upperBound>
+                    <literalInteger
+                      Id="1350195a-3f8a-4c63-977c-b3ccf6a1b780"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </inputPin>
+              </opaqueActionHasInputValues>
+              <opaqueActionHasOutputValues>
+                <outputPin
+                  Id="864bba4b-211d-48fe-83f1-37b36e24f3cf"
+                  name="Данные прошли проверку"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="2bc0f756-a672-40c4-8c14-396b7ef830f3"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <sendSignalActionMoniker
+                        Id="08842006-6166-4091-8bcf-1c79fa293237"
+                        LastKnownName="Отправка данных на сервер"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="75142f53-05e2-47bb-9bfa-b31360639457"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </opaqueActionHasOutputValues>
+              <opaqueActionHasOutputValues>
+                <outputPin
+                  Id="b144e3d3-7c0a-4bb9-8d93-188966d66b8f"
+                  name="Данные не прошли проверку"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="a7226d42-ded5-4b5f-a9d8-e08723935a7b"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <objectNodeMoniker
+                        Id="c43a0469-4860-4975-b5cd-84548ba213a5"
+                        LastKnownName="Ошибка"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="29fd82f0-1ac0-4602-9fc1-ee22c4e09211"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </opaqueActionHasOutputValues>
+            </pins>
+          </opaqueAction>
+          <sendSignalAction
+            Id="08842006-6166-4091-8bcf-1c79fa293237"
+            name="Отправка данных на сервер"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="953c7a55-c7fb-4d32-966f-1600ca38f20d"
+                isLeaf="false">
+                <acceptEventActionMoniker
+                  Id="6c45724a-3f38-4554-a884-d11b554c558f"
+                  LastKnownName="Получение ответа"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </sendSignalAction>
+          <acceptEventAction
+            Id="6c45724a-3f38-4554-a884-d11b554c558f"
+            name="Получение ответа"
+            isLeaf="false"
+            isUnmarshall="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="8d1c6334-533e-4182-b06b-96cd264c46c7"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="dad9f4f0-4a13-4eaf-9138-1f0f31df2643"
+                  LastKnownName="Успех"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </acceptEventAction>
+          <objectNode
+            Id="c43a0469-4860-4975-b5cd-84548ba213a5"
+            name="Ошибка"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="ModelingProject.uml" />
+            </type_NamedElement>
+            <objectFlowTargets>
+              <objectFlow
+                Id="7d575b6d-07e0-400b-a4a2-705bc156cac8"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <activityFinalNodeMoniker
+                  Id="3ad11b24-0fba-4d55-ae45-454ccdb04d05"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="382db076-72d1-44af-b01f-14c20e2a6a14"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="dad9f4f0-4a13-4eaf-9138-1f0f31df2643"
+            name="Успех"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                LastKnownName="Boolean"
+                LastKnownLocation="ModelingProject.uml" />
+            </type_NamedElement>
+            <objectFlowTargets>
+              <objectFlow
+                Id="5e55f211-31b3-4bb6-a6e2-03e19f0be34d"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <activityFinalNodeMoniker
+                  Id="3ad11b24-0fba-4d55-ae45-454ccdb04d05"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="633ef72b-9303-4fc6-aa61-afe22a40fd6f"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="4a1d5c5d-3d12-4ce3-9a36-a42f5ed7416f"
+        name="ActivityAccount"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="e26764a5-7bc3-426e-9b82-494c636b6ea0"
+            name="Initial1"
+            isLeaf="false" />
+          <activityFinalNode
+            Id="c4cc8638-4a2b-415c-90dc-3e28d1945b95"
+            name="ActivityFinal1"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="9ec78d4b-91aa-40c4-b08a-092df68fd446"
+        name="ActivityAddNFCtag"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="8b9153e2-8376-4cbe-aeba-b2df7b94b23b"
+            name="Initial1"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="f36c3d10-a4d1-4201-87a1-1cf61dacdf35"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <inputPinMoniker
+                  Id="3db0b92f-e241-424f-a6ed-55be4711256e"
+                  LastKnownName="Сумма на счету не ноль"
+                  LastKnownLocation="ModelingProject.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="77936b23-0e0d-4a99-b110-79bb3515c497"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="c1786d16-cfb2-40de-9c9b-f013d24177aa"
+            name="Выбрать сумму пополнения"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="da0e54b0-b58c-4e57-b5b8-6672c7c03b2d"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="77936b23-0e0d-4a99-b110-79bb3515c497"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <pins>
+              <opaqueActionHasInputValues>
+                <inputPin
+                  Id="3db0b92f-e241-424f-a6ed-55be4711256e"
+                  name="Сумма на счету не ноль"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <upperBound>
+                    <literalInteger
+                      Id="b4fab32c-a535-46f2-b166-adc3deff2714"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </inputPin>
+              </opaqueActionHasInputValues>
+              <opaqueActionHasOutputValues>
+                <outputPin
+                  Id="180e58b9-9e56-40dd-9be1-7450465aae24"
+                  name="Сумма пополнения не ноль"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="80395872-d401-4873-9e55-fbf6bf1715ca"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <inputPinMoniker
+                        Id="8026bf53-d0a6-43f0-8b79-6b2b45d245c0"
+                        LastKnownName="Интернет включён"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="f048d71e-6e18-4005-b7d7-ed218feec44f"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </opaqueActionHasOutputValues>
+            </pins>
+          </opaqueAction>
+          <acceptEventAction
+            Id="7303783e-9af7-4fb7-ba7d-84e5c8c99aef"
+            name="Изменить кольчество денег на nfc-метке при посании ею устройства"
+            isLeaf="false"
+            isUnmarshall="false">
+            <pins>
+              <acceptEventActionHasResults>
+                <outputPin
+                  Id="c5eab9c0-cc5e-4d35-9a7e-a19fcb8bfbb7"
+                  name="Операция прошла успешно"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="0a767f52-45f8-46ac-ae1f-e28810d1f8ca"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <activityFinalNodeMoniker
+                        Id="77936b23-0e0d-4a99-b110-79bb3515c497"
+                        LastKnownName="ActivityFinal1"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="c108c6aa-68d4-4be2-9895-33315adce5c2"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </acceptEventActionHasResults>
+              <acceptEventActionHasResults>
+                <outputPin
+                  Id="a5e291ac-4a84-4406-b904-128b1e796ae5"
+                  name="Операция произошла с ошибкой"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="059175c7-60cc-4fb2-83c1-8d5cd4c88e32"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <inputPinMoniker
+                        Id="8026bf53-d0a6-43f0-8b79-6b2b45d245c0"
+                        LastKnownName="Интернет включён"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="56187932-c2d6-49c4-b8fe-4978fe31dd65"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </acceptEventActionHasResults>
+            </pins>
+          </acceptEventAction>
+          <sendSignalAction
+            Id="39edaf93-fd24-4e4a-a23c-103940b32bac"
+            name="Отправка изменённой суммы счёта на сервер"
+            isLeaf="false">
+            <pins>
+              <sendSignalActionHasTarget>
+                <inputPin
+                  Id="8026bf53-d0a6-43f0-8b79-6b2b45d245c0"
+                  name="Интернет включён"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <upperBound>
+                    <literalInteger
+                      Id="ab6422e4-4c1d-4d5b-8079-b42629ea9088"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </inputPin>
+              </sendSignalActionHasTarget>
+              <actionHasOutputsInternal>
+                <outputPin
+                  Id="9bef9514-a2c0-434f-a78d-36d277516c2b"
+                  name="Операция прошла успешно"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="1c5bb046-7e20-407d-a9ba-1c883b78d5e5"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <acceptEventActionMoniker
+                        Id="7303783e-9af7-4fb7-ba7d-84e5c8c99aef"
+                        LastKnownName="Изменить кольчество денег на nfc-метке при посании ею устройства"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="3a6305c7-41dd-430b-b19b-24a47f4e539a"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </actionHasOutputsInternal>
+              <actionHasOutputsInternal>
+                <outputPin
+                  Id="662d313f-b7be-498e-9be8-fe60ad89a807"
+                  name="Операция завершилась с ошибкой"
+                  isLeaf="false"
+                  ordering="Unordered"
+                  isControlType="false"
+                  isControl="false">
+                  <objectFlowTargets>
+                    <objectFlow
+                      Id="d9c5e405-8a6d-4ec0-add9-7ed89e1f3ceb"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <opaqueActionMoniker
+                        Id="c1786d16-cfb2-40de-9c9b-f013d24177aa"
+                        LastKnownName="Выбрать сумму пополнения"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                    <objectFlow
+                      Id="7b8412b9-dc28-4039-9938-9c6863a55bdc"
+                      isLeaf="false"
+                      isMulticast="false"
+                      isMultireceive="false">
+                      <inputPinMoniker
+                        Id="8026bf53-d0a6-43f0-8b79-6b2b45d245c0"
+                        LastKnownName="Интернет включён"
+                        LastKnownLocation="ModelingProject.uml" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger
+                      Id="28b03166-6249-4f4d-b0bf-2f78e8ec4553"
+                      name="2147483647"
+                      value="2147483647" />
+                  </upperBound>
+                </outputPin>
+              </actionHasOutputsInternal>
+            </pins>
+          </sendSignalAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="2637145d-0b5c-44e2-94d3-8fa6cf8b27f1"
+        name="ActivityLoadData"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <sendSignalAction
+            Id="cfc77aa8-2bae-4d30-b4a5-ded19c76a710"
+            name="Отправить запрос на получения данных"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3dfb41a3-2faf-4c3a-b0d2-259a62ced89b"
+                isLeaf="false">
+                <acceptEventActionMoniker
+                  Id="2180d621-b911-4363-863a-886b14b68977"
+                  LastKnownName="Принять данные"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </sendSignalAction>
+          <acceptEventAction
+            Id="2180d621-b911-4363-863a-886b14b68977"
+            name="Принять данные"
+            isLeaf="false"
+            isUnmarshall="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="01366648-5e87-464b-a44e-3fea3fb28077"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="608e222e-fe1b-4c93-8a1c-d11b1c599108"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </acceptEventAction>
+          <initialNode
+            Id="0bd47e13-04ce-4aa6-8340-2f1143923d16"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b548f9ec-43d7-4274-9f3a-98fcfb8542d8"
+                isLeaf="false">
+                <sendSignalActionMoniker
+                  Id="cfc77aa8-2bae-4d30-b4a5-ded19c76a710"
+                  LastKnownName="Отправить запрос на получения данных"
+                  LastKnownLocation="ModelingProject.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode
+            Id="608e222e-fe1b-4c93-8a1c-d11b1c599108"
+            name="ActivityFinal1"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+        name="Просмотр карты с маршрутами , водителями на них"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c7d26f0c-0f61-479e-837c-f095cc19361c"
+        name="Загрузка данных о городах"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="5ffca823-e344-4543-9fc7-a312c3925680">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f3c0534e-b51d-403b-b271-d92aa59f5500"
+        name="Загрузка данных о маршрутах"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="89a58717-92f6-42bf-ae3d-94645a32a031">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7c7a6147-43c8-401c-9938-fd7b966fd6a6"
+        name="Загрузка данных о водителях на выбранном маршруте"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="6f2e3dbe-c9d2-4c7b-ab43-26e4bc3598a8">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="56a1f985-d31f-41f5-a8a3-c6c5ce8531f2"
+        name="Отображение карты с загруженными данными"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="63d87a62-e551-4642-8ef4-b9dee7b998b3">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="04d3bf7c-b423-4a2e-bd49-49b410065d81"
+        name="Изменение личного счёта "
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="32290cdc-8ab0-4f42-9bba-b41c3fe20b15">
+            <useCaseMoniker
+              Id="4c8eabb7-03f4-49d2-bf5f-07e41eadaeae"
+              LastKnownName="Пополнение  nfc-метки"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4c8eabb7-03f4-49d2-bf5f-07e41eadaeae"
+        name="Пополнение  nfc-метки"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9a880585-2f9f-46b7-92a2-036fa033b05e"
+        name="Авторизация "
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4c8d7243-5aa0-4d18-80be-7f3df9d56ed1"
+        name="Регистрация"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8c8225ea-4c07-476e-937b-bd02a6ed8916"
+        name="Отправка запроса на сервер"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="a3d22fe0-85dd-44b6-9f06-b2d6309ccd5a">
+            <useCaseMoniker
+              Id="4c8d7243-5aa0-4d18-80be-7f3df9d56ed1"
+              LastKnownName="Регистрация"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="f78672aa-d243-402f-8594-11b1e6d33cf5">
+            <useCaseMoniker
+              Id="9a880585-2f9f-46b7-92a2-036fa033b05e"
+              LastKnownName="Авторизация "
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="3f100cc3-c5d1-48b6-a527-34623a14181d">
+            <useCaseMoniker
+              Id="04d3bf7c-b423-4a2e-bd49-49b410065d81"
+              LastKnownName="Изменение личного счёта "
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="abc54eea-fdae-4463-bf2f-15015016ea2a">
+            <useCaseMoniker
+              Id="c7d26f0c-0f61-479e-837c-f095cc19361c"
+              LastKnownName="Загрузка данных о городах"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="852a6fbe-2e0f-4530-89ed-5b0f82f8a02b">
+            <useCaseMoniker
+              Id="7c7a6147-43c8-401c-9938-fd7b966fd6a6"
+              LastKnownName="Загрузка данных о водителях на выбранном маршруте"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="b7ec10ec-0af1-4aa8-ac76-71beb720e12a">
+            <useCaseMoniker
+              Id="f3c0534e-b51d-403b-b271-d92aa59f5500"
+              LastKnownName="Загрузка данных о маршрутах"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3a7cb8cb-8ed4-4e58-8aee-3e8f4ceb4f5b"
+        name="Принятия ответа с сервера"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="e32a872f-5994-4dec-8993-fc0db8d4d4b6">
+            <useCaseMoniker
+              Id="4c8d7243-5aa0-4d18-80be-7f3df9d56ed1"
+              LastKnownName="Регистрация"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="4cbce372-e341-4c5f-8d44-d5a9b92410a1">
+            <useCaseMoniker
+              Id="9a880585-2f9f-46b7-92a2-036fa033b05e"
+              LastKnownName="Авторизация "
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="356c1853-73d4-4b0e-8d87-e8b8f3a77bd9">
+            <useCaseMoniker
+              Id="04d3bf7c-b423-4a2e-bd49-49b410065d81"
+              LastKnownName="Изменение личного счёта "
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="4c9cae4a-6f6a-427b-aac2-7b371c88b67c">
+            <useCaseMoniker
+              Id="c7d26f0c-0f61-479e-837c-f095cc19361c"
+              LastKnownName="Загрузка данных о городах"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="2f98f019-60ad-432a-a2df-cac64a10e454">
+            <useCaseMoniker
+              Id="7c7a6147-43c8-401c-9938-fd7b966fd6a6"
+              LastKnownName="Загрузка данных о водителях на выбранном маршруте"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="3041ee7f-62b3-4987-97e9-727ae99ecdbb">
+            <useCaseMoniker
+              Id="f3c0534e-b51d-403b-b271-d92aa59f5500"
+              LastKnownName="Загрузка данных о маршрутах"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cd145659-dc90-43ac-b40f-037b68d5566e"
+        name="Получение  текущих координат с wifi"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="f91ed188-5fec-4013-a652-de2384922784">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="afd8cac6-9172-4071-891a-54c0fc590060"
+        name="Получение  текущих координат со спитников"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="8654da67-87f1-4ddb-9137-0beeda71727a">
+            <useCaseMoniker
+              Id="86f31737-fd90-4f63-b7e7-bb60a8c11393"
+              LastKnownName="Просмотр карты с маршрутами , водителями на них"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="945b69a5-b7a7-4cad-9210-963b8b42729e"
+            LastKnownName="Transport Fire"
+            LastKnownLocation="ModelingProject.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

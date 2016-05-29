@@ -27,6 +27,7 @@ namespace TransportFare
         string Password { get; set; }
         private ProximityDevice Device { get; set; }
         public List<Product> AllProducts { get; set; }
+
         public Pay()
         {
             this.InitializeComponent();
@@ -42,22 +43,8 @@ namespace TransportFare
             LoadProducts();
             Device = ProximityDevice.GetDefault();
         }
-        
-        public async void LoadProducts()
-        {
-            StorageFile proxyFile = await Package.Current.InstalledLocation.GetFileAsync("data\\products.xml");
-            await CurrentAppSimulator.ReloadSimulatorAsync(proxyFile);
-            var Listing = await CurrentAppSimulator.LoadListingInformationAsync();
 
-            foreach (var i in Listing.ProductListings.Values)
-            {
-                AllProducts.Add(new Product(i.ProductId, i.Name,
-                    double.Parse(i.FormattedPrice.Substring(4).Split('.')[0]+","
-                    + i.FormattedPrice.Substring(4).Split('.')[1]),
-                    i.FormattedPrice.Substring(0, 4)));
-            }
-            AllProducts.ForEach(i => { gridViewAllProducts.Items.Add(i); });
-        }
+        #region Back
         public void Back()
         {
             MainMenu mainMenu = Window.Current.Content as MainMenu;
@@ -70,8 +57,10 @@ namespace TransportFare
         private void Pay_BackRequested(object sender, BackRequestedEventArgs e)
         {
             Back();   
-        }     
+        }
 
+        #endregion
+        #region Notify
         public enum NotifyType
         {
             StatusMessage,
@@ -94,22 +83,16 @@ namespace TransportFare
             }
             textBlockMessage.Text = strMessage;
         }
-        
-        
-        private void sliderCurrency_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            textBlockSliderValueCurrency.Text = sliderCurrency.Value.ToString();
-        }
-
+        #endregion
+        #region Registration and Autification
         private void buttonFlyoutOkAutification_Click(object sender, RoutedEventArgs e)
         {
             if (Load.Login(textBoxLoginAutification.Text, passwordBoxPasswordAutification.Password))
             {
+                Login = textBoxLoginAutification.Text;
+                Password = passwordBoxPasswordAutification.Password;
                 splitViewAutification.IsPaneOpen = false;
-                if (Account != 0)
-                {
-                    appBarButtonAccept.IsEnabled = true;
-                }
+                SetUIAccount(Load.Account(Login, Password), "руб.");
                 gridContent.Visibility = Visibility.Visible;
             }
             else
@@ -131,11 +114,11 @@ namespace TransportFare
             if (Load.Registration(textBoxLoginRegistration.Text, textBoxEmail.Text, 
                 textBoxPhoneNumber.Text, passwordBoxPasswordRegistration1.Password))
             {
+                Login = textBoxLoginRegistration.Text;
+                Password = passwordBoxPasswordRegistration1.Password;
                 splitViewAutification.IsPaneOpen = false;
-                if (Account != 0)
-                {
-                    appBarButtonAccept.IsEnabled = true;
-                }
+                Account = Load.Account(Login,Password);
+                SetUIAccount(Load.Account(Login, Password), "руб.");
                 gridContent.Visibility = Visibility.Visible;
             }
             else
@@ -144,12 +127,27 @@ namespace TransportFare
             }
 
         }
-
         private void buttonFlyoutCloseRegistration_Click(object sender, RoutedEventArgs e)
         {
             Back();
         }
+        #endregion
+        #region Buy
+        public async void LoadProducts()
+        {
+            StorageFile proxyFile = await Package.Current.InstalledLocation.GetFileAsync("data\\products.xml");
+            await CurrentAppSimulator.ReloadSimulatorAsync(proxyFile);
+            var Listing = await CurrentAppSimulator.LoadListingInformationAsync();
 
+            foreach (var i in Listing.ProductListings.Values)
+            {
+                AllProducts.Add(new Product(i.ProductId, i.Name,
+                    double.Parse(i.FormattedPrice.Substring(4).Split('.')[0] + ","
+                    + i.FormattedPrice.Substring(4).Split('.')[1]),
+                    i.FormattedPrice.Substring(0, 4)));
+            }
+            AllProducts.ForEach(i => { gridViewAllProducts.Items.Add(i); });
+        }
         private void gridViewAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (gridViewAllProducts.SelectedItems.Count == 0)
@@ -160,6 +158,17 @@ namespace TransportFare
             {
                 appBarButtonShop.IsEnabled = true;
             }
+        }
+        public void SetUIAccount(double account,string currency)
+        {
+            Account += account;
+            if (Account != 0)
+            {
+                appBarButtonAccept.IsEnabled = true;
+            }
+            textBlockAccount.Text = "На счету: " + Account + " " + currency;
+            sliderCurrency.Maximum = Account;
+            sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
         }
         public async void MicrosoftBuy()
         {
@@ -178,14 +187,7 @@ namespace TransportFare
                         GrantFeatureLocally(purchaseResults.TransactionId);
                         FulfillPay(productSelected.Id,
                             purchaseResults.TransactionId);
-                        Account += productSelected.Price;
-                        if (Account != 0)
-                        {
-                            appBarButtonAccept.IsEnabled = true;
-                        }
-                        textBlockAccount.Text = "На счету: " + Account + " " + productSelected.Currency;
-                        sliderCurrency.Maximum = Account;
-                        sliderCurrency.Value = (int)((sliderCurrency.Minimum + sliderCurrency.Maximum) / 2);
+                        SetUIAccount(productSelected.Price, productSelected.Currency);
                         break;
                     case ProductPurchaseStatus.NotFulfilled:
                         if (!IsLocallyFulfilled(purchaseResults.TransactionId))
@@ -252,6 +254,7 @@ namespace TransportFare
                 MicrosoftBuy();
             }
             listBoxMethodBuy.SelectedIndex = -1;
+            flyoutMethodBuy.Hide();
         }
         private void GrantFeatureLocally(Guid transactionId)
         {
@@ -262,6 +265,10 @@ namespace TransportFare
         {
             return consumedTransactionIds.Contains(transactionId);
         }
-
+        private void sliderCurrency_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            textBlockSliderValueCurrency.Text = sliderCurrency.Value.ToString();
+        }
+        #endregion
     }
 }

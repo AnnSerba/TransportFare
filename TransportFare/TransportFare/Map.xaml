@@ -11,7 +11,8 @@
         <CommandBar>
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>
-            <AppBarButton  Name="appBarButtonState" Label="Нет данных" Click="appBarButtonState_Click">
+            <AppBarButton  Name="appBarButtonState" Label="Нет данных"
+                           Click="appBarButtonState_Click">
                 <SymbolIcon Name="symbolIconState" Symbol="Important"></SymbolIcon>
             </AppBarButton>
             <AppBarButton Icon="Map" Name="appBarButtonMap" Label="Текущие координаты"
@@ -20,16 +21,26 @@
                           Click="appBarButtonSetting_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
-    <SplitView ScrollViewer.VerticalScrollBarVisibility="Auto" Name="splitView" 
-               DisplayMode="Overlay" 
-               Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView.Pane>
-            <ScrollViewer  VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto" >
-                <StackPanel>
-                    <Button Name="buttonCancel" HorizontalAlignment="Right"  Click="appBarButtonSetting_Click">
-                        <SymbolIcon Symbol="Cancel"></SymbolIcon>
-                    </Button>
-                    <TextBlock Text="Настройки" Style="{StaticResource styleHeaderTextBlock}"/>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Button Name="buttonSettingSityRoute" Click="buttonSettingSityRoute_Click" 
+                            Style="{StaticResource NavigationBackButtonNormalStyle}">
+                    <SymbolIcon Symbol="OpenPane"></SymbolIcon>
+                </Button>
+                <TextBlock  Text="Транспорт поблизости"  Margin="10,0"
+                                    Style="{StaticResource TitleTextBlockStyle}"/>
+            </StackPanel>
+            <SplitView ScrollViewer.VerticalScrollBarVisibility="Auto" Name="splitView" 
+               DisplayMode="Overlay" PanePlacement="Right" Grid.Row="1">
+                <SplitView.Pane>
+                    <ScrollViewer  VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto" >
+                        <StackPanel Padding="10">
+                            <TextBlock Text="Настройки" Style="{StaticResource styleHeaderTextBlock}"/>
                     <Slider Name="sliderFrequency" Header="Частота обновления геопозиции в милисекундах" Minimum="1" Maximum="60000" Value="2000"
                         Style="{StaticResource styleSliderSummPay}" ValueChanged="sliderFrequency_ValueChanged"/>
                     <ComboBox Header="Режим экономии энергии" Name="comboBoxDesiredAccuracy"
@@ -37,83 +48,64 @@
                           Style="{StaticResource styleComboBox}"/>
                 </StackPanel>
             </ScrollViewer>
-        </SplitView.Pane>
-        <SplitView.Content >
-            <Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" MinWidth="0.5"/>
-                        <ColumnDefinition Width="Auto" MinWidth="0.5"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="49*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  
-                                Text="Транспорт поблизости"  Margin="10,0"
-                                Style="{StaticResource HeaderTextBlockStyle}"/>
-                    <Grid   Grid.Column="0" Grid.Row="1" >
-                        <TextBlock  Name="textBlockLocation"  Text=""  Visibility="Collapsed"   
-                                   Style="{StaticResource BodyTextBlockStyle}" 
-                                   TextWrapping="Wrap" Margin="10" />
-
-                        <ProgressRing  Name="progressRingLocation" IsActive="True"  Margin="10"/>
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="2">
-                        <ProgressRing Name="progressRingMap" IsActive="True" Margin="10"/>
-                            <Maps:MapControl   Name="mapControl" MinHeight="300"   
-                                               Loaded="mapControl_Loaded" 
-                                               ZoomLevelChanged="mapControl_ZoomLevelChanged"/>
-                            <StackPanel Margin="5" HorizontalAlignment="Left">
-                                <TextBox Name="textBoxFrom" PlaceholderText="Откуда"/>
-                                <TextBox Name="textBoxTo" PlaceholderText="Куда"/>
-                                <Button Name="buttonFind" Click="buttonFind_Click">
-                                    <SymbolIcon Symbol="Find"/>
-                                </Button>
-                            </StackPanel>
-                        <StackPanel Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <Button Name="buttonZoopPlus" Content="+" Width="35" Height="35" Click="buttonZoopPlus_Click"/>
-                            <Slider Name="sliderZoom"  Width="35" Height="200"  ValueChanged="sliderZoom_ValueChanged" Orientation="Vertical"/>
-                            <Button Name="buttonZoomMinus" Content="-" Width="35" Height="35"  Click="buttonZoomMinus_Click"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="10">
-                        <ScrollViewer    VerticalScrollBarVisibility="Auto" >
-                            <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}"  
+                </SplitView.Pane>
+                <SplitView.Content >
+                    <SplitView Name="splitViewSettingSityRoute"  DisplayMode="Overlay" IsPaneOpen="True">
+                    
+                        <SplitView.Pane>
+                            <Grid  Margin="10">
+                                <ScrollViewer    VerticalScrollBarVisibility="Auto" >
+                                    <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}"  
                                         Name="stackPanelShowSelectionSityRoute" VerticalAlignment="Top">
-                                <TextBlock Text="Какой транспорт вас интересует?" Width="160px" 
+                                        <TextBlock Text="Какой транспорт вас интересует?"  
                                        Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                <ComboBox Header="Выберите город" Name="comboBoxSity"  Visibility="Collapsed"  
+                                        <ComboBox Header="Выберите город" Name="comboBoxSity"  Visibility="Collapsed"  
                                       SelectionChanged="comboBoxSity_SelectionChanged"  
                                       Style="{StaticResource styleComboBox}" Margin="10"/>
-                                <ListView Header="Выберите маршрут" SelectionMode="Multiple" Name="listViewRoutes" Visibility="Collapsed"   
+                                        <ListView Header="Выберите маршрут" SelectionMode="Multiple" Name="listViewRoutes" Visibility="Collapsed"   
                                      SelectionChanged="listBoxRoutes_SelectionChanged"  Margin="10"/>
-                                <ProgressRing Name="progressRingRoute" IsActive="False"/>
-                            </StackPanel>
-                        </ScrollViewer>
-                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                        <ProgressRing Name="progressRingRoute" IsActive="False"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                                <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" 
                                       Name="progressRingSity" IsActive="True"/>
-                    </Grid>
-                </Grid >
-                <StackPanel  Name="stackPanelStatus" VerticalAlignment="Bottom"  Visibility="Collapsed" Background="Yellow">
-                    <Button Name="buttonStatus" HorizontalAlignment="Right" Click="buttonStatus_Click">
-                        <SymbolIcon Symbol="Cancel"></SymbolIcon>
-                    </Button>
-                    <Border Padding="5">
-                        <TextBlock Name="textBlockGeoStatus" Text="Нет данных о геолокации" Style="{StaticResource styleTextBlock}"/>
-                    </Border>
-                    <Border Padding="5">
-                        <TextBlock Name="textBlockSity" Text="Нет данных о городах" Style="{StaticResource styleTextBlock}"/>
-                    </Border>
-                    <Border Padding="5">
-                        <TextBlock Name="textBlockRoute" Text="Нет данных о маршрутах" Style="{StaticResource styleTextBlock}"/>
-                    </Border>
-                    <Border Padding="5">
-                        <TextBlock Name="textBlockTransport" Text="Нет данных о транспорте" Style="{StaticResource styleTextBlock}"/>
-                    </Border>
-                </StackPanel>
-            </Grid>
-        </SplitView.Content>
-    </SplitView>
+                            </Grid>
+                        </SplitView.Pane>
+                        <SplitView.Content>
+                            <Grid >
+                                <ProgressRing Name="progressRingMap" IsActive="True" Margin="10"/>
+                                <Maps:MapControl   Name="mapControl" MinHeight="300"   
+                                              
+                                               ZoomLevelChanged="mapControl_ZoomLevelChanged"/>
+                                
+                                <StackPanel Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Button Name="buttonZoopPlus" Content="+" Width="35" Height="35" Click="buttonZoopPlus_Click"/>
+                                    <Slider Name="sliderZoom"  Width="35" Height="200"  ValueChanged="sliderZoom_ValueChanged" Orientation="Vertical"/>
+                                    <Button Name="buttonZoomMinus" Content="-" Width="35" Height="35"  Click="buttonZoomMinus_Click"/>
+                                </StackPanel>
+                            </Grid>
+                        </SplitView.Content>
+                    </SplitView>
+                </SplitView.Content>
+            </SplitView>
+        </Grid>
+        <StackPanel  Name="stackPanelStatus" VerticalAlignment="Bottom"  Visibility="Collapsed" Background="Yellow">
+            <Button Name="buttonStatus" HorizontalAlignment="Right" Click="buttonStatus_Click">
+                <SymbolIcon Symbol="Cancel"></SymbolIcon>
+            </Button>
+            <Border Padding="5">
+                <TextBlock Name="textBlockGeoStatus" Text="Нет данных о геолокации" Style="{StaticResource styleTextBlock}"/>
+            </Border>
+            <Border Padding="5">
+                <TextBlock Name="textBlockSity" Text="Нет данных о городах" Style="{StaticResource styleTextBlock}"/>
+            </Border>
+            <Border Padding="5">
+                <TextBlock Name="textBlockRoute" Text="Нет данных о маршрутах" Style="{StaticResource styleTextBlock}"/>
+            </Border>
+            <Border Padding="5">
+                <TextBlock Name="textBlockTransport" Text="Нет данных о транспорте" Style="{StaticResource styleTextBlock}"/>
+            </Border>
+            </StackPanel>
+        </Grid>
+    
 </Page>

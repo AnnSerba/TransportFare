@@ -4,14 +4,22 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.UI.Notifications;
+using Windows.Foundation;
+using Windows.Web.Http;
 
 namespace TransportFare
 {
     public class Load
     {
-        Uri url = new Uri("http://www.eway.in.ua/");
+        static Uri url = new Uri("http://www.eway.in.ua/");
+        static HttpClient httpClient = new HttpClient();
         public static List<string> Sities()
         {
+            
+            var result= Task.Run(async () => 
+            {
+                return await httpClient.GetAsync(url);
+            }).Result.Content;
             List<string> list = new List<string>();
             list.Add("Симферополь");
             list.Add("Севастополь");
@@ -28,7 +36,10 @@ namespace TransportFare
         public static List<Geopoint> Transport(string route)
         {
             var list = new List<Geopoint>();
-            list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.51, Longitude = 33.59 }));
+            list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.539125, Longitude = 33.543051 }));
+            list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.529095, Longitude = 33.554922 }));
+            list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.501472, Longitude = 33.600006 }));
+            list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.51011, Longitude = 33.620895 }));
             return list;
         }
         public static List<Geopoint> Way(string route)
@@ -36,9 +47,10 @@ namespace TransportFare
             var list = new List<Geopoint>();
             if (route == "9")
             {
-                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.501288, Longitude = 33.599947 }));
-                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.510294, Longitude = 33.6212 }));
-                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.549121, Longitude = 33.529545 }));
+                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.539125, Longitude = 33.543051 }));
+                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.529095, Longitude = 33.554922 }));
+                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.501472, Longitude = 33.600006 }));
+                list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.51011, Longitude = 33.620895 }));
             }
             else
             {
@@ -47,6 +59,14 @@ namespace TransportFare
                 list.Add(new Geopoint(new BasicGeoposition() { Latitude = 44.5834234, Longitude = 33.582342345 }));
             }
             return list;
+        }
+        public static double Account(string login, string password)
+        {
+            return 100;
+        }
+        public static bool ChangeAccount(string login, string password,double account)
+        {
+            return true;
         }
         public static bool Login(string login, string password)
         {

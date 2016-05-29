@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="1bb3006d-d938-4662-a39d-d6d600ff773a" name="UMLUseCaseDiagram" linkedPackageId="d978c9fe-460d-4f41-801e-088a158f2abe" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" name="Transport Fire" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="945b69a5-b7a7-4cad-9210-963b8b42729e" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="00271312-a6a3-4599-9bf3-3ed7575fa58e" name="Пассажир" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="34f2b13e-ef80-415e-8f7c-2931b63f5a70" />
+        <targetEnds>
+          <association Id="00b98a98-d6ad-455f-8cbc-f8f29f4b9a99" isDerived="false" sourceEndRoleName="Пассажир" targetEndRoleName="Просмотр карты с маршрутами , водителями на них" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="00ed510f-6816-4036-9b43-1fb77d794498" name="Пассажир" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="41b89212-b27f-4019-b229-94f81f52eaaf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="91a0b801-0883-477b-a082-b19270941dba" name="Просмотр карты с маршрутами , водителями на них" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fe73cea0-4764-456a-bdd6-fbdee0527307" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="07d4a0d4-d5af-425e-be0e-413be9b4e0fa" />
+          </association>
+          <association Id="516f6f64-b52a-4182-a0f0-d0fafebac06c" isDerived="false" sourceEndRoleName="Пассажир" targetEndRoleName="Пополнение личного счёта " isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="31dcee34-c40e-4ae1-aba9-f10f402b7cb1" LastKnownName="Изменение личного счёта " />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3bc9fb45-09f7-4841-9136-b33c5e126a78" name="Пассажир" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="228cc4de-41e9-4453-a174-2f2e70b1e86d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a9b26129-03ca-4b5a-a238-d4cf5ba79b27" name="Пополнение личного счёта " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e719ee52-d19b-4907-a44a-573789eab3b2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="eacc456f-43b3-4d4a-925a-e628bc45c8cd" />
+          </association>
+          <association Id="7ebd1ddd-ee77-4884-8b27-676f685e7c62" isDerived="false" sourceEndRoleName="Пассажир" targetEndRoleName="Пополнение  nfc-метки" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="62ccb23c-fab1-4c2f-bc50-c6697105309b" LastKnownName="Пополнение  nfc-метки" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="50310d7a-5eca-44e8-b36d-e51c0c5ad4b8" name="Пассажир" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="61017200-bf25-477c-8087-1a5029785e60" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c7591e20-3aa9-4b76-958e-eec9cba6cdf9" name="Пополнение  nfc-метки" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="38f3a01d-4658-4943-a7ff-2ac6a1f16883" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bf74240e-7d82-457d-b778-af3cc5eb6f08" />
+          </association>
+          <association Id="271431f5-6150-45f2-ae04-193909bdb628" isDerived="false" sourceEndRoleName="Пассажир" targetEndRoleName="Авторизация " isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3de07b15-0653-4d68-9a51-41a74f441424" LastKnownName="Авторизация " />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9fd56051-8522-41aa-af86-fcde65315a71" name="Пассажир" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="27c350c2-c71d-4ebf-a298-cc076dbc52f5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="08b7272b-fbd4-4ab5-be98-c96f04a6ea19" name="Авторизация " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d1297e2a-8ddd-468e-b167-d44c974ca0b4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f39089b9-5931-4279-a0fa-3adce641f08b" />
+          </association>
+          <association Id="f745a0fc-7461-4e82-b0f6-98005d979efb" isDerived="false" sourceEndRoleName="Пассажир" targetEndRoleName="Регистрация" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5527faa2-675c-4de8-a1e5-bd7c140262a9" LastKnownName="Регистрация" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d2724f77-039f-4a79-8008-4d8e2d274489" name="Пассажир" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fda55181-4f5f-4fa0-ba73-67d3453f79dd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="77a0dea6-3db8-4cf1-9153-d20d04a2572e" name="Регистрация" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0e19f90d-b76e-4416-b53f-4ff78ad79a7a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f08b7823-2b3a-4efd-8e2a-9701361b63db" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="6535719e-192d-4f51-8a4d-429d82079ac9" name="Просмотр карты с маршрутами , водителями на них" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="86f31737-fd90-4f63-b7e7-bb60a8c11393" />
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="9f56d03e-6a88-4c87-b625-bc281559618b" name="Загрузка данных о городах" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c7d26f0c-0f61-479e-837c-f095cc19361c" />
+        <additions>
+          <include Id="88e32cb2-0d4b-4427-af61-09aaadf2a346">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <elementDefinition Id="5ffca823-e344-4543-9fc7-a312c3925680" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="dd98e68c-d180-4030-b016-3734ac0f9acf" name="Загрузка данных о маршрутах" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f3c0534e-b51d-403b-b271-d92aa59f5500" />
+        <additions>
+          <include Id="7fb910a8-703c-4b33-84f1-19dd68e051a0">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <elementDefinition Id="89a58717-92f6-42bf-ae3d-94645a32a031" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="47ea5470-1b70-42d9-88c0-a3cf2bf4314c" name="Загрузка данных о водителях на выбранном маршруте" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7c7a6147-43c8-401c-9938-fd7b966fd6a6" />
+        <additions>
+          <include Id="27cd2b38-47da-4607-b839-59a0bc5a5c2d">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <elementDefinition Id="6f2e3dbe-c9d2-4c7b-ab43-26e4bc3598a8" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e0d42dc1-c644-4736-b721-f13bdcc35631" name="Отображение карты с загруженными данными" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="56a1f985-d31f-41f5-a8a3-c6c5ce8531f2" />
+        <additions>
+          <include Id="d3f07f84-3026-45cd-9e54-fc80a699b6ce">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <elementDefinition Id="63d87a62-e551-4642-8ef4-b9dee7b998b3" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="31dcee34-c40e-4ae1-aba9-f10f402b7cb1" name="Изменение личного счёта " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="04d3bf7c-b423-4a2e-bd49-49b410065d81" />
+        <additions>
+          <include Id="ab5f0638-fd6a-4656-9a1b-8e6060bf2e40">
+            <useCaseMoniker Id="62ccb23c-fab1-4c2f-bc50-c6697105309b" LastKnownName="Пополнение  nfc-метки" />
+            <elementDefinition Id="32290cdc-8ab0-4f42-9bba-b41c3fe20b15" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="62ccb23c-fab1-4c2f-bc50-c6697105309b" name="Пополнение  nfc-метки" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4c8eabb7-03f4-49d2-bf5f-07e41eadaeae" />
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="3de07b15-0653-4d68-9a51-41a74f441424" name="Авторизация " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9a880585-2f9f-46b7-92a2-036fa033b05e" />
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="5527faa2-675c-4de8-a1e5-bd7c140262a9" name="Регистрация" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4c8d7243-5aa0-4d18-80be-7f3df9d56ed1" />
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="109ec0eb-973e-418f-bb7b-829e57e430a7" name="Отправка запроса на сервер" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8c8225ea-4c07-476e-937b-bd02a6ed8916" />
+        <additions>
+          <include Id="4f84a675-0874-4b2f-9736-627746e8fba0">
+            <useCaseMoniker Id="5527faa2-675c-4de8-a1e5-bd7c140262a9" LastKnownName="Регистрация" />
+            <elementDefinition Id="a3d22fe0-85dd-44b6-9f06-b2d6309ccd5a" />
+          </include>
+          <include Id="f543ce0f-5064-40af-a1c6-78962fbf8812">
+            <useCaseMoniker Id="3de07b15-0653-4d68-9a51-41a74f441424" LastKnownName="Авторизация " />
+            <elementDefinition Id="f78672aa-d243-402f-8594-11b1e6d33cf5" />
+          </include>
+          <include Id="acdefd60-f69a-4d67-8003-1405697bfa9a">
+            <useCaseMoniker Id="31dcee34-c40e-4ae1-aba9-f10f402b7cb1" LastKnownName="Изменение личного счёта " />
+            <elementDefinition Id="3f100cc3-c5d1-48b6-a527-34623a14181d" />
+          </include>
+          <include Id="a8e9cc24-0bf3-4507-8d44-a0b818d4574e">
+            <useCaseMoniker Id="9f56d03e-6a88-4c87-b625-bc281559618b" LastKnownName="Загрузка данных о городах" />
+            <elementDefinition Id="abc54eea-fdae-4463-bf2f-15015016ea2a" />
+          </include>
+          <include Id="75c28362-d0cd-4c3d-a43b-67682dace6a8">
+            <useCaseMoniker Id="47ea5470-1b70-42d9-88c0-a3cf2bf4314c" LastKnownName="Загрузка данных о водителях на выбранном маршруте" />
+            <elementDefinition Id="852a6fbe-2e0f-4530-89ed-5b0f82f8a02b" />
+          </include>
+          <include Id="343337a6-6c1b-4e46-94d6-ec7098a80c3e">
+            <useCaseMoniker Id="dd98e68c-d180-4030-b016-3734ac0f9acf" LastKnownName="Загрузка данных о маршрутах" />
+            <elementDefinition Id="b7ec10ec-0af1-4aa8-ac76-71beb720e12a" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="ca33afc9-0191-45be-8ac4-8b5f561a6381" name="Принятия ответа с сервера" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3a7cb8cb-8ed4-4e58-8aee-3e8f4ceb4f5b" />
+        <additions>
+          <include Id="81f2f87f-804c-46ed-80b2-80dc71622aca">
+            <useCaseMoniker Id="5527faa2-675c-4de8-a1e5-bd7c140262a9" LastKnownName="Регистрация" />
+            <elementDefinition Id="e32a872f-5994-4dec-8993-fc0db8d4d4b6" />
+          </include>
+          <include Id="99f5e7c5-6c17-408c-a427-1f0155edc43d">
+            <useCaseMoniker Id="3de07b15-0653-4d68-9a51-41a74f441424" LastKnownName="Авторизация " />
+            <elementDefinition Id="4cbce372-e341-4c5f-8d44-d5a9b92410a1" />
+          </include>
+          <include Id="2606c14a-8127-4818-8472-0731ff93bd71">
+            <useCaseMoniker Id="31dcee34-c40e-4ae1-aba9-f10f402b7cb1" LastKnownName="Изменение личного счёта " />
+            <elementDefinition Id="356c1853-73d4-4b0e-8d87-e8b8f3a77bd9" />
+          </include>
+          <include Id="b339c43d-7f33-4ea6-88c8-7485288ae505">
+            <useCaseMoniker Id="9f56d03e-6a88-4c87-b625-bc281559618b" LastKnownName="Загрузка данных о городах" />
+            <elementDefinition Id="4c9cae4a-6f6a-427b-aac2-7b371c88b67c" />
+          </include>
+          <include Id="e7a705a5-51f3-43fc-8d09-ec0570b432ff">
+            <useCaseMoniker Id="47ea5470-1b70-42d9-88c0-a3cf2bf4314c" LastKnownName="Загрузка данных о водителях на выбранном маршруте" />
+            <elementDefinition Id="2f98f019-60ad-432a-a2df-cac64a10e454" />
+          </include>
+          <include Id="9a72a800-a93d-4949-bbf0-bc3a7745ab04">
+            <useCaseMoniker Id="dd98e68c-d180-4030-b016-3734ac0f9acf" LastKnownName="Загрузка данных о маршрутах" />
+            <elementDefinition Id="3041ee7f-62b3-4987-97e9-727ae99ecdbb" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="5ce7b8ee-190c-4b3a-a3dc-9652dae032f6" name="Получение  текущих координат с wifi" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cd145659-dc90-43ac-b40f-037b68d5566e" />
+        <additions>
+          <include Id="1ca5dfbe-499d-4641-a8fc-fa9bb59d0a0e">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <elementDefinition Id="f91ed188-5fec-4013-a652-de2384922784" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="0ff8852e-d079-49cc-b645-cbcfe95ef44e" name="Получение  текущих координат со спитников" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="afd8cac6-9172-4071-891a-54c0fc590060" />
+        <additions>
+          <include Id="5fab753e-7006-424e-a7c7-e0e5d8381c08">
+            <useCaseMoniker Id="6535719e-192d-4f51-8a4d-429d82079ac9" LastKnownName="Просмотр карты с маршрутами , водителями на них" />
+            <elementDefinition Id="8654da67-87f1-4ddb-9137-0beeda71727a" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="898f81a3-5196-4dc4-89e8-5e8a7d410205" LastKnownName="Transport Fire" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="d978c9fe-460d-4f41-801e-088a158f2abe" name="ModelingProject">
+    <elementDefinition Id="a5645109-2517-40db-81e6-5ca557e52a5d" />
+    <profileInstances>
+      <packageHasProfileInstances Id="62577b86-eac9-4c2b-be6e-859b4d3748d4">
+        <profileInstance Id="63d6b79b-9121-4a51-a63b-4cf2fd8f26a8" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="de068b41-22f4-4088-ba23-61e60356548e">
+        <profileInstance Id="f0fa744a-ebc8-4947-a49f-35382dbd809d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

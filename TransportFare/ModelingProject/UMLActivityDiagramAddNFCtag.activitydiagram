@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="7d761d0c-cd8b-4094-8cba-0194fa18d69d" name="ActivityAddNFCtag" linkedPackageId="1c823cb4-b332-49a0-aa54-c9252c400547" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="a999285b-80bc-42af-8cbd-629fc675461b" name="ActivityAddNFCtag" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="9ec78d4b-91aa-40c4-b08a-092df68fd446" />
+        <nodes>
+          <initialNode Id="6782d14e-5943-4e91-9659-9defa00b030c" name="Initial1" isLeaf="false">
+            <elementDefinition Id="8b9153e2-8376-4cbe-aeba-b2df7b94b23b" />
+            <objectFlowTargets>
+              <objectFlow Id="6c59977e-4006-4cd8-b55c-f46bbbf558ca" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <inputPinMoniker Id="63712530-4569-4205-af78-5aaade2a55dd" LastKnownName="Сумма на счету не ноль" />
+                <elementDefinition Id="f36c3d10-a4d1-4201-87a1-1cf61dacdf35" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <activityFinalNode Id="f04cd563-e028-4664-8e56-8b1d95d4fa30" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="77936b23-0e0d-4a99-b110-79bb3515c497" />
+          </activityFinalNode>
+          <opaqueAction Id="dc22fe6e-fef9-47ec-a7b7-99a89808b932" name="Выбрать сумму пополнения" isLeaf="false">
+            <elementDefinition Id="c1786d16-cfb2-40de-9c9b-f013d24177aa" />
+            <flowNodeTargets>
+              <controlFlow Id="418796db-7dc1-479a-ac27-4d5feffb4b96" isLeaf="false">
+                <activityFinalNodeMoniker Id="f04cd563-e028-4664-8e56-8b1d95d4fa30" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="da0e54b0-b58c-4e57-b5b8-6672c7c03b2d" />
+              </controlFlow>
+            </flowNodeTargets>
+            <pins>
+              <opaqueActionHasInputValues>
+                <inputPin Id="63712530-4569-4205-af78-5aaade2a55dd" name="Сумма на счету не ноль" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="3db0b92f-e241-424f-a6ed-55be4711256e" />
+                  <upperBound>
+                    <literalInteger Id="812034d0-1cfc-4309-a55a-1eab2e58d5d4" name="2147483647" value="2147483647">
+                      <elementDefinition Id="b4fab32c-a535-46f2-b166-adc3deff2714" />
+                    </literalInteger>
+                  </upperBound>
+                </inputPin>
+              </opaqueActionHasInputValues>
+              <opaqueActionHasOutputValues>
+                <outputPin Id="83497f32-d998-4a9a-8801-6552bcbed089" name="Сумма пополнения не ноль" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="180e58b9-9e56-40dd-9be1-7450465aae24" />
+                  <objectFlowTargets>
+                    <objectFlow Id="22ab46ec-b82f-4a2e-876f-c700870a74b8" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <inputPinMoniker Id="33bb1053-0869-45be-aab1-cd80b94977e0" LastKnownName="Интернет включён" />
+                      <elementDefinition Id="80395872-d401-4873-9e55-fbf6bf1715ca" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="7d780d07-8f88-49e2-a214-2e987ddd0088" name="2147483647" value="2147483647">
+                      <elementDefinition Id="f048d71e-6e18-4005-b7d7-ed218feec44f" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </opaqueActionHasOutputValues>
+            </pins>
+          </opaqueAction>
+          <acceptEventAction Id="b30b7c60-f5ce-4974-a443-ee11be60e4c6" name="Изменить кольчество денег на nfc-метке при посании ею устройства" isLeaf="false" isUnmarshall="false">
+            <elementDefinition Id="7303783e-9af7-4fb7-ba7d-84e5c8c99aef" />
+            <pins>
+              <acceptEventActionHasResults>
+                <outputPin Id="0d6965e2-13f7-40d7-902d-865ecd2a6277" name="Операция прошла успешно" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="c5eab9c0-cc5e-4d35-9a7e-a19fcb8bfbb7" />
+                  <objectFlowTargets>
+                    <objectFlow Id="21cc47ef-7a80-4239-b076-2b6fb39b4bc4" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <activityFinalNodeMoniker Id="f04cd563-e028-4664-8e56-8b1d95d4fa30" LastKnownName="ActivityFinal1" />
+                      <elementDefinition Id="0a767f52-45f8-46ac-ae1f-e28810d1f8ca" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="e5f871d0-b35f-481b-9e2c-6904bf7f1a88" name="2147483647" value="2147483647">
+                      <elementDefinition Id="c108c6aa-68d4-4be2-9895-33315adce5c2" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </acceptEventActionHasResults>
+              <acceptEventActionHasResults>
+                <outputPin Id="ff4a31aa-9fb6-4eef-8c19-57e5b6c8d7df" name="Операция произошла с ошибкой" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="a5e291ac-4a84-4406-b904-128b1e796ae5" />
+                  <objectFlowTargets>
+                    <objectFlow Id="17253d7a-c29f-4a5d-aede-59786dc33dba" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <inputPinMoniker Id="33bb1053-0869-45be-aab1-cd80b94977e0" LastKnownName="Интернет включён" />
+                      <elementDefinition Id="059175c7-60cc-4fb2-83c1-8d5cd4c88e32" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="4931de10-b0ad-401f-8f38-e6b6f031f8d4" name="2147483647" value="2147483647">
+                      <elementDefinition Id="56187932-c2d6-49c4-b8fe-4978fe31dd65" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </acceptEventActionHasResults>
+            </pins>
+          </acceptEventAction>
+          <sendSignalAction Id="5e154562-7161-4604-89a2-32b3349b907d" name="Отправка изменённой суммы счёта на сервер" isLeaf="false">
+            <elementDefinition Id="39edaf93-fd24-4e4a-a23c-103940b32bac" />
+            <pins>
+              <sendSignalActionHasTarget>
+                <inputPin Id="33bb1053-0869-45be-aab1-cd80b94977e0" name="Интернет включён" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="8026bf53-d0a6-43f0-8b79-6b2b45d245c0" />
+                  <upperBound>
+                    <literalInteger Id="33c99f57-6fa5-44ad-ab48-9e11db165a03" name="2147483647" value="2147483647">
+                      <elementDefinition Id="ab6422e4-4c1d-4d5b-8079-b42629ea9088" />
+                    </literalInteger>
+                  </upperBound>
+                </inputPin>
+              </sendSignalActionHasTarget>
+              <actionHasOutputsInternal>
+                <outputPin Id="375bdab9-54c1-4689-a72a-158c42aad5bd" name="Операция прошла успешно" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="9bef9514-a2c0-434f-a78d-36d277516c2b" />
+                  <objectFlowTargets>
+                    <objectFlow Id="db5128db-3822-46a2-af10-2c8541e98e42" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <acceptEventActionMoniker Id="b30b7c60-f5ce-4974-a443-ee11be60e4c6" LastKnownName="Изменить кольчество денег на nfc-метке при посании ею устройства" />
+                      <elementDefinition Id="1c5bb046-7e20-407d-a9ba-1c883b78d5e5" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="4173e6f2-687d-417d-9516-d6c80b13141c" name="2147483647" value="2147483647">
+                      <elementDefinition Id="3a6305c7-41dd-430b-b19b-24a47f4e539a" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </actionHasOutputsInternal>
+              <actionHasOutputsInternal>
+                <outputPin Id="2dd56dab-ead7-43a0-8adb-28c2f9200722" name="Операция завершилась с ошибкой" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="662d313f-b7be-498e-9be8-fe60ad89a807" />
+                  <objectFlowTargets>
+                    <objectFlow Id="8c247ec2-e481-4d21-be2e-8086823bd6eb" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <opaqueActionMoniker Id="dc22fe6e-fef9-47ec-a7b7-99a89808b932" LastKnownName="Выбрать сумму пополнения" />
+                      <elementDefinition Id="d9c5e405-8a6d-4ec0-add9-7ed89e1f3ceb" />
+                    </objectFlow>
+                    <objectFlow Id="95b9ef6d-04eb-4aa4-bea8-ef3a96043013" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <inputPinMoniker Id="33bb1053-0869-45be-aab1-cd80b94977e0" LastKnownName="Интернет включён" />
+                      <elementDefinition Id="7b8412b9-dc28-4039-9938-9c6863a55bdc" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="7a055fa4-bb96-49b7-b27b-9611301fb14e" name="2147483647" value="2147483647">
+                      <elementDefinition Id="28b03166-6249-4f4d-b0bf-2f78e8ec4553" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </actionHasOutputsInternal>
+            </pins>
+          </sendSignalAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="1c823cb4-b332-49a0-aa54-c9252c400547" name="ModelingProject">
+    <elementDefinition Id="a5645109-2517-40db-81e6-5ca557e52a5d" />
+    <profileInstances>
+      <packageHasProfileInstances Id="9b90dff2-d472-4141-ac60-82b09c4e1cdb">
+        <profileInstance Id="fa0acf78-7783-46f9-961e-9e8b17cb602f" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="50936a97-33d2-40d4-8f2f-386d49525148">
+        <profileInstance Id="d47f8590-f07b-411b-935e-d27ebee6a73b" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

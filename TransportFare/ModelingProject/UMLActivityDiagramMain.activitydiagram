@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="18e20766-3c9c-4e99-bf39-8bed8589a78e" name="Activity" linkedPackageId="2b28b4f1-36e4-487a-8ed0-eac71ba02e53" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="d92b6677-7fd2-420b-aa27-b2e14020b7fb">
+      <profileInstance Id="eae0441a-2cd3-45c7-9928-8d7cbe0567c2" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="bbf7e38b-1f68-4614-875e-f67d8fc26ca6">
+      <profileInstance Id="ac6b1f29-30d5-4b42-846c-634e8c9f983c" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="967d0fe1-9687-4425-801e-7a522b9f1507" name="Activity" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="5d29e690-0270-4916-adac-14906877eac7" />
+        <nodes>
+          <initialNode Id="f5f73033-6682-42f3-8e4f-c03de652debf" name="Initial1" isLeaf="false">
+            <elementDefinition Id="396595da-aa19-4d91-baeb-3d487d31d6c6" />
+            <flowNodeTargets>
+              <controlFlow Id="4a1d6ca7-9f22-4803-b36a-bdcaf93c5ddf" isLeaf="false">
+                <decisionNodeMoniker Id="c9ced1a1-474f-40a2-8534-1f49b0b0e09b" LastKnownName="Decision4" />
+                <elementDefinition Id="51657c2f-1190-4a0f-84e3-e010437168f8" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode Id="ddc5432e-e90f-411a-893e-84298995809c" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="f4d7913a-a59e-4e8c-a782-1b8d73b07582" />
+          </activityFinalNode>
+          <opaqueAction Id="8c4f0aa3-cbac-4fd6-9a00-c005f3ac024a" name="Выбрать элемент меню" isLeaf="false">
+            <elementDefinition Id="0746ba80-43de-49d3-a9b3-5022627db94e" />
+            <flowNodeTargets>
+              <controlFlow Id="d6cf3b2c-cb93-440c-852b-ed9b96c5f100" isLeaf="false">
+                <decisionNodeMoniker Id="2d2ba07e-7668-43f7-b4b1-00133047b8a4" LastKnownName="Decision1" />
+                <elementDefinition Id="18eebdc9-d2ff-46e7-92ef-e99e98115bd2" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="2d2ba07e-7668-43f7-b4b1-00133047b8a4" name="Decision1" isLeaf="false">
+            <elementDefinition Id="c5236b93-826c-4e87-bbf6-1026bd827373" />
+            <flowNodeTargets>
+              <controlFlow Id="a82e3bd0-6b68-4885-bf3a-98227057cde4" isLeaf="false">
+                <callBehaviorActionMoniker Id="f38a040f-7f8f-4993-bca5-b4b534147e75" LastKnownName="Пополнить счёт и nfc-метку" />
+                <elementDefinition Id="715fe736-5cfe-4ec9-b453-84d5d97c2e7c" />
+              </controlFlow>
+              <controlFlow Id="723934d4-d328-4791-bf5d-2bc850b7a283" isLeaf="false">
+                <callBehaviorActionMoniker Id="92862511-5390-4dcf-b5f4-c86561388052" LastKnownName="Посмотреть желаемые маршруты и водителей на них" />
+                <elementDefinition Id="9d4c33d9-2b18-42b6-96af-7c0e4e9e5a19" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <mergeNode Id="97fccf51-e550-4da5-844b-9ef19858b0fb" name="Merge1" isLeaf="false">
+            <elementDefinition Id="b66fc7c2-ac2a-47a8-abb2-3583fb9613bf" />
+            <flowNodeTargets>
+              <controlFlow Id="e063eae3-d0c8-4710-8ca1-2343950f141d" isLeaf="false">
+                <activityFinalNodeMoniker Id="ddc5432e-e90f-411a-893e-84298995809c" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="95f67faa-4a90-472a-9f5f-e8dc80c40118" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+          <callBehaviorAction Id="92862511-5390-4dcf-b5f4-c86561388052" name="Посмотреть желаемые маршруты и водителей на них" isLeaf="false">
+            <elementDefinition Id="92c90f98-9c97-49c1-8c67-5a4f068485cf" />
+            <flowNodeTargets>
+              <controlFlow Id="2f6da6b0-1fa4-47ea-b5ac-7a55f4661b6b" isLeaf="false">
+                <opaqueActionMoniker Id="8c4f0aa3-cbac-4fd6-9a00-c005f3ac024a" LastKnownName="Выбрать элемент меню" />
+                <elementDefinition Id="bc5d6a5d-2f8d-4fd0-add9-b053f4415761" />
+              </controlFlow>
+              <controlFlow Id="2050dd3d-e8bf-463f-906e-8fbf7aea70e6" isLeaf="false">
+                <mergeNodeMoniker Id="97fccf51-e550-4da5-844b-9ef19858b0fb" LastKnownName="Merge1" />
+                <elementDefinition Id="4c87d265-ea2a-4d9d-a533-1c3f674a674a" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker Id="967d0fe1-9687-4425-801e-7a522b9f1507" LastKnownName="Activity" />
+            </behavior>
+          </callBehaviorAction>
+          <callBehaviorAction Id="f38a040f-7f8f-4993-bca5-b4b534147e75" name="Пополнить счёт и nfc-метку" isLeaf="false">
+            <elementDefinition Id="1394ebca-4cdb-4577-ba5d-0a47f96bf136" />
+            <flowNodeTargets>
+              <controlFlow Id="5af43207-038e-4ce5-badd-1b6a59ce2e33" isLeaf="false">
+                <opaqueActionMoniker Id="8c4f0aa3-cbac-4fd6-9a00-c005f3ac024a" LastKnownName="Выбрать элемент меню" />
+                <elementDefinition Id="ae27e4d3-b901-4e00-b907-ec30d28ad1a5" />
+              </controlFlow>
+              <controlFlow Id="1cec336a-a91d-4540-8032-8310857e7b97" isLeaf="false">
+                <mergeNodeMoniker Id="97fccf51-e550-4da5-844b-9ef19858b0fb" LastKnownName="Merge1" />
+                <elementDefinition Id="79fdae6e-8cca-42dd-9db9-c87bea601397" />
+              </controlFlow>
+            </flowNodeTargets>
+            <behavior>
+              <activityMoniker Id="967d0fe1-9687-4425-801e-7a522b9f1507" LastKnownName="Activity" />
+            </behavior>
+          </callBehaviorAction>
+          <decisionNode Id="c9ced1a1-474f-40a2-8534-1f49b0b0e09b" name="Decision4" isLeaf="false">
+            <elementDefinition Id="67fe28e4-c6e7-4c62-bfce-8fdf18ae1160" />
+            <flowNodeTargets>
+              <controlFlow Id="a4cccc7c-9505-4ac4-9fb1-6c367d8cfc1b" isLeaf="false">
+                <mergeNodeMoniker Id="97fccf51-e550-4da5-844b-9ef19858b0fb" LastKnownName="Merge1" />
+                <elementDefinition Id="e1ce9fc1-433e-4c50-a8f7-de99b3707c68" />
+              </controlFlow>
+              <controlFlow Id="2972a5c7-cce4-4d41-8ad2-04508de8b54d" isLeaf="false">
+                <opaqueActionMoniker Id="8c4f0aa3-cbac-4fd6-9a00-c005f3ac024a" LastKnownName="Выбрать элемент меню" />
+                <elementDefinition Id="6dc34da8-1119-45c2-a67f-a3ce0f6cf126" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="2b28b4f1-36e4-487a-8ed0-eac71ba02e53" name="ModelingProject">
+    <elementDefinition Id="a5645109-2517-40db-81e6-5ca557e52a5d" />
+  </package>
+</activityRootModel>

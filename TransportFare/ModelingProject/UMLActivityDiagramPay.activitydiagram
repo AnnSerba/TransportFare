@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="ede32362-5c81-4ca2-b5c0-f4207e4475d6" name="ActivityPay" linkedPackageId="02563d48-12d4-4401-a337-2c139bb2ce8d" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="e995d373-ef72-477c-9867-701a6fc68ed4">
+      <profileInstance Id="103b1326-c416-4f53-816f-1f2629dfdfcf" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="c827c58c-0b7b-4f8f-bf8e-ceac126e56a7">
+      <profileInstance Id="0de3e3d5-3762-4a10-b5f1-2bc57982d20c" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="b011eafc-7699-42d7-981c-ee8e2f4a89d7" name="ActivityPay" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="7da759fd-c9fa-4ae8-a65f-482b3c33bf3a" />
+        <nodes>
+          <initialNode Id="5a4c41c4-eb21-45d0-9aab-14c62531b826" name="Initial1" isLeaf="false">
+            <elementDefinition Id="bd6e9494-6392-48d5-83f1-d71f1b4ab952" />
+            <flowNodeTargets>
+              <controlFlow Id="7404553b-7a95-4ce8-9c3d-3497b9ae184d" isLeaf="false">
+                <decisionNodeMoniker Id="6e84ae0a-034f-468e-b0a1-7e006b1d0e52" LastKnownName="Decision1" />
+                <elementDefinition Id="b487cab9-b918-4f1e-b286-1099d52537ad" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode Id="1cb402f7-c511-42d8-bdcf-1b11d13308d5" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="b938907c-18c4-4c0b-a8f9-51d8d4428547" />
+          </activityFinalNode>
+          <decisionNode Id="6e84ae0a-034f-468e-b0a1-7e006b1d0e52" name="Decision1" isLeaf="false">
+            <elementDefinition Id="a612826f-e861-41e1-aa26-d79962be2296" />
+            <flowNodeTargets>
+              <controlFlow Id="3521bc24-860c-4f61-96c1-5181c22efc49" isLeaf="false">
+                <callBehaviorActionMoniker Id="9ccdd040-4f7a-4508-9349-438aed71f5e2" LastKnownName="Авторезироватся" />
+                <elementDefinition Id="2e223072-5577-471f-872c-b80bd4038262" />
+              </controlFlow>
+              <controlFlow Id="d0b5c1fd-e95c-4f55-9800-a5b918aa238b" isLeaf="false">
+                <callBehaviorActionMoniker Id="aab64217-5c24-4673-bfe5-dca8a4bba5ca" LastKnownName="Зарегистрироватся" />
+                <elementDefinition Id="91f742df-b60a-49d3-a6a4-8a399094d518" />
+              </controlFlow>
+              <controlFlow Id="926e5b11-c0ef-4838-9d55-d3ab86a7981d" isLeaf="false">
+                <mergeNodeMoniker Id="76674122-4c3e-4780-b865-2893340dcaa0" LastKnownName="Merge1" />
+                <elementDefinition Id="cc74fd32-0ba4-44b2-9c8e-268001fa80bf" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callBehaviorAction Id="9ccdd040-4f7a-4508-9349-438aed71f5e2" name="Авторезироватся" isLeaf="false">
+            <elementDefinition Id="3ab49e53-e475-4bd0-b848-aee773967e2e" />
+            <flowNodeTargets>
+              <controlFlow Id="03d0584d-8164-46a5-a177-2234ac4d943e" isLeaf="false">
+                <callBehaviorActionMoniker Id="aab64217-5c24-4673-bfe5-dca8a4bba5ca" LastKnownName="Зарегистрироватся" />
+                <elementDefinition Id="9d7db34a-8b9d-4547-aa51-b9773847d44e" />
+              </controlFlow>
+              <controlFlow Id="fde25ccb-465e-4f5b-a963-a81aee390d4d" isLeaf="false">
+                <decisionNodeMoniker Id="799abd5a-188e-4f50-822e-cac90e7c1103" LastKnownName="Decision2" />
+                <elementDefinition Id="28003fba-5549-4e1c-aad1-9d5ef95bffb7" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <callBehaviorAction Id="aab64217-5c24-4673-bfe5-dca8a4bba5ca" name="Зарегистрироватся" isLeaf="false">
+            <elementDefinition Id="16372784-f924-47c8-ba44-1ef33ea886bd" />
+            <flowNodeTargets>
+              <controlFlow Id="fca67240-f304-4ffa-af6c-24d925cdd617" isLeaf="false">
+                <callBehaviorActionMoniker Id="9ccdd040-4f7a-4508-9349-438aed71f5e2" LastKnownName="Авторезироватся" />
+                <elementDefinition Id="e6fc4df0-0b6c-4129-8e4f-1e36c4ef22dd" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <decisionNode Id="799abd5a-188e-4f50-822e-cac90e7c1103" name="Decision2" isLeaf="false">
+            <elementDefinition Id="0e5f43f5-7d76-4b88-af91-11f5f18dd4c5" />
+            <flowNodeTargets>
+              <controlFlow Id="377bd400-7126-40a5-a30d-fe5c59a5639e" isLeaf="false">
+                <callBehaviorActionMoniker Id="9152ef79-25c6-4d51-b574-5f39f379bf84" LastKnownName="Пополнить счёт" />
+                <elementDefinition Id="8305b1e7-9c59-4fc7-83ef-0d4d5cc2b03f" />
+              </controlFlow>
+              <controlFlow Id="20e49203-4396-4790-9a0f-de773f45d567" isLeaf="false">
+                <callBehaviorActionMoniker Id="2a9d2b7e-006b-4cf8-ad54-379c7c85b566" LastKnownName="Пополнить nfc-метку" />
+                <elementDefinition Id="0244ab66-73c2-4cd8-b87e-ee7505ac8b38" />
+              </controlFlow>
+              <controlFlow Id="761ad308-1eeb-42a0-8ff9-c27810ddabd5" isLeaf="false">
+                <mergeNodeMoniker Id="76674122-4c3e-4780-b865-2893340dcaa0" LastKnownName="Merge1" />
+                <elementDefinition Id="8222b099-ff30-4586-8fea-0009e7906e9f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <callBehaviorAction Id="2a9d2b7e-006b-4cf8-ad54-379c7c85b566" name="Пополнить nfc-метку" isLeaf="false">
+            <elementDefinition Id="67f63a27-ac3f-4e64-b993-9e6bcdb63692" />
+            <flowNodeTargets>
+              <controlFlow Id="5f795e6d-6bd8-4a0b-9b20-af4457442fce" isLeaf="false">
+                <mergeNodeMoniker Id="76674122-4c3e-4780-b865-2893340dcaa0" LastKnownName="Merge1" />
+                <elementDefinition Id="d71af2e7-f1d1-499e-a315-a69681fdfb90" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <callBehaviorAction Id="9152ef79-25c6-4d51-b574-5f39f379bf84" name="Пополнить счёт" isLeaf="false">
+            <elementDefinition Id="5bda84fc-837b-4c31-b6b6-d7f0c39ce544" />
+            <flowNodeTargets>
+              <controlFlow Id="1b546909-4cb4-485f-b5fe-9f46b4a8936c" isLeaf="false">
+                <mergeNodeMoniker Id="76674122-4c3e-4780-b865-2893340dcaa0" LastKnownName="Merge1" />
+                <elementDefinition Id="c1aa9806-a36d-4488-ba06-a11c5842a068" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <mergeNode Id="76674122-4c3e-4780-b865-2893340dcaa0" name="Merge1" isLeaf="false">
+            <elementDefinition Id="084e8ee7-2168-46c4-81ce-371cca26bcef" />
+            <flowNodeTargets>
+              <controlFlow Id="d621cf3f-8876-42ff-8420-4322a1c53d99" isLeaf="false">
+                <activityFinalNodeMoniker Id="1cb402f7-c511-42d8-bdcf-1b11d13308d5" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="606e0d11-d20f-4eea-ab32-7a2bfceed597" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="02563d48-12d4-4401-a337-2c139bb2ce8d" name="ModelingProject">
+    <elementDefinition Id="a5645109-2517-40db-81e6-5ca557e52a5d" />
+  </package>
+</activityRootModel>

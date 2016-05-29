@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLActivityDiagramAddNFCtag">
+  <activityRootModelMoniker Id="7d761d0c-cd8b-4094-8cba-0194fa18d69d" />
+  <nestedChildShapes>
+    <initialNodeShape Id="eacc5ac3-3444-4c29-a95d-81f7e36c9387" absoluteBounds="2.75, 1.75, 0.125, 0.125" customColor="89, 89, 89">
+      <initialNodeMoniker Id="6782d14e-5943-4e91-9659-9defa00b030c" LastKnownName="Initial1" />
+    </initialNodeShape>
+    <activityFinalNodeShape Id="c19e0671-fccf-44b6-a11f-c897a23d5630" absoluteBounds="2.875, 5.25, 0.125, 0.125" customColor="89, 89, 89">
+      <activityFinalNodeMoniker Id="f04cd563-e028-4664-8e56-8b1d95d4fa30" LastKnownName="ActivityFinal1" />
+    </activityFinalNodeShape>
+    <actionShape Id="3c0b0376-5e9b-45ef-ab8a-a33f35868444" absoluteBounds="1.75, 2.25, 2.25, 0.375" customColor="161, 199, 231">
+      <opaqueActionMoniker Id="dc22fe6e-fef9-47ec-a7b7-99a89808b932" LastKnownName="Выбрать сумму пополнения" />
+      <relativeChildShapes>
+        <inputPinShape Id="1243f01d-2839-47a8-a1f6-a18b78d598bd" absoluteBounds="2.75, 2.1, 0.15, 0.15">
+          <inputPinMoniker Id="63712530-4569-4205-af78-5aaade2a55dd" LastKnownName="Сумма на счету не ноль" />
+          <relativeChildShapes />
+          <moveableDecoratorHostShapes>
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="1.4375, 2.0312500000000004, 1.2941983938217163, 0.14800345897674561" shapeFieldName="Name" />
+          </moveableDecoratorHostShapes>
+        </inputPinShape>
+        <outputPinShape Id="b985dbd5-8adb-4b43-93df-6bd970789e09" absoluteBounds="2.75, 2.625, 0.15, 0.15">
+          <outputPinMoniker Id="83497f32-d998-4a9a-8801-6552bcbed089" LastKnownName="Сумма пополнения не ноль" />
+          <relativeChildShapes />
+          <moveableDecoratorHostShapes>
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="1.25, 2.6875, 1.4791485071182251, 0.14800345897674561" shapeFieldName="Name" />
+          </moveableDecoratorHostShapes>
+        </outputPinShape>
+      </relativeChildShapes>
+    </actionShape>
+    <objectFlowConnector edgePoints="[(2.825 : 1.87373724356958); (2.825 : 2.1)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Caller" customColor="Black">
+      <objectFlowMoniker Id="6c59977e-4006-4cd8-b55c-f46bbbf558ca" />
+      <relativeChildShapes />
+      <nodes>
+        <initialNodeShapeMoniker Id="eacc5ac3-3444-4c29-a95d-81f7e36c9387" />
+        <inputPinShapeMoniker Id="1243f01d-2839-47a8-a1f6-a18b78d598bd" />
+      </nodes>
+    </objectFlowConnector>
+    <acceptEventActionShape Id="7f53f4fd-751f-4fa0-8d47-826d64cd0f64" absoluteBounds="1.75, 4.25, 2.25, 0.5" customColor="185, 212, 238">
+      <acceptEventActionMoniker Id="b30b7c60-f5ce-4974-a443-ee11be60e4c6" LastKnownName="Изменить кольчество денег на nfc-метке при посании ею устройства" />
+      <relativeChildShapes>
+        <outputPinShape Id="95322f96-7319-4903-8a75-5722142b5591" absoluteBounds="2.8125, 4.75, 0.15, 0.15">
+          <outputPinMoniker Id="0d6965e2-13f7-40d7-902d-865ecd2a6277" LastKnownName="Операция прошла успешно" />
+          <relativeChildShapes />
+        </outputPinShape>
+        <outputPinShape Id="eded9a29-a710-4710-a758-8493c0af17e2" absoluteBounds="4, 4.40625, 0.15, 0.15">
+          <outputPinMoniker Id="ff4a31aa-9fb6-4eef-8c19-57e5b6c8d7df" LastKnownName="Операция произошла с ошибкой" />
+          <relativeChildShapes />
+          <moveableDecoratorHostShapes>
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3.375, 4.0625, 1.7602357864379883, 0.14800345897674561" shapeFieldName="Name" />
+          </moveableDecoratorHostShapes>
+        </outputPinShape>
+      </relativeChildShapes>
+    </acceptEventActionShape>
+    <controlFlowConnector edgePoints="[(4 : 2.47321428571429); (5.33333333333333 : 2.47321428571429); (5.33333333333333 : 5.32967007049359); (2.99759524672755 : 5.32967007049359)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <controlFlowMoniker Id="418796db-7dc1-479a-ac27-4d5feffb4b96" />
+      <relativeChildShapes />
+      <nodes>
+        <actionShapeMoniker Id="3c0b0376-5e9b-45ef-ab8a-a33f35868444" />
+        <activityFinalNodeShapeMoniker Id="c19e0671-fccf-44b6-a11f-c897a23d5630" />
+      </nodes>
+    </controlFlowConnector>
+    <sendSignalActionShape Id="cda1ffbb-3079-49bc-9390-6275008be56e" absoluteBounds="1.75, 3.375, 2.25, 0.5" customColor="185, 212, 238">
+      <sendSignalActionMoniker Id="5e154562-7161-4604-89a2-32b3349b907d" LastKnownName="Отправка изменённой суммы счёта на сервер" />
+      <relativeChildShapes>
+        <inputPinShape Id="080aa100-909e-4a41-b0ef-edef010f1fce" absoluteBounds="2.75, 3.225, 0.15, 0.15">
+          <inputPinMoniker Id="33bb1053-0869-45be-aab1-cd80b94977e0" LastKnownName="Интернет включён" />
+          <relativeChildShapes />
+          <moveableDecoratorHostShapes>
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3, 3.125, 1.0234736204147339, 0.14800345897674561" shapeFieldName="Name" />
+          </moveableDecoratorHostShapes>
+        </inputPinShape>
+        <outputPinShape Id="eb83311e-61f8-43da-9824-ed584f089d16" absoluteBounds="2.78125, 3.875, 0.15, 0.15">
+          <outputPinMoniker Id="375bdab9-54c1-4689-a72a-158c42aad5bd" LastKnownName="Операция прошла успешно" />
+          <relativeChildShapes />
+          <moveableDecoratorHostShapes>
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="1.2500000000000002, 3.9375, 1.4806133508682251, 0.14800345897674561" shapeFieldName="Name" />
+          </moveableDecoratorHostShapes>
+        </outputPinShape>
+        <outputPinShape Id="a7b87eac-577d-4c46-99c0-f8f9bfc03c19" absoluteBounds="1.90625, 3.225, 0.15, 0.15">
+          <outputPinMoniker Id="2dd56dab-ead7-43a0-8adb-28c2f9200722" LastKnownName="Операция завершилась с ошибкой" />
+          <relativeChildShapes />
+          <moveableDecoratorHostShapes>
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="0.125, 3.0625, 1.8618525266647339, 0.14800345897674561" shapeFieldName="Name" />
+          </moveableDecoratorHostShapes>
+        </outputPinShape>
+      </relativeChildShapes>
+    </sendSignalActionShape>
+    <objectFlowConnector edgePoints="[(2.825 : 2.775); (2.825 : 3.225)]" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <objectFlowMoniker Id="22ab46ec-b82f-4a2e-876f-c700870a74b8" />
+      <relativeChildShapes />
+      <nodes>
+        <outputPinShapeMoniker Id="b985dbd5-8adb-4b43-93df-6bd970789e09" />
+        <inputPinShapeMoniker Id="080aa100-909e-4a41-b0ef-edef010f1fce" />
+      </nodes>
+    </objectFlowConnector>
+    <objectFlowConnector edgePoints="[(2.85625 : 4.025); (2.85625 : 4.25)]" fixedFrom="Caller" fixedTo="Algorithm" customColor="Black">
+      <objectFlowMoniker Id="db5128db-3822-46a2-af10-2c8541e98e42" />
+      <relativeChildShapes />
+      <nodes>
+        <outputPinShapeMoniker Id="eb83311e-61f8-43da-9824-ed584f089d16" />
+        <acceptEventActionShapeMoniker Id="7f53f4fd-751f-4fa0-8d47-826d64cd0f64" />
+      </nodes>
+    </objectFlowConnector>
+    <objectFlowConnector edgePoints="[(1.90625 : 3.3); (0.0895833333333335 : 3.3); (0.0895833333333335 : 2.4375); (1.75 : 2.4375)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <objectFlowMoniker Id="8c247ec2-e481-4d21-be2e-8086823bd6eb" />
+      <relativeChildShapes />
+      <nodes>
+        <outputPinShapeMoniker Id="a7b87eac-577d-4c46-99c0-f8f9bfc03c19" />
+        <actionShapeMoniker Id="3c0b0376-5e9b-45ef-ab8a-a33f35868444" />
+      </nodes>
+    </objectFlowConnector>
+    <objectFlowConnector edgePoints="[(2.8875 : 4.9); (2.8875 : 5.275)]" fixedFrom="Caller" fixedTo="Algorithm" customColor="Black">
+      <objectFlowMoniker Id="21cc47ef-7a80-4239-b076-2b6fb39b4bc4" />
+      <relativeChildShapes />
+      <nodes>
+        <outputPinShapeMoniker Id="95322f96-7319-4903-8a75-5722142b5591" />
+        <activityFinalNodeShapeMoniker Id="c19e0671-fccf-44b6-a11f-c897a23d5630" />
+      </nodes>
+    </objectFlowConnector>
+    <objectFlowConnector edgePoints="[(4.15 : 4.48125); (5.1625 : 4.48125); (5.1625 : 2.925); (2.825 : 2.925); (2.825 : 3.225)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <objectFlowMoniker Id="17253d7a-c29f-4a5d-aede-59786dc33dba" />
+      <relativeChildShapes />
+      <nodes>
+        <outputPinShapeMoniker Id="eded9a29-a710-4710-a758-8493c0af17e2" />
+        <inputPinShapeMoniker Id="080aa100-909e-4a41-b0ef-edef010f1fce" />
+      </nodes>
+    </objectFlowConnector>
+    <objectFlowConnector edgePoints="[(1.98125 : 3.225); (1.98125 : 2.99739583333333); (2.825 : 2.99739583333333); (2.825 : 3.225)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+      <objectFlowMoniker Id="95b9ef6d-04eb-4aa4-bea8-ef3a96043013" />
+      <relativeChildShapes />
+      <nodes>
+        <outputPinShapeMoniker Id="a7b87eac-577d-4c46-99c0-f8f9bfc03c19" />
+        <inputPinShapeMoniker Id="080aa100-909e-4a41-b0ef-edef010f1fce" />
+      </nodes>
+    </objectFlowConnector>
+  </nestedChildShapes>
+</activityDiagram>

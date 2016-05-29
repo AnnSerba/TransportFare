@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="e7c0350b-9c08-480c-aa5f-98f7ac25e83d" name="ActivityAuthReg" linkedPackageId="67bb0ebc-c007-4541-b06f-e6cce0337738" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="dd7603f5-565d-4e80-9c2f-da60f32dc5c3" name="ActivityAuthReg" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="baad2387-33af-4802-bcda-399173d9861c" />
+        <nodes>
+          <initialNode Id="1a222aa7-23c1-4177-a116-200a65eccc49" name="Initial1" isLeaf="false">
+            <elementDefinition Id="07cbc0f7-8f67-4a7d-ae37-23b9c6a45a57" />
+            <objectFlowTargets>
+              <objectFlow Id="f30c59da-94d8-4f3e-a049-16e34d2a2121" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <inputPinMoniker Id="605eaa43-d854-4ce6-81d9-ef9246177312" LastKnownName="Данные пользователя" />
+                <elementDefinition Id="b0c18d2c-d6fe-4d13-a4f0-98ff865dec98" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <activityFinalNode Id="08377f4c-ff0c-47b6-8e9b-a85593cf38e4" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="3ad11b24-0fba-4d55-ae45-454ccdb04d05" />
+          </activityFinalNode>
+          <opaqueAction Id="dd6e33b3-5eef-4b79-8254-dddd786ef17c" name="Проверить введённые данные" isLeaf="false">
+            <elementDefinition Id="18ad8a50-8519-44ca-9c90-bca4d3f24632" />
+            <pins>
+              <opaqueActionHasInputValues>
+                <inputPin Id="605eaa43-d854-4ce6-81d9-ef9246177312" name="Данные пользователя" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="97da5ea2-5c3d-41eb-85ad-dfd278608b91" />
+                  <upperBound>
+                    <literalInteger Id="44957ff4-f010-4497-8399-792ca0cda75e" name="2147483647" value="2147483647">
+                      <elementDefinition Id="1350195a-3f8a-4c63-977c-b3ccf6a1b780" />
+                    </literalInteger>
+                  </upperBound>
+                </inputPin>
+              </opaqueActionHasInputValues>
+              <opaqueActionHasOutputValues>
+                <outputPin Id="dd176912-3de8-4d4f-b95f-c30355514f99" name="Данные прошли проверку" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="864bba4b-211d-48fe-83f1-37b36e24f3cf" />
+                  <objectFlowTargets>
+                    <objectFlow Id="78c26699-acf6-4c9b-bbb9-fff3b90892ad" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <sendSignalActionMoniker Id="9b774128-1d60-43c9-9712-61807f82810e" LastKnownName="Отправка данных на сервер" />
+                      <elementDefinition Id="2bc0f756-a672-40c4-8c14-396b7ef830f3" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="a4054f76-fc54-4356-ad77-db70f3eceb91" name="2147483647" value="2147483647">
+                      <elementDefinition Id="75142f53-05e2-47bb-9bfa-b31360639457" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </opaqueActionHasOutputValues>
+              <opaqueActionHasOutputValues>
+                <outputPin Id="80bf0753-99e5-4e4b-b6d0-ccff22bf113b" name="Данные не прошли проверку" isLeaf="false" ordering="Unordered" isControlType="false" isControl="false">
+                  <elementDefinition Id="b144e3d3-7c0a-4bb9-8d93-188966d66b8f" />
+                  <objectFlowTargets>
+                    <objectFlow Id="2622a23c-f104-4338-9b6f-cd43b981317e" isLeaf="false" isMulticast="false" isMultireceive="false">
+                      <objectNodeMoniker Id="dd361bb5-e86f-4bfc-a51e-a0207021025d" LastKnownName="Ошибка" />
+                      <elementDefinition Id="a7226d42-ded5-4b5f-a9d8-e08723935a7b" />
+                    </objectFlow>
+                  </objectFlowTargets>
+                  <upperBound>
+                    <literalInteger Id="5341ff6d-c7d3-4418-a17d-0555db8b34d6" name="2147483647" value="2147483647">
+                      <elementDefinition Id="29fd82f0-1ac0-4602-9fc1-ee22c4e09211" />
+                    </literalInteger>
+                  </upperBound>
+                </outputPin>
+              </opaqueActionHasOutputValues>
+            </pins>
+          </opaqueAction>
+          <sendSignalAction Id="9b774128-1d60-43c9-9712-61807f82810e" name="Отправка данных на сервер" isLeaf="false">
+            <elementDefinition Id="08842006-6166-4091-8bcf-1c79fa293237" />
+            <flowNodeTargets>
+              <controlFlow Id="7809885a-275d-4424-93ee-d5ac6a5c9c2b" isLeaf="false">
+                <acceptEventActionMoniker Id="44f79fa9-bad2-4ca8-a9aa-b1bbcf29f57f" LastKnownName="Получение ответа" />
+                <elementDefinition Id="953c7a55-c7fb-4d32-966f-1600ca38f20d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </sendSignalAction>
+          <acceptEventAction Id="44f79fa9-bad2-4ca8-a9aa-b1bbcf29f57f" name="Получение ответа" isLeaf="false" isUnmarshall="false">
+            <elementDefinition Id="6c45724a-3f38-4554-a884-d11b554c558f" />
+            <objectFlowTargets>
+              <objectFlow Id="596f577b-4bc0-412b-847c-e66a6a543bca" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <objectNodeMoniker Id="606946ca-b3d0-498f-9aa4-903d1b1df3dc" LastKnownName="Успех" />
+                <elementDefinition Id="8d1c6334-533e-4182-b06b-96cd264c46c7" />
+              </objectFlow>
+            </objectFlowTargets>
+          </acceptEventAction>
+          <objectNode Id="dd361bb5-e86f-4bfc-a51e-a0207021025d" name="Ошибка" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="c43a0469-4860-4975-b5cd-84548ba213a5" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="65c6e071-0023-4b01-8d96-2b64b5bf7b43" LastKnownName="Boolean" />
+            </type_NamedElement>
+            <objectFlowTargets>
+              <objectFlow Id="73fe5f2a-f0ad-4e2c-8d09-37602c83eb52" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <activityFinalNodeMoniker Id="08377f4c-ff0c-47b6-8e9b-a85593cf38e4" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="7d575b6d-07e0-400b-a4a2-705bc156cac8" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger Id="e96e9e3e-8cb5-45c3-9a1d-c584e5cec20c" name="2147483647" value="2147483647">
+                <elementDefinition Id="382db076-72d1-44af-b01f-14c20e2a6a14" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <objectNode Id="606946ca-b3d0-498f-9aa4-903d1b1df3dc" name="Успех" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="dad9f4f0-4a13-4eaf-9138-1f0f31df2643" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="5b31367b-9884-4780-b7c1-9aaa27d178e2" LastKnownName="Boolean" />
+            </type_NamedElement>
+            <objectFlowTargets>
+              <objectFlow Id="c552fab2-15df-4582-86d8-f30d407ba49c" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <activityFinalNodeMoniker Id="08377f4c-ff0c-47b6-8e9b-a85593cf38e4" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="5e55f211-31b3-4bb6-a6e2-03e19f0be34d" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger Id="3438d66c-48e0-4156-abe2-5b4fe341e059" name="2147483647" value="2147483647">
+                <elementDefinition Id="633ef72b-9303-4fc6-aa61-afe22a40fd6f" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+    <packageHasNamedElement>
+      <referencedType Id="c4112e0d-86a8-4154-80ed-fdedad6a5b29" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2c836e07-8c07-4a4a-a6ab-bff92071dff8" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="65c6e071-0023-4b01-8d96-2b64b5bf7b43" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="5b31367b-9884-4780-b7c1-9aaa27d178e2" name="Boolean" isAbstract="false" isLeaf="false" cachedFullName="Boolean">
+        <elementDefinition Id="8943dc84-709e-4f62-b15a-a3273aa6f165" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="67bb0ebc-c007-4541-b06f-e6cce0337738" name="ModelingProject">
+    <elementDefinition Id="a5645109-2517-40db-81e6-5ca557e52a5d" />
+    <profileInstances>
+      <packageHasProfileInstances Id="5c847dbe-ac7c-4dfd-9a12-dd1a05d222a3">
+        <profileInstance Id="e36038ed-f058-4517-ab72-24768c84065f" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="c89cf3f4-a211-4876-b025-54e876f52f68">
+        <profileInstance Id="823c1999-42f4-4906-979f-35edc323a675" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

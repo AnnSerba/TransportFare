@@ -43,7 +43,6 @@
         <Setter Property="HorizontalAlignment" Value="Right"/>
     </Style>
     <Style x:Key="styleSliderSummPay" TargetType="Slider">
-        <Setter Property="Margin" Value="20,0"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="15"/>

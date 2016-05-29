@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="6f06a525-effc-418f-8847-5b2092175384" name="ActivityMap" linkedPackageId="1d7160c0-8fbe-4640-bcbb-3d1927ada894" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="c9e2b039-a0c7-4908-ac6c-15f119ec323d" name="ActivityMap" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="530c73ae-79a0-40a8-ab3d-021a7c4ec59e" />
+        <nodes>
+          <initialNode Id="724316f2-cdb3-4b43-9b34-79dd1f571095" name="Initial1" isLeaf="false">
+            <elementDefinition Id="fbb3ec8f-3ca6-443f-a07d-dd1c5a353484" />
+            <flowNodeTargets>
+              <controlFlow Id="5fd9364e-4943-4deb-b655-1f1cd177e2a4" isLeaf="false">
+                <forkNodeMoniker Id="c1929d5e-dbf9-4ea5-b8f9-67312eae1cef" LastKnownName="Fork1" />
+                <elementDefinition Id="9297a90f-fa31-43d3-b886-9c1f54e930fb" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityFinalNode Id="059ed50f-e729-4b87-9290-9c100cae9464" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="74273b5a-5a64-4804-a0af-ee5b1c11b809" />
+          </activityFinalNode>
+          <forkNode Id="c1929d5e-dbf9-4ea5-b8f9-67312eae1cef" name="Fork1" isLeaf="false">
+            <elementDefinition Id="b9e327e1-df0c-4d1c-86bf-57737160ff83" />
+            <flowNodeTargets>
+              <controlFlow Id="e30f498e-ec52-443e-8a9c-591d50f9ce6a" isLeaf="false">
+                <opaqueActionMoniker Id="75d512cb-a318-4d1a-8013-69292274e12d" LastKnownName="Просмотр карты" />
+                <elementDefinition Id="ada9093e-81ef-469a-b4aa-87e953a67ebe" />
+              </controlFlow>
+              <controlFlow Id="98bd79d6-f574-42dd-a310-4b4c39e681d4" isLeaf="false">
+                <acceptEventActionMoniker Id="7afbcf5b-d1ff-4272-a716-9fa536dd8a7e" LastKnownName="Принять геоданные от спутников" />
+                <elementDefinition Id="a38e597f-b50a-4bfc-b175-031b52fd89b5" />
+              </controlFlow>
+              <controlFlow Id="87bb6be9-78e0-4176-9a2a-e7ff0054f3e1" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="86ee5b9c-b359-4083-9c75-dc31af1f35e4" />
+              </controlFlow>
+              <controlFlow Id="9c81cec1-cbd5-425c-9370-92a285d10904" isLeaf="false">
+                <callBehaviorActionMoniker Id="eaee7595-97e5-493d-933f-cc18e7c01756" LastKnownName="Загрузка данных о городах с сервера" />
+                <elementDefinition Id="bc4fd72d-3191-4589-8ee3-616606b12576" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <opaqueAction Id="75d512cb-a318-4d1a-8013-69292274e12d" name="Просмотр карты" isLeaf="false">
+            <elementDefinition Id="e6f4ce47-baab-48b9-b095-e328d926ddef" />
+            <flowNodeTargets>
+              <controlFlow Id="ccafb1fb-cc72-46a2-aaa2-4bb88d24a9dd" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="55c64572-0dd6-4449-86a1-bd854b4cff57" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <acceptEventAction Id="0e177406-a4f9-4b20-92f8-ed0642643f32" name="Принять геоданные от wifi" isLeaf="false" isUnmarshall="false">
+            <elementDefinition Id="07863ca5-d7ce-4f79-981a-0c785a5efe8c" />
+            <flowNodeTargets>
+              <controlFlow Id="ec50c217-6524-4f55-9ec1-cde02ad01d8d" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="ec185dc0-8c7c-44c6-b691-afd91ee48f0c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </acceptEventAction>
+          <acceptEventAction Id="7afbcf5b-d1ff-4272-a716-9fa536dd8a7e" name="Принять геоданные от спутников" isLeaf="false" isUnmarshall="false">
+            <elementDefinition Id="6cace971-2555-48c0-8c4c-fd1a255a7588" />
+            <flowNodeTargets>
+              <controlFlow Id="014af5bc-d29d-468a-8ba3-1f2f5e5f4fcf" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="c3d5ba49-3f2a-4dc2-85ae-03fa298c544d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </acceptEventAction>
+          <forkNode Id="ce5d1353-2724-418f-9c8a-cc74b8c80e51" name="Fork2" isLeaf="false">
+            <elementDefinition Id="148e12f5-d181-41bf-aeda-61f0b5b26e16" />
+            <flowNodeTargets>
+              <controlFlow Id="d5eff53c-5cab-435c-8e68-a50399e212de" isLeaf="false">
+                <acceptEventActionMoniker Id="0e177406-a4f9-4b20-92f8-ed0642643f32" LastKnownName="Принять геоданные от wifi" />
+                <elementDefinition Id="3f563fd8-420e-44f8-81da-26cf0f8cbfdc" />
+              </controlFlow>
+              <controlFlow Id="99a964bf-6dcb-43e2-a15a-afeda2c44490" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="308cd134-a0af-4038-8bf5-e7e7b895a8da" />
+              </controlFlow>
+              <controlFlow Id="ea3e8eeb-e730-4441-a983-766f7231fe76" isLeaf="false">
+                <callBehaviorActionMoniker Id="403a6676-608b-4f0e-97cd-bcf7c7f44c81" LastKnownName="Загрузка данных о маршрутах с сервера" />
+                <elementDefinition Id="a1b1c22e-0756-4477-a4a6-967cc9851149" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <mergeNode Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" name="Merge1" isLeaf="false">
+            <elementDefinition Id="ff629c76-ce31-44da-ae08-05f3ad691935" />
+            <flowNodeTargets>
+              <controlFlow Id="25e82d79-0145-4017-b677-ccd7d1cfa1b8" isLeaf="false">
+                <activityFinalNodeMoniker Id="059ed50f-e729-4b87-9290-9c100cae9464" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="551b78c2-c7c2-462b-a764-c4ad850c3f4d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </mergeNode>
+          <opaqueAction Id="1962c53e-1ecf-477b-a44d-de6199eb5b44" name="Выбрать маршрут" isLeaf="false">
+            <elementDefinition Id="9ae007c9-0d65-46f2-b75c-16089910e5a2" />
+            <objectFlowTargets>
+              <objectFlow Id="443193c2-2c0d-4c10-b4e5-13128c7e8b0a" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <objectNodeMoniker Id="1d5ad5f6-8ff3-46e3-9e4e-380f06ffa91e" LastKnownName="Выбранные маршруты" />
+                <elementDefinition Id="bef46d16-fc7f-4f0e-a082-4ce75c729e89" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode Id="1d5ad5f6-8ff3-46e3-9e4e-380f06ffa91e" name="Выбранные маршруты" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="e9b90a43-abcf-4f12-9212-9e0947187ecb" />
+            <objectFlowTargets>
+              <objectFlow Id="5915d813-da11-47ff-ae31-58ab2ffd354e" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <forkNodeMoniker Id="bbea7f02-cd06-4629-8947-994203185be9" LastKnownName="Fork3" />
+                <elementDefinition Id="71241515-e3a5-41e2-b33f-51e774b8bf87" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger Id="e870f4b7-00bb-4431-a56a-d591d1053fd0" name="2147483647" value="2147483647">
+                <elementDefinition Id="3b6359c9-d1b4-40a7-abc5-d98974041e0e" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <opaqueAction Id="8c99ff19-d7ab-4b3c-bacd-1567361e9822" name="Отображение маршрута" isLeaf="false">
+            <elementDefinition Id="c8115f3d-1fc6-47bf-aa03-b110dd6c9bc7" />
+            <flowNodeTargets>
+              <controlFlow Id="5beaafd8-b5b6-433e-bd3b-4901012e4e31" isLeaf="false">
+                <opaqueActionMoniker Id="1962c53e-1ecf-477b-a44d-de6199eb5b44" LastKnownName="Выбрать маршрут" />
+                <elementDefinition Id="9d5f06db-361a-44a5-a7f2-260f32a0c98e" />
+              </controlFlow>
+              <controlFlow Id="50e0b9e6-272b-47cb-94ea-336c5d5e95ae" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="7a9fbe85-b1b5-4659-a9d2-d6f8cefd995b" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <forkNode Id="bbea7f02-cd06-4629-8947-994203185be9" name="Fork3" isLeaf="false">
+            <elementDefinition Id="22d00957-8fc6-4e60-8d05-77c6ebeb3702" />
+            <flowNodeTargets>
+              <controlFlow Id="7c3ee173-0eaf-4b3b-8980-aa016bf5f57a" isLeaf="false">
+                <opaqueActionMoniker Id="8c99ff19-d7ab-4b3c-bacd-1567361e9822" LastKnownName="Отображение маршрута" />
+                <elementDefinition Id="bb15b18f-667e-4ee3-9165-32f185a4d04e" />
+              </controlFlow>
+              <controlFlow Id="498a77c5-c772-4e17-828f-657489d43d5d" isLeaf="false">
+                <callBehaviorActionMoniker Id="33f4f640-e4b1-4f6c-b5ce-a05630051391" LastKnownName="Загрузка данных о водителях на маршруте" />
+                <elementDefinition Id="2a7432ab-9da1-4e58-b1e8-11d226cdeeac" />
+              </controlFlow>
+            </flowNodeTargets>
+          </forkNode>
+          <callBehaviorAction Id="eaee7595-97e5-493d-933f-cc18e7c01756" name="Загрузка данных о городах с сервера" isLeaf="false">
+            <elementDefinition Id="a231becd-cb01-4af0-8e32-5edf175cbe9b" />
+            <flowNodeTargets>
+              <controlFlow Id="35c313b3-7af2-43af-8eeb-33a597557fc7" isLeaf="false">
+                <forkNodeMoniker Id="ce5d1353-2724-418f-9c8a-cc74b8c80e51" LastKnownName="Fork2" />
+                <elementDefinition Id="607efbaf-0263-4f66-978f-aaf5e9a999fd" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <callBehaviorAction Id="403a6676-608b-4f0e-97cd-bcf7c7f44c81" name="Загрузка данных о маршрутах с сервера" isLeaf="false">
+            <elementDefinition Id="c08387cc-3e68-4cf4-8ee9-ecbf4f1af5da" />
+            <flowNodeTargets>
+              <controlFlow Id="d1721679-c52d-4f69-b94f-156dc1e061d4" isLeaf="false">
+                <opaqueActionMoniker Id="1962c53e-1ecf-477b-a44d-de6199eb5b44" LastKnownName="Выбрать маршрут" />
+                <elementDefinition Id="b88ec794-7929-4a44-8078-443eeee54f1f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <callBehaviorAction Id="33f4f640-e4b1-4f6c-b5ce-a05630051391" name="Загрузка данных о водителях на маршруте" isLeaf="false">
+            <elementDefinition Id="6eb5baf3-0e90-4527-b2ad-888cdab22a4f" />
+            <flowNodeTargets>
+              <controlFlow Id="92068477-432e-4220-8ed2-0149fa3cbd83" isLeaf="false">
+                <opaqueActionMoniker Id="e3fbad4a-cb24-429b-93fe-87207775523d" LastKnownName="Подождать таймер обновления" />
+                <elementDefinition Id="260a17fd-fed0-4f9c-8f76-888fc97076ec" />
+              </controlFlow>
+              <controlFlow Id="b961e991-600f-4c62-abe2-c6c47af0d3ed" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="549a261b-83d2-439f-9b65-fdb6d51c1558" />
+              </controlFlow>
+            </flowNodeTargets>
+          </callBehaviorAction>
+          <opaqueAction Id="e3fbad4a-cb24-429b-93fe-87207775523d" name="Подождать таймер обновления" isLeaf="false">
+            <elementDefinition Id="17acebc9-3d8d-404b-b07d-7b8355bb7b8e" />
+            <flowNodeTargets>
+              <controlFlow Id="ecd3e16b-e46f-4b90-b070-a5f9bc37bcc2" isLeaf="false">
+                <callBehaviorActionMoniker Id="33f4f640-e4b1-4f6c-b5ce-a05630051391" LastKnownName="Загрузка данных о водителях на маршруте" />
+                <elementDefinition Id="778361f1-f306-41a2-b132-b43de0532033" />
+              </controlFlow>
+              <controlFlow Id="206e3eab-ab37-497f-9d22-21c04294a6b2" isLeaf="false">
+                <mergeNodeMoniker Id="ed2004fc-b7bc-4bad-9524-eb33c7e64efd" LastKnownName="Merge1" />
+                <elementDefinition Id="2381a94e-eb26-4811-bbeb-c487b18a6955" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="1d7160c0-8fbe-4640-bcbb-3d1927ada894" name="ModelingProject">
+    <elementDefinition Id="a5645109-2517-40db-81e6-5ca557e52a5d" />
+    <profileInstances>
+      <packageHasProfileInstances Id="69ab47fa-d47a-4de1-9496-b09f13c46e90">
+        <profileInstance Id="c8936f4e-2c53-4222-b4e6-1995c47e0add" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="2d02534d-6413-44ec-8b1a-104b33eafb72">
+        <profileInstance Id="038b1346-1394-46ed-ae21-901d67372e50" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>
