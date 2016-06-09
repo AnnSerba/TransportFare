@@ -60,7 +60,7 @@ namespace TransportFare
             }
             return list;
         }
-        public static double Account(string login, string password)
+        public static double GetAccount(string login, string password)
         {
             return 100;
         }
@@ -68,7 +68,7 @@ namespace TransportFare
         {
             return true;
         }
-        public static bool Login(string login, string password)
+        public static bool Autification(string login, string password)
         {
             return true;
         }

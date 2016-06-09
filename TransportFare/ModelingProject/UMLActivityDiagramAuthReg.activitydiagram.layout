@@ -2,46 +2,46 @@
 <activityDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLActivityDiagramAuthReg">
   <activityRootModelMoniker Id="e7c0350b-9c08-480c-aa5f-98f7ac25e83d" />
   <nestedChildShapes>
-    <initialNodeShape Id="de99e3f3-51de-4ecb-8d52-e67f51b901d4" absoluteBounds="2.625, 2, 0.125, 0.125" customColor="89, 89, 89">
+    <initialNodeShape Id="de99e3f3-51de-4ecb-8d52-e67f51b901d4" absoluteBounds="3.125, 2, 0.125, 0.125" customColor="89, 89, 89">
       <initialNodeMoniker Id="1a222aa7-23c1-4177-a116-200a65eccc49" LastKnownName="Initial1" />
     </initialNodeShape>
-    <activityFinalNodeShape Id="948d6263-a37e-4529-90f6-713c51363cc6" absoluteBounds="2.625, 5.25, 0.125, 0.125" customColor="89, 89, 89">
+    <activityFinalNodeShape Id="948d6263-a37e-4529-90f6-713c51363cc6" absoluteBounds="3.125, 4.75, 0.125, 0.125" customColor="89, 89, 89">
       <activityFinalNodeMoniker Id="08377f4c-ff0c-47b6-8e9b-a85593cf38e4" LastKnownName="ActivityFinal1" />
     </activityFinalNodeShape>
-    <actionShape Id="8be234a3-9467-489b-996b-b2398653b200" absoluteBounds="2.125, 2.5, 1.125, 0.5" customColor="161, 199, 231">
+    <actionShape Id="8be234a3-9467-489b-996b-b2398653b200" absoluteBounds="2.375, 2.5, 1.75, 0.5" customColor="161, 199, 231">
       <opaqueActionMoniker Id="dd6e33b3-5eef-4b79-8254-dddd786ef17c" LastKnownName="Проверить введённые данные" />
       <relativeChildShapes>
-        <inputPinShape Id="fce5e1d5-01e2-46ff-9b34-4d3d92dd2d43" absoluteBounds="2.625, 2.35, 0.15, 0.15">
+        <inputPinShape Id="fce5e1d5-01e2-46ff-9b34-4d3d92dd2d43" absoluteBounds="3.09375, 2.35, 0.15, 0.15">
           <inputPinMoniker Id="605eaa43-d854-4ce6-81d9-ef9246177312" LastKnownName="Данные пользователя" />
           <relativeChildShapes />
           <moveableDecoratorHostShapes>
-            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="2.84375, 2.1875, 1.1990920305252075, 0.14800345897674561" shapeFieldName="Name" />
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3.3125, 2.1875, 1.1990920305252075, 0.14800345897674561" shapeFieldName="Name" />
           </moveableDecoratorHostShapes>
         </inputPinShape>
-        <outputPinShape Id="dfd9c8e7-3d40-4d0b-a5f7-ea1152e4979a" absoluteBounds="2.625, 3, 0.15, 0.15">
+        <outputPinShape Id="dfd9c8e7-3d40-4d0b-a5f7-ea1152e4979a" absoluteBounds="3.09375, 3, 0.15, 0.15">
           <outputPinMoniker Id="dd176912-3de8-4d4f-b95f-c30355514f99" LastKnownName="Данные прошли проверку" />
           <relativeChildShapes />
           <moveableDecoratorHostShapes>
-            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="2.90625, 3.0625, 1.4097040891647339, 0.14800345897674561" shapeFieldName="Name" />
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3.375, 3.0625, 1.4097040891647339, 0.14800345897674561" shapeFieldName="Name" />
           </moveableDecoratorHostShapes>
         </outputPinShape>
-        <outputPinShape Id="c9a76a92-dd23-4cfc-b42c-f6d80547d4f9" absoluteBounds="1.975, 2.65, 0.15, 0.15">
+        <outputPinShape Id="c9a76a92-dd23-4cfc-b42c-f6d80547d4f9" absoluteBounds="2.225, 2.65625, 0.15, 0.15">
           <outputPinMoniker Id="80bf0753-99e5-4e4b-b6d0-ccff22bf113b" LastKnownName="Данные не прошли проверку" />
           <relativeChildShapes />
           <moveableDecoratorHostShapes>
-            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="0.5625, 2.46875, 1.5701315402984619, 0.14800345897674561" shapeFieldName="Name" />
+            <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="0.8125, 2.4687500000000004, 1.5701315402984619, 0.14800345897674561" shapeFieldName="Name" />
           </moveableDecoratorHostShapes>
         </outputPinShape>
       </relativeChildShapes>
     </actionShape>
-    <sendSignalActionShape Id="b3ce2ae6-4cd0-4500-84f8-888032ba7fe2" absoluteBounds="2.125, 3.375, 1.125, 0.375" customColor="185, 212, 238">
+    <sendSignalActionShape Id="b3ce2ae6-4cd0-4500-84f8-888032ba7fe2" absoluteBounds="2.375, 3.375, 1.75, 0.25" customColor="185, 212, 238">
       <sendSignalActionMoniker Id="9b774128-1d60-43c9-9712-61807f82810e" LastKnownName="Отправка данных на сервер" />
       <relativeChildShapes />
     </sendSignalActionShape>
-    <acceptEventActionShape Id="f562158e-cf52-4cee-9509-0ce2bc6ea7f0" absoluteBounds="2.125, 4, 1.125, 0.375" customColor="185, 212, 238">
+    <acceptEventActionShape Id="f562158e-cf52-4cee-9509-0ce2bc6ea7f0" absoluteBounds="2.375, 3.875, 1.75, 0.25" customColor="185, 212, 238">
       <acceptEventActionMoniker Id="44f79fa9-bad2-4ca8-a9aa-b1bbcf29f57f" LastKnownName="Получение ответа" />
     </acceptEventActionShape>
-    <objectFlowConnector edgePoints="[(2.7 : 2.12373724356958); (2.7 : 2.35)]" fixedFrom="Algorithm" fixedTo="Caller" customColor="Black">
+    <objectFlowConnector edgePoints="[(3.16875 : 2.12212120008856); (3.16875 : 2.35)]" fixedFrom="Algorithm" fixedTo="Caller" customColor="Black">
       <objectFlowMoniker Id="f30c59da-94d8-4f3e-a049-16e34d2a2121" />
       <relativeChildShapes />
       <nodes>
@@ -49,7 +49,7 @@
         <inputPinShapeMoniker Id="fce5e1d5-01e2-46ff-9b34-4d3d92dd2d43" />
       </nodes>
     </objectFlowConnector>
-    <controlFlowConnector edgePoints="[(2.6875 : 3.75); (2.6875 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <controlFlowConnector edgePoints="[(3.25 : 3.625); (3.25 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <controlFlowMoniker Id="7809885a-275d-4424-93ee-d5ac6a5c9c2b" />
       <relativeChildShapes />
       <nodes>
@@ -57,13 +57,13 @@
         <acceptEventActionShapeMoniker Id="f562158e-cf52-4cee-9509-0ce2bc6ea7f0" />
       </nodes>
     </controlFlowConnector>
-    <objectNodeShape Id="eb90b879-9865-4dc1-a318-037678fa219a" absoluteBounds="0.75, 3.75, 1.125, 0.375" customColor="White">
+    <objectNodeShape Id="eb90b879-9865-4dc1-a318-037678fa219a" absoluteBounds="0.5, 3.75, 1.625, 0.25" customColor="White">
       <objectNodeMoniker Id="dd361bb5-e86f-4bfc-a51e-a0207021025d" LastKnownName="Ошибка" />
     </objectNodeShape>
-    <objectNodeShape Id="823ee81a-b57c-44dc-8722-e018427d19dc" absoluteBounds="2.125, 4.625, 1.125, 0.375" customColor="White">
+    <objectNodeShape Id="823ee81a-b57c-44dc-8722-e018427d19dc" absoluteBounds="2.375, 4.375, 1.75, 0.25" customColor="White">
       <objectNodeMoniker Id="606946ca-b3d0-498f-9aa4-903d1b1df3dc" LastKnownName="Успех" />
     </objectNodeShape>
-    <objectFlowConnector edgePoints="[(2.6875 : 4.375); (2.6875 : 4.625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <objectFlowConnector edgePoints="[(3.25 : 4.125); (3.25 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <objectFlowMoniker Id="596f577b-4bc0-412b-847c-e66a6a543bca" />
       <relativeChildShapes />
       <nodes>
@@ -71,7 +71,7 @@
         <objectNodeShapeMoniker Id="823ee81a-b57c-44dc-8722-e018427d19dc" />
       </nodes>
     </objectFlowConnector>
-    <objectFlowConnector edgePoints="[(2.6875 : 5); (2.6875 : 5.25)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <objectFlowConnector edgePoints="[(3.1875 : 4.625); (3.1875 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <objectFlowMoniker Id="c552fab2-15df-4582-86d8-f30d407ba49c" />
       <relativeChildShapes />
       <nodes>
@@ -79,7 +79,7 @@
         <activityFinalNodeShapeMoniker Id="948d6263-a37e-4529-90f6-713c51363cc6" />
       </nodes>
     </objectFlowConnector>
-    <objectFlowConnector edgePoints="[(1.3125 : 4.125); (1.3125 : 5.3125); (2.625 : 5.3125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <objectFlowConnector edgePoints="[(1.3125 : 4); (1.3125 : 4.8125); (3.125 : 4.8125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <objectFlowMoniker Id="73fe5f2a-f0ad-4e2c-8d09-37602c83eb52" />
       <relativeChildShapes />
       <nodes>
@@ -87,7 +87,7 @@
         <activityFinalNodeShapeMoniker Id="948d6263-a37e-4529-90f6-713c51363cc6" />
       </nodes>
     </objectFlowConnector>
-    <objectFlowConnector edgePoints="[(2.7 : 3.15); (2.7 : 3.375)]" fixedFrom="Caller" fixedTo="Algorithm" customColor="Black">
+    <objectFlowConnector edgePoints="[(3.16875 : 3.15); (3.16875 : 3.375)]" fixedFrom="Caller" fixedTo="Algorithm" customColor="Black">
       <objectFlowMoniker Id="78c26699-acf6-4c9b-bbb9-fff3b90892ad" />
       <relativeChildShapes />
       <nodes>
@@ -95,7 +95,7 @@
         <sendSignalActionShapeMoniker Id="b3ce2ae6-4cd0-4500-84f8-888032ba7fe2" />
       </nodes>
     </objectFlowConnector>
-    <objectFlowConnector edgePoints="[(1.975 : 2.725); (1.3125 : 2.725); (1.3125 : 3.75)]" fixedFrom="Caller" fixedTo="Algorithm" customColor="Black">
+    <objectFlowConnector edgePoints="[(2.225 : 2.73125); (1.3125 : 2.73125); (1.3125 : 3.75)]" fixedFrom="Caller" fixedTo="Algorithm" customColor="Black">
       <objectFlowMoniker Id="2622a23c-f104-4338-9b6f-cd43b981317e" />
       <relativeChildShapes />
       <nodes>

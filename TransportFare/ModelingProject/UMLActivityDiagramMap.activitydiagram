@@ -47,7 +47,7 @@
               </controlFlow>
             </flowNodeTargets>
           </opaqueAction>
-          <acceptEventAction Id="0e177406-a4f9-4b20-92f8-ed0642643f32" name="Принять геоданные от wifi" isLeaf="false" isUnmarshall="false">
+          <acceptEventAction Id="0e177406-a4f9-4b20-92f8-ed0642643f32" name="Принять геоданные с интернета (ip-адреса провайдера)" isLeaf="false" isUnmarshall="false">
             <elementDefinition Id="07863ca5-d7ce-4f79-981a-0c785a5efe8c" />
             <flowNodeTargets>
               <controlFlow Id="ec50c217-6524-4f55-9ec1-cde02ad01d8d" isLeaf="false">
@@ -69,7 +69,7 @@
             <elementDefinition Id="148e12f5-d181-41bf-aeda-61f0b5b26e16" />
             <flowNodeTargets>
               <controlFlow Id="d5eff53c-5cab-435c-8e68-a50399e212de" isLeaf="false">
-                <acceptEventActionMoniker Id="0e177406-a4f9-4b20-92f8-ed0642643f32" LastKnownName="Принять геоданные от wifi" />
+                <acceptEventActionMoniker Id="0e177406-a4f9-4b20-92f8-ed0642643f32" LastKnownName="Принять геоданные с интернета (ip-адреса провайдера)" />
                 <elementDefinition Id="3f563fd8-420e-44f8-81da-26cf0f8cbfdc" />
               </controlFlow>
               <controlFlow Id="99a964bf-6dcb-43e2-a15a-afeda2c44490" isLeaf="false">

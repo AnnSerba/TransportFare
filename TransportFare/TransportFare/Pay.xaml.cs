@@ -87,12 +87,16 @@ namespace TransportFare
         #region Registration and Autification
         private void buttonFlyoutOkAutification_Click(object sender, RoutedEventArgs e)
         {
-            if (Load.Login(textBoxLoginAutification.Text, passwordBoxPasswordAutification.Password))
+            if (passwordBoxPasswordAutification.Password.Length < 8)
+            {
+                NotifyUser("Пароль коротковат", NotifyType.ErrorMessage);
+            }
+            else if (Load.Autification(textBoxLoginAutification.Text, passwordBoxPasswordAutification.Password))
             {
                 Login = textBoxLoginAutification.Text;
                 Password = passwordBoxPasswordAutification.Password;
                 splitViewAutification.IsPaneOpen = false;
-                SetUIAccount(Load.Account(Login, Password), "руб.");
+                SetUIAccount(Load.GetAccount(Login, Password), "руб.");
                 gridContent.Visibility = Visibility.Visible;
             }
             else
@@ -117,8 +121,8 @@ namespace TransportFare
                 Login = textBoxLoginRegistration.Text;
                 Password = passwordBoxPasswordRegistration1.Password;
                 splitViewAutification.IsPaneOpen = false;
-                Account = Load.Account(Login,Password);
-                SetUIAccount(Load.Account(Login, Password), "руб.");
+                Account = Load.GetAccount(Login,Password);
+                SetUIAccount(Load.GetAccount(Login, Password), "руб.");
                 gridContent.Visibility = Visibility.Visible;
             }
             else

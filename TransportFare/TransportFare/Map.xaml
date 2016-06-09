@@ -41,17 +41,16 @@
                     <ScrollViewer  VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto" >
                         <StackPanel Padding="10">
                             <TextBlock Text="Настройки" Style="{StaticResource styleHeaderTextBlock}"/>
-                    <Slider Name="sliderFrequency" Header="Частота обновления геопозиции в милисекундах" Minimum="1" Maximum="60000" Value="2000"
+                            <Slider Name="sliderFrequency" Header="Частота обновления геопозиции в милисекундах" Minimum="1" Maximum="60000" Value="2000"
                         Style="{StaticResource styleSliderSummPay}" ValueChanged="sliderFrequency_ValueChanged"/>
-                    <ComboBox Header="Режим экономии энергии" Name="comboBoxDesiredAccuracy"
+                            <ComboBox Header="Режим экономии энергии" Name="comboBoxDesiredAccuracy"
                           SelectionChanged="comboBoxDesiredAccuracy_SelectionChanged"  
                           Style="{StaticResource styleComboBox}"/>
-                </StackPanel>
-            </ScrollViewer>
+                        </StackPanel>
+                    </ScrollViewer>
                 </SplitView.Pane>
                 <SplitView.Content >
                     <SplitView Name="splitViewSettingSityRoute"  DisplayMode="Overlay" IsPaneOpen="True">
-                    
                         <SplitView.Pane>
                             <Grid  Margin="10">
                                 <ScrollViewer    VerticalScrollBarVisibility="Auto" >
@@ -77,7 +76,7 @@
                                 <Maps:MapControl   Name="mapControl" MinHeight="300"   
                                               
                                                ZoomLevelChanged="mapControl_ZoomLevelChanged"/>
-                                
+
                                 <StackPanel Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center">
                                     <Button Name="buttonZoopPlus" Content="+" Width="35" Height="35" Click="buttonZoopPlus_Click"/>
                                     <Slider Name="sliderZoom"  Width="35" Height="200"  ValueChanged="sliderZoom_ValueChanged" Orientation="Vertical"/>
@@ -105,7 +104,6 @@
             <Border Padding="5">
                 <TextBlock Name="textBlockTransport" Text="Нет данных о транспорте" Style="{StaticResource styleTextBlock}"/>
             </Border>
-            </StackPanel>
-        </Grid>
-    
+        </StackPanel>
+    </Grid>
 </Page>

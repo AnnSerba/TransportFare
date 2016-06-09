@@ -484,7 +484,7 @@
           </opaqueAction>
           <acceptEventAction
             Id="07863ca5-d7ce-4f79-981a-0c785a5efe8c"
-            name="Принять геоданные от wifi"
+            name="Принять геоданные с интернета (ip-адреса провайдера)"
             isLeaf="false"
             isUnmarshall="false">
             <flowNodeTargets>
@@ -524,7 +524,7 @@
                 isLeaf="false">
                 <acceptEventActionMoniker
                   Id="07863ca5-d7ce-4f79-981a-0c785a5efe8c"
-                  LastKnownName="Принять геоданные от wifi"
+                  LastKnownName="Принять геоданные с интернета (ip-адреса провайдера)"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
               <controlFlow
@@ -785,7 +785,7 @@
                 isLeaf="false">
                 <callBehaviorActionMoniker
                   Id="3ab49e53-e475-4bd0-b848-aee773967e2e"
-                  LastKnownName="Авторезироватся"
+                  LastKnownName="Авторизация"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
               <controlFlow
@@ -793,7 +793,7 @@
                 isLeaf="false">
                 <callBehaviorActionMoniker
                   Id="16372784-f924-47c8-ba44-1ef33ea886bd"
-                  LastKnownName="Зарегистрироватся"
+                  LastKnownName="Регистрация"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
               <controlFlow
@@ -808,7 +808,7 @@
           </decisionNode>
           <callBehaviorAction
             Id="3ab49e53-e475-4bd0-b848-aee773967e2e"
-            name="Авторезироватся"
+            name="Авторизация"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
@@ -816,7 +816,7 @@
                 isLeaf="false">
                 <callBehaviorActionMoniker
                   Id="16372784-f924-47c8-ba44-1ef33ea886bd"
-                  LastKnownName="Зарегистрироватся"
+                  LastKnownName="Регистрация"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
               <controlFlow
@@ -837,7 +837,7 @@
           </callBehaviorAction>
           <callBehaviorAction
             Id="16372784-f924-47c8-ba44-1ef33ea886bd"
-            name="Зарегистрироватся"
+            name="Регистрация"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
@@ -845,7 +845,7 @@
                 isLeaf="false">
                 <callBehaviorActionMoniker
                   Id="3ab49e53-e475-4bd0-b848-aee773967e2e"
-                  LastKnownName="Авторезироватся"
+                  LastKnownName="Авторизация"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -866,7 +866,7 @@
                 isLeaf="false">
                 <callBehaviorActionMoniker
                   Id="5bda84fc-837b-4c31-b6b6-d7f0c39ce544"
-                  LastKnownName="Пополнить счёт"
+                  LastKnownName="Пополние счёта"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
               <controlFlow
@@ -874,7 +874,7 @@
                 isLeaf="false">
                 <callBehaviorActionMoniker
                   Id="67f63a27-ac3f-4e64-b993-9e6bcdb63692"
-                  LastKnownName="Пополнить nfc-метку"
+                  LastKnownName="Пополнение nfc-метки"
                   LastKnownLocation="ModelingProject.uml" />
               </controlFlow>
               <controlFlow
@@ -889,7 +889,7 @@
           </decisionNode>
           <callBehaviorAction
             Id="67f63a27-ac3f-4e64-b993-9e6bcdb63692"
-            name="Пополнить nfc-метку"
+            name="Пополнение nfc-метки"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
@@ -910,7 +910,7 @@
           </callBehaviorAction>
           <callBehaviorAction
             Id="5bda84fc-837b-4c31-b6b6-d7f0c39ce544"
-            name="Пополнить счёт"
+            name="Пополние счёта"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow

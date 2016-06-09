@@ -2,14 +2,14 @@
 <activityDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLActivityDiagramLoadData">
   <activityRootModelMoniker Id="5c7e6a6f-1036-4631-a308-f396eaa0e7b3" />
   <nestedChildShapes>
-    <sendSignalActionShape Id="f26461b3-b37e-47f1-934f-3d3b2866f263" absoluteBounds="0.75, 2.75, 1.625, 0.375" customColor="185, 212, 238">
+    <sendSignalActionShape Id="f26461b3-b37e-47f1-934f-3d3b2866f263" absoluteBounds="0.75, 2.875, 1.625, 0.375" customColor="185, 212, 238">
       <sendSignalActionMoniker Id="3a6fded5-02bc-489c-87eb-7ba33bab0636" LastKnownName="Отправить запрос на получения данных" />
       <relativeChildShapes />
     </sendSignalActionShape>
     <acceptEventActionShape Id="3bff1fdd-99c2-4e74-a898-848978ff5b48" absoluteBounds="0.75, 3.375, 1.625, 0.375" customColor="185, 212, 238">
       <acceptEventActionMoniker Id="4057dadb-2701-479a-8cce-6b55abbdea5a" LastKnownName="Принять данные" />
     </acceptEventActionShape>
-    <controlFlowConnector edgePoints="[(1.5625 : 3.125); (1.5625 : 3.375)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <controlFlowConnector edgePoints="[(1.5625 : 3.25); (1.5625 : 3.375)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <controlFlowMoniker Id="32f83c43-33ee-46c4-9928-1215e524b645" />
       <relativeChildShapes />
       <nodes>
@@ -17,13 +17,13 @@
         <acceptEventActionShapeMoniker Id="3bff1fdd-99c2-4e74-a898-848978ff5b48" />
       </nodes>
     </controlFlowConnector>
-    <initialNodeShape Id="7a30cc1c-b017-4f93-a270-4ebe0dd67af0" absoluteBounds="1.5, 2.375, 0.125, 0.125" customColor="89, 89, 89">
+    <initialNodeShape Id="7a30cc1c-b017-4f93-a270-4ebe0dd67af0" absoluteBounds="1.5, 2.625, 0.125, 0.125" customColor="89, 89, 89">
       <initialNodeMoniker Id="bec2f650-3962-4940-a909-10358b1cd724" LastKnownName="Initial1" />
     </initialNodeShape>
-    <activityFinalNodeShape Id="4793775c-a7c0-4c4e-a61f-e6d361ce4e4f" absoluteBounds="1.5, 4, 0.125, 0.125" customColor="89, 89, 89">
+    <activityFinalNodeShape Id="4793775c-a7c0-4c4e-a61f-e6d361ce4e4f" absoluteBounds="1.5, 3.875, 0.125, 0.125" customColor="89, 89, 89">
       <activityFinalNodeMoniker Id="75ea3c34-3e19-43e7-953d-cf168c1e16f7" LastKnownName="ActivityFinal1" />
     </activityFinalNodeShape>
-    <controlFlowConnector edgePoints="[(1.5625 : 2.5); (1.5625 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <controlFlowConnector edgePoints="[(1.5625 : 2.75); (1.5625 : 2.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <controlFlowMoniker Id="be79cc77-cb7f-40c4-addc-f90a8f73f42b" />
       <relativeChildShapes />
       <nodes>
@@ -31,7 +31,7 @@
         <sendSignalActionShapeMoniker Id="f26461b3-b37e-47f1-934f-3d3b2866f263" />
       </nodes>
     </controlFlowConnector>
-    <controlFlowConnector edgePoints="[(1.5625 : 3.75); (1.5625 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <controlFlowConnector edgePoints="[(1.5625 : 3.75); (1.5625 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <controlFlowMoniker Id="2e96696f-7ad5-483d-897f-6bce9e1046dd" />
       <relativeChildShapes />
       <nodes>
